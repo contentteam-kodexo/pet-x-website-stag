@@ -47,14 +47,15 @@
 </style>
 <link rel="stylesheet" href="assets/ui/base.css">
 <link rel="stylesheet" href="assets/components/base.css">
-<link rel="stylesheet" href="assets/components/fx-stat/component.css">
 <link rel="stylesheet" href="assets/components/fx-pricing/component.css">
+<link rel="stylesheet" href="assets/components/fx-spotlight/component.css">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="assets/backgrounds/backgrounds.js"></script>
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="assets/moments/moments.js">
 <link rel="modulepreload" href="assets/moments/lib.js">
 <link rel="modulepreload" href="assets/moments/giant-type-pass/moment.js">
+<link rel="modulepreload" href="assets/moments/iris-opens-late/moment.js">
 <link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
 <script>document.documentElement.classList.add('sc-js');setTimeout(()=>document.documentElement.classList.add('sc-safe'),2500)</script>
 <link rel="stylesheet" href="assets/scenes/scenes.css">
@@ -221,6 +222,81 @@
   @media (max-width: 1023px) { #who-we-are .gx-promise-photo { height: 420px; } }
   @media (max-width: 639px) { #who-we-are .gx-promise-photo { height: 320px; } }
   @media (max-width: 639px) { main > section.section.g2 > .wrap { row-gap: var(--s-6); } }
+  /* ===== CLOSING THE COMMUNICATION GAP: iris opens on the brand's dark ground ===== */
+  #numbers.gx-gap { --accent: #6fc6dc; color: #fff; isolation: isolate;
+    background:
+      radial-gradient(38% 45% at 12% 18%, rgb(30 151 183 / .38), transparent 70%),
+      radial-gradient(42% 55% at 92% 40%, rgb(156 76 151 / .5), transparent 70%),
+      radial-gradient(35% 40% at 60% 105%, rgb(68 71 152 / .55), transparent 70%),
+      radial-gradient(25% 30% at 35% 85%, rgb(21 139 81 / .18), transparent 70%),
+      linear-gradient(135deg, #23204A 0%, #2a1c42 50%, #301938 100%); }
+  #numbers.gx-gap::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(rgb(255 255 255 / .04) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .04) 1px, transparent 1px);
+    background-size: 64px 64px; -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000, transparent 85%); mask-image: radial-gradient(70% 70% at 50% 40%, #000, transparent 85%); }
+  #numbers.gx-gap::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .14; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  #numbers .gx-gap__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--gutter); align-items: center; }
+  .gx-gap__eyebrow { margin: 0 0 var(--s-3); font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #6fc6dc; }
+  .gx-gap__text h2 { margin: 0; color: #fff; font-size: clamp(34px, 3.9vw, 58px); line-height: 1.05; letter-spacing: -.03em; max-width: 13ch; overflow-wrap: normal; word-break: normal; hyphens: none;
+    background: linear-gradient(100deg, #fff 30%, #c9e9f2 60%, #e9c6e5 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .gx-gap__lead { margin: var(--s-6) 0 0; max-width: 50ch; font-size: var(--t-lead); line-height: 1.55; color: rgb(244 236 247 / .9); }
+  .gx-gap__body { margin: var(--s-4) 0 var(--s-7); max-width: 50ch; line-height: 1.6; color: rgb(236 226 240 / .66); }
+  .gx-gap__visual { position: relative; padding: 0 0 72px 56px; }
+  .gx-gap__glow { position: absolute; inset: 8% 0 18% 14%; border-radius: 40px; background: conic-gradient(from 210deg, #1E97B7, #444798, #9C4C97, #158B51, #1E97B7); filter: blur(60px); opacity: .55; }
+  .gx-gap__photo { position: relative; overflow: hidden; aspect-ratio: 1 / 1; border-radius: 28px; box-shadow: 0 0 0 1px rgb(255 255 255 / .14), 0 50px 100px -40px rgb(0 0 0 / .7); }
+  .gx-gap__photo img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.04); transition: transform 1.6s cubic-bezier(.16,1,.3,1); }
+  .gx-gap:hover .gx-gap__photo img { transform: scale(1); }
+  .gx-gap__stats { margin: 0; }
+  .gx-gap__stat { position: absolute; display: grid; gap: 4px; min-width: 230px; max-width: 280px; padding: 20px 22px; border-radius: 20px;
+    background: linear-gradient(135deg, rgb(255 255 255 / .2), rgb(255 255 255 / .05) 60%), rgb(20 18 46 / .38);
+    -webkit-backdrop-filter: blur(22px) saturate(160%) brightness(.8); backdrop-filter: blur(22px) saturate(160%) brightness(.8);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / .45), inset 0 0 0 1px rgb(255 255 255 / .22), 0 30px 60px -24px rgb(0 0 0 / .55); }
+  .gx-gap__stat dt { text-shadow: 0 1px 8px rgb(15 13 34 / .55); }
+  .gx-gap__stat dd { filter: drop-shadow(0 2px 10px rgb(15 13 34 / .45)); }
+  .gx-gap__stat dd { margin: 0; white-space: nowrap; font-size: clamp(30px, 3vw, 44px); font-weight: 600; line-height: 1; letter-spacing: -.03em;
+    background: linear-gradient(90deg, #a8e3f2, #f2c4ec); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .gx-gap__stat dt { font-size: 14px; line-height: 1.4; color: #fff; }
+  .gx-gap__stat--a { left: 0; bottom: 0; }
+  .gx-gap__stat--b { right: -16px; top: 12%; }
+  @media (prefers-reduced-motion: no-preference) {
+    .gx-gap__stat { animation: gx-float 7s ease-in-out infinite alternate; }
+    .gx-gap__stat--b { animation-delay: -3.5s; }
+  }
+  @keyframes gx-float { to { translate: 0 -10px; } }
+  @media (max-width: 1023px) {
+    #numbers .gx-gap__grid { grid-template-columns: 1fr; gap: var(--s-8); }
+    .gx-gap__visual { padding: 0 0 56px 0; }
+    .gx-gap__stat--b { right: 12px; }
+  }
+  @media (max-width: 639px) {
+    .gx-gap__visual { padding: 0; display: grid; gap: 12px; }
+    .gx-gap__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gx-gap__stat { position: static; min-width: 0; padding: 16px; animation: none; }
+    .gx-gap__stat dd { font-size: 24px; }
+    .gx-gap__stat dt { font-size: 13px; }
+  }
+  /* ===== WHY GROOM-X: spotlight cards ===== */
+  #why.gx-why-s { background: radial-gradient(50% 60% at 100% 0%, rgb(30 151 183 / .08), transparent 70%), radial-gradient(40% 50% at 0% 100%, rgb(156 76 151 / .08), transparent 70%), #fbf9fc; }
+  .gx-why-s__head { display: flex; align-items: end; justify-content: space-between; gap: var(--s-6); margin-bottom: var(--s-8); }
+  .gx-why-s__head h2 { margin: 0; font-size: clamp(40px, 5.4vw, 80px); line-height: 1; letter-spacing: -.035em; }
+  .gx-why-s__accent { background: linear-gradient(90deg, #1E97B7, #444798 55%, #9C4C97); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .gx-spot { --cx-card: #fff; gap: 20px; }
+  .gx-spot .gx-spot__card { min-height: 420px; padding: 32px; border-radius: 24px; box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgb(35 32 74 / .04), 0 24px 48px -32px rgb(35 32 74 / .25); transition: box-shadow .4s ease, translate .9s cubic-bezier(.16,1,.3,1), opacity .7s ease; }
+  .gx-spot .gx-spot__card:hover { box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgb(35 32 74 / .04), 0 32px 64px -30px rgb(68 71 152 / .35); }
+  .gx-spot .gx-spot__card { cursor: default; }
+  .gx-spot__top { display: flex; align-items: center; justify-content: space-between; }
+  .gx-spot .gx-spot__icon { width: 48px; height: 48px; border-radius: 14px; border: 0; color: #fff; background: var(--gradient-button); box-shadow: 0 10px 24px -10px rgb(68 71 152 / .6); }
+  .gx-spot .gx-spot__icon svg { width: 22px; height: 22px; stroke-width: 1.7; }
+  .gx-spot__n { font-size: 13px; font-weight: 600; letter-spacing: .06em; color: rgb(35 32 74 / .35); font-variant-numeric: tabular-nums; }
+  .gx-spot .cx-title { font-size: 22px; line-height: 1.25; letter-spacing: -.01em; margin: 0; }
+  .gx-spot .cx-text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-motion="off"]) .gx-spot:not(.is-in) .gx-spot__card { opacity: 0; translate: 0 28px; }
+    html:not([data-motion="off"]) .gx-spot.is-in .gx-spot__card:nth-child(2) { transition-delay: 0s, .1s, .1s; }
+    html:not([data-motion="off"]) .gx-spot.is-in .gx-spot__card:nth-child(3) { transition-delay: 0s, .2s, .2s; }
+  }
+  @media (max-width: 899px) { .gx-spot .gx-spot__card { min-height: 0; gap: var(--s-6); } }
+  @media (max-width: 639px) { .gx-why-s__head { flex-direction: column; align-items: start; } .gx-spot .gx-spot__card { padding: 24px; } }
   /* ===== copy pass: company statements, Why Groom-X, numbers lead ===== */
   .gx-company { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-top: var(--s-8); padding-top: var(--s-7); border-top: 1px solid var(--line); }
   .gx-company article { display: grid; align-content: start; gap: var(--s-3); }
@@ -232,26 +308,16 @@
   #numbers h2 { margin: 0; }
   .gx-num-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); }
   .gx-num-cta { margin-top: var(--s-7); }
-  .gx-why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .gx-why__card { position: relative; overflow: hidden; display: grid; align-content: start; gap: var(--s-3); padding: 32px; border-radius: 24px; background: #faf7fb; box-shadow: inset 0 0 0 1px rgb(35 32 74 / .07); }
-  .gx-why__card::after { content: ""; position: absolute; inset: auto -20% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; filter: blur(40px); opacity: .35; pointer-events: none; }
-  .gx-why__card--a::after { background: #1E97B7; } .gx-why__card--b::after { background: #9C4C97; } .gx-why__card--c::after { background: #158B51; }
-  .gx-why__icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: #fff; background: var(--gradient-button); }
-  .gx-why__icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  .gx-why__card h3 { margin: var(--s-2) 0 0; font-size: 20px; line-height: 1.3; }
-  .gx-why__card p { position: relative; margin: 0; color: var(--muted); line-height: 1.6; font-size: 15px; }
-  #why .section-head--row { display: flex; align-items: end; justify-content: space-between; gap: var(--s-6); margin-bottom: var(--s-7); }
   .gx-partners-h { margin: var(--s-8) 0 var(--s-5); font-size: 22px; }
   .closing .gx-social { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); padding: 0; margin: 0; list-style: none; }
   .closing .footer__lede { font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--muted); max-width: 40ch; }
   .gx-social a, .gx-foot-p { color: var(--muted); font-size: 15px; line-height: 1.55; }
   .cx-plan__per s { opacity: .7; margin-right: 4px; }
   @media (max-width: 1023px) {
-    .gx-company, .gx-why { grid-template-columns: 1fr; gap: var(--s-6); }
-    #why .section-head--row { flex-direction: column; align-items: start; }
+    .gx-company { grid-template-columns: 1fr; gap: var(--s-6); }
     .footer__col.start-6, .footer__col.start-10 { grid-column: auto; }
   }
-  @media (max-width: 639px) { .gx-num-row { grid-template-columns: 1fr; } .gx-why__card { padding: 24px; } }
+  @media (max-width: 639px) { .gx-num-row { grid-template-columns: 1fr; } }
   /* ===== FEATURES: bento on the brand's dark gradient ===== */
   #features.gx-bento { color: #fff; background: radial-gradient(60% 50% at 90% 0%, rgb(156 76 151 / .32), transparent 70%), radial-gradient(50% 40% at 0% 100%, rgb(30 151 183 / .2), transparent 70%), linear-gradient(170deg, #1a1838 0%, #23204A 40%, #301938 100%); }
   .gx-bento__head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gutter); align-items: end; margin-bottom: var(--s-8); }
@@ -264,7 +330,6 @@
     background: rgb(255 255 255 / .045); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .1); grid-column: span 4; transition: box-shadow .4s ease; }
   .gx-card::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .4s ease;
     background: radial-gradient(420px circle at var(--mx) var(--my), rgb(255 255 255 / .09), transparent 60%); }
-  .gx-card:hover::before { opacity: 1; }
   .gx-card:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
   .gx-card--wide { grid-column: span 8; }
   .gx-bento__grid > .gx-card--d { grid-column: span 8; }
@@ -468,8 +533,8 @@
      deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
            footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
      scene: parts-lock-into-the-whole (#how, the page's one effect)
-     moments: giant-type-pass (#who-we-are), liquid-type (the closing name)
-     components: fx-headline (hero fill), fx-stat (#numbers), fx-pricing (#pricing) -->
+     moments: giant-type-pass (#who-we-are), iris-opens-late (#numbers), liquid-type (the closing name)
+     components: fx-spotlight (#why), fx-pricing (#pricing) -->
 
 <header class="nav nav--tone">
   <div class="wrap nav__bar">
@@ -552,32 +617,60 @@
     </div>
   </section>
 
-  <!-- CLOSING THE COMMUNICATION GAP (fx-stat, dark band): the founder's reason for Groom-X and the retention figures -->
-  <section class="section ground-inverse" id="numbers" aria-labelledby="numbers-h">
-    <div class="wrap">
-      <div class="grid">
-      <div class="cx cx-stat span-6">
+  <!-- CLOSING THE COMMUNICATION GAP (moment: iris-opens-late, a page copy of the kit moment with later timing): the dark brand ground opens through a widening circle with a teal
+       ring as the section comes up; each block fades in whole once the circle holds it. The photograph sits in a lit frame
+       with the two retention figures as glass cards over its edge. -->
+  <section class="section ground-inverse gx-gap" id="numbers" data-moment="iris-opens-late" data-moment-opts='{"from": "base", "at": [0.5, 0.45]}' aria-labelledby="numbers-h">
+    <div class="wrap gx-gap__grid">
+      <div class="gx-gap__text">
+        <p class="gx-gap__eyebrow">Why we built Groom-X</p>
         <h2 id="numbers-h">Closing the Communication Gap</h2>
-        <p class="gx-num-lead">Our first product Groom-X was born from years of observing the frustration caused by miscommunication between pet parents and pet professionals. Our founder saw how unclear expectations often led to dissatisfaction and negative reviews resulting in a loss of revenue. The goal of Groom-X is to eliminate these challenges, creating a seamless and positive experience for both pet professionals and pet parents.</p>
-        <dl class="cx-stat__row gx-num-row">
-          <div class="cx-stat__item"><dt class="cx-stat__label">Customer retention in the pet grooming industry</dt><dd class="cx-stat__num" data-fill>60%–80%</dd></div>
-          <div class="cx-stat__item"><dt class="cx-stat__label">Customers don’t return for a second visit</dt><dd class="cx-stat__num" data-fill>1 in 3</dd></div>
-        </dl>
-        <a class="btn btn--primary gx-num-cta" href="http://app.groomx.net/auth/signup">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <p class="gx-gap__lead">Our first product Groom-X was born from years of observing the frustration caused by miscommunication between pet parents and pet professionals. Our founder saw how unclear expectations often led to dissatisfaction and negative reviews resulting in a loss of revenue.</p>
+        <p class="gx-gap__body">The goal of Groom-X is to eliminate these challenges, creating a seamless and positive experience for both pet professionals and pet parents.</p>
+        <a class="btn btn--primary" href="http://app.groomx.net/auth/signup">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
       </div>
-      <div class="frame frame--photo span-6 start-7 gx-num-photo"><img width="900" height="900" class="frame__img" src="img/cat-dryer-900.webp" srcset="img/cat-dryer-480.webp 480w, img/cat-dryer-900.webp 900w" sizes="(max-width: 1023px) 92vw, 628px" alt="A long-haired cat with its fur blown back by a hair dryer" loading="lazy"></div>
+      <div class="gx-gap__visual">
+        <div class="gx-gap__glow" aria-hidden="true"></div>
+        <div class="gx-gap__photo"><img width="900" height="900" src="img/cat-dryer-900.webp" srcset="img/cat-dryer-480.webp 480w, img/cat-dryer-900.webp 900w" sizes="(max-width: 1023px) 92vw, 560px" alt="A long-haired cat with its fur blown back by a hair dryer" loading="lazy"></div>
+        <dl class="gx-gap__stats">
+          <div class="gx-gap__stat gx-gap__stat--a"><dd>60%–80%</dd><dt>Customer retention in the pet grooming industry</dt></div>
+          <div class="gx-gap__stat gx-gap__stat--b"><dd>1 in 3</dd><dt>Customers don’t return for a second visit</dt></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <!-- WHY GROOM-X: the three reasons, as cards -->
-  <section class="section" id="why" aria-labelledby="why-h">
+  <!-- WHY GROOM-X (fx-spotlight): three plain reason cards; a fine dot ruling rests faintly in each card's empty top-right
+       corner and a small soft light under the pointer brings it up. The cards arrive once as the row comes on screen. -->
+  <section class="section gx-why-s" id="why" aria-labelledby="why-h">
     <div class="wrap">
-      <div class="section-head section-head--row"><h2 id="why-h">Why Groom-X?</h2><a class="btn btn--primary" href="https://petxusa.com/groomx/#wait">Get Yours Now!<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
-      <div class="gx-why">
-        <article class="gx-why__card gx-why__card--a"><span class="gx-why__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><h3>Grow Your Business</h3><p>Whether you run a mobile grooming service, a salon, or a pet hotel with grooming offerings, Groom-X enhances communication around grooming styles and expectations—ensuring satisfied clients every time. Our intuitive, easy-to-use tool helps deliver consistent results, leading to stronger customer loyalty, repeat visits, and glowing reviews.</p></article>
-        <article class="gx-why__card gx-why__card--b"><span class="gx-why__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span><h3>Increase Customer Retention</h3><p>Groom-X is the world’s first Check-In Assistant visual grooming application that shows pet owners what their pet could look like before the grooming begins. By eliminating style and communication gaps, it helps customers feel confident in their choices and ensures a smoother enjoyable experience for both clients and groomers.</p></article>
-        <article class="gx-why__card gx-why__card--c"><span class="gx-why__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h3>Stand Out From the Competition</h3><p>Our intuitive tool seamlessly integrates with your current services, boosting client loyalty and setting you apart. Join other pet professionals who are enhancing their services and keeping customers coming back.</p></article>
+      <div class="gx-why-s__head">
+        <h2 id="why-h">Why <span class="gx-why-s__accent">Groom-X?</span></h2>
+        <a class="btn btn--primary" href="https://petxusa.com/groomx/#wait">Get Yours Now!<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <div class="cx cx-spot gx-spot" data-cx-seed="27">
+          <article class="cx-spot__card gx-spot__card">
+            <div class="gx-spot__top"><span class="cx-spot__icon gx-spot__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><span class="gx-spot__n">01</span></div>
+            <div class="cx-spot__body">
+              <h3 class="cx-title">Grow Your Business</h3>
+              <p class="cx-text">Whether you run a mobile grooming service, a salon, or a pet hotel with grooming offerings, Groom-X enhances communication around grooming styles and expectations—ensuring satisfied clients every time. Our intuitive, easy-to-use tool helps deliver consistent results, leading to stronger customer loyalty, repeat visits, and glowing reviews.</p>
+            </div>
+          </article>
+          <article class="cx-spot__card gx-spot__card">
+            <div class="gx-spot__top"><span class="cx-spot__icon gx-spot__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span><span class="gx-spot__n">02</span></div>
+            <div class="cx-spot__body">
+              <h3 class="cx-title">Increase Customer Retention</h3>
+              <p class="cx-text">Groom-X is the world’s first Check-In Assistant visual grooming application that shows pet owners what their pet could look like before the grooming begins. By eliminating style and communication gaps, it helps customers feel confident in their choices and ensures a smoother enjoyable experience for both clients and groomers.</p>
+            </div>
+          </article>
+          <article class="cx-spot__card gx-spot__card">
+            <div class="gx-spot__top"><span class="cx-spot__icon gx-spot__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><span class="gx-spot__n">03</span></div>
+            <div class="cx-spot__body">
+              <h3 class="cx-title">Stand Out From the Competition</h3>
+              <p class="cx-text">Our intuitive tool seamlessly integrates with your current services, boosting client loyalty and setting you apart. Join other pet professionals who are enhancing their services and keeping customers coming back.</p>
+            </div>
+          </article>
+        <div class="cx-spot__fx" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -790,11 +883,11 @@
 <script type="module" src="assets/layout/layout.js"></script>
 <script type="module" src="assets/scenes/scenes.js"></script>
 <script type="module">
-    import stat from './assets/components/fx-stat/component.js';
   import pricing from './assets/components/fx-pricing/component.js';
-    document.querySelectorAll('.cx-stat').forEach(el => stat(el));
+  import spotlight from './assets/components/fx-spotlight/component.js';
   document.querySelectorAll('.cx-pricing').forEach(el => pricing(el));
-// features bento: cards arrive once in view; a soft light follows the pointer on a card
+  document.querySelectorAll('.cx-spot').forEach(el => spotlight(el));
+// features bento: cards arrive once in view
 (() => {
   const cards = [...document.querySelectorAll('.gx-bento .gx-card')];
   if (!cards.length) return;
@@ -803,7 +896,14 @@
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const i = cards.indexOf(e.target); setTimeout(() => reveal(e.target), (i % 3) * 110); io.unobserve(e.target); } }), { threshold: 0.2 });
     cards.forEach(c => io.observe(c));
   } else cards.forEach(reveal);
-  cards.forEach(c => c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`); }));
+})();
+// why: the spotlight cards arrive once as the row comes on screen
+(() => {
+  const row = document.querySelector('.gx-spot');
+  if (!row) return;
+  if (!('IntersectionObserver' in window)) { row.classList.add('is-in'); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { row.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.2 });
+  io.observe(row);
 })();
 // promise: the style preview settles from a slight zoom as it comes on screen
 (() => {
