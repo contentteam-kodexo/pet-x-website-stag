@@ -47,7 +47,6 @@
 </style>
 <link rel="stylesheet" href="assets/ui/base.css">
 <link rel="stylesheet" href="assets/components/base.css">
-<link rel="stylesheet" href="assets/components/fx-feature-card/component.css">
 <link rel="stylesheet" href="assets/components/fx-stat/component.css">
 <link rel="stylesheet" href="assets/components/fx-pricing/component.css">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
@@ -56,6 +55,7 @@
 <link rel="modulepreload" href="assets/moments/moments.js">
 <link rel="modulepreload" href="assets/moments/lib.js">
 <link rel="modulepreload" href="assets/moments/giant-type-pass/moment.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
 <link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
 <script>document.documentElement.classList.add('sc-js');setTimeout(()=>document.documentElement.classList.add('sc-safe'),2500)</script>
 <link rel="stylesheet" href="assets/scenes/scenes.css">
@@ -222,6 +222,34 @@
   @media (max-width: 1023px) { #promise .gx-promise-photo { height: 420px; } }
   @media (max-width: 639px) { #promise .gx-promise-photo { height: 320px; } }
   @media (max-width: 639px) { main > section.section.g2 > .wrap { row-gap: var(--s-6); } }
+  /* ===== FEATURES: pinned chapters on the brand's dark gradient ===== */
+  #features.gx-feat { --ink: #fff; --muted: rgb(236 226 240 / .66); --line: rgb(255 255 255 / .14); --accent: #6fc6dc;
+    background: radial-gradient(70% 60% at 85% 20%, rgb(156 76 151 / .35), transparent 70%), radial-gradient(50% 50% at 10% 90%, rgb(30 151 183 / .22), transparent 70%), linear-gradient(160deg, #23204A 0%, #301938 100%); color: #fff; }
+  .gx-feat__eyebrow { margin: 0 0 var(--s-3); font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #6fc6dc; }
+  .gx-feat__head h2 { color: #fff; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.12; letter-spacing: -.02em; max-width: 18ch; }
+  .gx-feat__grey { color: rgb(236 226 240 / .55); }
+  .gx-feat .mo-pc__step h3 { display: flex; align-items: baseline; gap: 14px; }
+  .gx-feat__n { flex: none; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: #c98fc3; font-variant-numeric: tabular-nums; }
+  #features .mo-pc__step p { color: rgb(236 226 240 / .8); padding-left: 33px; }
+  .gx-feat.is-live .mo-pc__step { border-left-width: 2px; border-image: none; }
+  #features.is-live .mo-pc__step.is-on { border-left-color: transparent; border-image: linear-gradient(180deg, #1E97B7, #9C4C97) 1; }
+  #features.is-live .mo-pc__step h3 { color: rgb(236 226 240 / .5); }
+  #features.is-live .mo-pc__step.is-on h3 { color: #fff; }
+  .gx-feat.is-live .mo-pc__step.is-on .gx-feat__n { color: #6fc6dc; }
+  /* the frame: a lit panel in the brand colours with the real screen as a window on it */
+  .gx-feat__frame { border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px rgb(255 255 255 / .12), 0 50px 100px -40px rgb(0 0 0 / .6); }
+  #features .mo-pc__visual.gx-feat__vis { padding: clamp(20px, 3.4vw, 48px); border-radius: 24px; overflow: hidden; }
+  #features.is-live .mo-pc__visual.gx-feat__vis { border-radius: 0; }
+  #features .mo-pc__visual.gx-feat__vis--a { background: radial-gradient(80% 70% at 20% 10%, #6fc6dc, transparent 60%), linear-gradient(135deg, #1E97B7, #444798); }
+  #features .mo-pc__visual.gx-feat__vis--b { background: radial-gradient(80% 70% at 80% 10%, #c98fc3, transparent 60%), linear-gradient(135deg, #444798, #9C4C97); }
+  #features .mo-pc__visual.gx-feat__vis--c { background: radial-gradient(80% 70% at 20% 90%, #6fd1a0, transparent 60%), linear-gradient(135deg, #158B51, #1E97B7); }
+  #features .mo-pc__visual.gx-feat__vis--d { background: radial-gradient(80% 70% at 80% 90%, #f0b6e6, transparent 60%), linear-gradient(135deg, #9C4C97, #301938); }
+  .gx-feat__win { display: block; width: 100%; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .06), 0 30px 60px -20px rgb(15 13 34 / .55); }
+  .gx-feat .mo-pc__visual .gx-feat__win img, .gx-feat.is-live .mo-pc__visual .gx-feat__win img { display: block; width: 100%; height: auto; aspect-ratio: auto; max-height: none; object-fit: contain; }
+  .gx-feat.is-live .mo-pc__visual .gx-feat__win { transform: translateY(18px) scale(.97); transition: transform 900ms cubic-bezier(.16,1,.3,1); }
+  .gx-feat.is-live .mo-pc__visual.is-on .gx-feat__win { transform: none; }
+  @media (prefers-reduced-motion: reduce) { .gx-feat.is-live .mo-pc__visual .gx-feat__win { transform: none; transition: none; } }
+  @media (max-width: 1023px) { #features .mo-pc__step p { padding-left: 0; } #features .mo-pc__visual.gx-feat__vis { aspect-ratio: auto; padding: 18px; border-radius: 18px; } }
   /* ===== HERO (after tasteskill.dev's hero, in the Pet-X brand) ===== */
   .gx-hero { position: relative; isolation: isolate; background: #fff; --gx-ease-expo: cubic-bezier(.16,1,.3,1); }
   main > section.gx-hero { height: auto; min-height: 0; padding: 0; display: block; }
@@ -360,8 +388,8 @@
      deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
            footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
      scene: parts-lock-into-the-whole (#how, the page's one effect)
-     moments: giant-type-pass (#promise), liquid-type (the closing name)
-     components: fx-headline (hero fill), fx-feature-card (#features), fx-stat (#numbers), fx-pricing (#pricing) -->
+     moments: giant-type-pass (#promise), pinned-chapters (#features), liquid-type (the closing name)
+     components: fx-headline (hero fill), fx-stat (#numbers), fx-pricing (#pricing) -->
 
 <header class="nav nav--tone">
   <div class="wrap nav__bar">
@@ -470,68 +498,40 @@
     </div>
   </section>
 
-  <!-- FEATURES (fx-feature-card): a 2x2, each an inset panel on a still painted or grain ground holding a Groom-X window -->
-  <section class="section g2" id="features" aria-labelledby="cx-feat-title">
-    <div class="wrap cx cx-feat">
-        <div class="group">
-        <header class="cx-feat__head">
-          <h2 class="cx-feat__h" id="cx-feat-title">Four tools in every check-in</h2>
-          <p class="cx-feat__sub">Groom-X keeps customers coming back by making every style, session and tool clear.</p>
-        </header>
-        <div class="cx-feat__grid">
-          <article class="cx-feat__card">
-            <div class="cx-feat__copy">
-              <h3 class="cx-feat__title">Style previews before the groom</h3>
-              <p class="cx-feat__text">Groom-X reads the breed, coat type and your instructions, then shows how the pet will look after grooming.</p>
-            </div>
-            <div class="cx-feat__panel" data-cx-effect="painterly-landscape" data-cx-scene="day" data-cx-seed="3" data-cx-params='{"horizon":0.4,"side":-1,"slope":10}' data-cx-loop="invoice">
-              <div class="cx-feat__win cx-feat__win--bleed" data-demo aria-hidden="true">
-                <div class="cx-feat__bar">
-                  <span class="cx-feat__name">Mocha · Style preview</span>
-                  <span class="cx-feat__chip" data-state>Draft</span>
-                  <span class="cx-feat__btn" data-target><span data-label>Send</span></span>
-                </div>
-                <div class="gx-thumbs">
-                  <span><img loading="lazy" width="300" height="300" src="img/groomer-poodle-300.webp" srcset="img/groomer-poodle-160.webp 160w, img/groomer-poodle-300.webp 300w" sizes="(max-width: 639px) 90px, 150px" alt="" style="object-position: 80% 50%"><em>Continental</em></span>
-                  <span class="is-on"><img loading="lazy" width="300" height="300" src="img/style-golden-300.webp" srcset="img/style-golden-160.webp 160w, img/style-golden-300.webp 300w" sizes="(max-width: 639px) 90px, 150px" alt=""><em>Lamb cut</em></span>
-                  <span><img loading="lazy" width="300" height="300" src="img/groomer-pom-300.webp" srcset="img/groomer-pom-160.webp 160w, img/groomer-pom-300.webp 300w" sizes="(max-width: 639px) 90px, 150px" alt="" style="object-position: 30% 60%"><em>Teddy</em></span>
-                </div>
-                
-              </div>
-            </div>
-          </article>
-          <article class="cx-feat__card">
-            <div class="cx-feat__copy">
-              <h3 class="cx-feat__title">Repeat check-ins for your regulars</h3>
-              <p class="cx-feat__text">Duplicate a regular’s last session after a fresh skin and coat check. The next visit starts where the last one ended.</p>
-            </div>
-            <div class="cx-feat__panel" data-cx-effect="grain-gradient" data-cx-seed="47">
-              <div class="cx-feat__win cx-feat__win--side gx-crop" aria-hidden="true"><img src="img/app/session-history-640.webp" srcset="img/app/session-history-640.webp 640w, img/app/session-history-1100.webp 1100w" sizes="(max-width: 1023px) 80vw, 520px" width="640" height="319" alt="" loading="lazy"></div>
-            </div>
-          </article>
+  <!-- FEATURES (moment: pinned-chapters): on the client's dark gradient ground the section holds for a screen of scroll;
+       the four tools open one at a time at the left while the frame at the right changes to that tool's real Groom-X screen -->
+  <section class="section ground-inverse gx-feat" id="features" data-moment="pinned-chapters" aria-labelledby="feat-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <div class="gx-feat__head">
+          <p class="gx-feat__eyebrow">Inside Groom-X</p>
+          <h2 id="feat-h">Four tools in every check-in. <span class="gx-feat__grey">Each one keeps a customer coming back.</span></h2>
         </div>
-        </div>
-        <div class="cx-feat__grid">
-          <article class="cx-feat__card">
-            <div class="cx-feat__copy">
-              <h3 class="cx-feat__title">Equipment alerts at every check-in</h3>
-              <p class="cx-feat__text">Groom-X tracks the tools used in each session and predicts maintenance, to avoid injuries and breakdowns.</p>
-            </div>
-            <div class="cx-feat__panel" data-cx-effect="painterly-landscape" data-cx-scene="dusk" data-cx-seed="9" data-cx-params='{"horizon":0.5,"side":1,"slope":16,"hillY":0.1}'>
-              <div class="cx-feat__win cx-feat__win--bleed gx-crop" aria-hidden="true"><img src="img/app/tools-640.webp" srcset="img/app/tools-640.webp 640w, img/app/tools-1100.webp 1100w" sizes="(max-width: 1023px) 80vw, 520px" width="640" height="316" alt="" loading="lazy"></div>
-            </div>
-          </article>
-          <article class="cx-feat__card">
-            <div class="cx-feat__copy">
-              <h3 class="cx-feat__title">A business snapshot for pet groomers</h3>
-              <p class="cx-feat__text">Business trends on one easy dashboard, with insights and year-over-year comparisons.</p>
-            </div>
-            <div class="cx-feat__panel" data-cx-effect="painterly-landscape" data-cx-scene="meadow" data-cx-seed="14" data-cx-params='{"horizon":0.36,"side":1,"slope":20,"hillY":0.05}'>
-              <div class="cx-feat__win cx-feat__win--narrow gx-crop" aria-hidden="true"><img src="img/app/customers-chart-640.webp" srcset="img/app/customers-chart-640.webp 640w, img/app/customers-chart-1100.webp 1100w" sizes="(max-width: 1023px) 80vw, 440px" width="640" height="318" alt="" loading="lazy"></div>
-            </div>
-          </article>
-        </div>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3><span class="gx-feat__n">01</span>Style previews before the groom</h3>
+            <p>Groom-X reads the breed, coat type and your instructions, then shows the pet parent how their pet will look after grooming.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--a"><span class="gx-feat__win"><img src="img/app/style-preview-1100.webp" srcset="img/app/style-preview-640.webp 640w, img/app/style-preview-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="588" alt="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instruction box" loading="lazy"></span></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3><span class="gx-feat__n">02</span>Repeat check-ins for your regulars</h3>
+            <p>Duplicate a regular’s last session after a fresh skin and coat check, so the next visit starts where the last one ended.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--b"><span class="gx-feat__win"><img src="img/app/session-history-1100.webp" srcset="img/app/session-history-640.webp 640w, img/app/session-history-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="548" alt="Groom-X past session history with each visit’s date, groomer and style" loading="lazy"></span></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3><span class="gx-feat__n">03</span>Equipment alerts at every check-in</h3>
+            <p>Groom-X tracks the tools used in each session and flags maintenance before a tool fails or causes an injury.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--c"><span class="gx-feat__win"><img src="img/app/tools-1100.webp" srcset="img/app/tools-640.webp 640w, img/app/tools-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="544" alt="Groom-X tools list with each tool’s remaining limit and status" loading="lazy"></span></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3><span class="gx-feat__n">04</span>A business snapshot for pet groomers</h3>
+            <p>Grooms, new and returning customers on one dashboard, with year-over-year comparisons.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--d"><span class="gx-feat__win"><img src="img/app/customers-chart-1100.webp" srcset="img/app/customers-chart-640.webp 640w, img/app/customers-chart-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="546" alt="Groom-X chart of first-time and returning customers by month" loading="lazy"></span></figure>
+          </li>
+        </ol>
       </div>
+      <div class="mo-pc__visuals frame gx-feat__frame"></div>
+    </div>
   </section>
 
 
@@ -693,11 +693,9 @@
 <script type="module" src="assets/layout/layout.js"></script>
 <script type="module" src="assets/scenes/scenes.js"></script>
 <script type="module">
-  import features from './assets/components/fx-feature-card/component.js';
-  import stat from './assets/components/fx-stat/component.js';
+    import stat from './assets/components/fx-stat/component.js';
   import pricing from './assets/components/fx-pricing/component.js';
-  features(document.querySelector('.cx-feat'));
-  document.querySelectorAll('.cx-stat').forEach(el => stat(el));
+    document.querySelectorAll('.cx-stat').forEach(el => stat(el));
   document.querySelectorAll('.cx-pricing').forEach(el => pricing(el));
 // promise: the style preview settles from a slight zoom as it comes on screen
 (() => {
