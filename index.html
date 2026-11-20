@@ -55,7 +55,7 @@
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="assets/moments/moments.js">
 <link rel="modulepreload" href="assets/moments/lib.js">
-<link rel="modulepreload" href="assets/moments/letters-assemble/moment.js">
+<link rel="modulepreload" href="assets/moments/giant-type-pass/moment.js">
 <link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
 <script>document.documentElement.classList.add('sc-js');setTimeout(()=>document.documentElement.classList.add('sc-safe'),2500)</script>
 <link rel="stylesheet" href="assets/scenes/scenes.css">
@@ -64,7 +64,7 @@
 <style>
   /* brand: the h1 and the closing name in Nasalization (one weight: never faked bold); buttons are the
      design system's gradient pills (Pet-X Brand Guidelines: "gradient-button"), labels in Poppins Medium */
-  .hero h1, .close__word { font-family: var(--brand-display); font-weight: 400; font-synthesis: none; text-transform: uppercase; letter-spacing: 0; }
+  .hero h1, .gx-hero h1, .close__word { font-family: var(--brand-display); font-weight: 400; font-synthesis: none; text-transform: uppercase; letter-spacing: 0; }
   .btn--primary { background: var(--gradient-button); color: #fff; border-color: transparent; }
   .btn--primary:hover { color: #fff; filter: brightness(1.1); }
   .nav__logo img { height: 36px; width: auto; display: block; }
@@ -128,8 +128,6 @@
   }
 
   /* the statement */
-  #promise .mo-la__type { font-size: clamp(44px, 7vw, 104px); line-height: 1; letter-spacing: -0.04em; max-width: 12ch; }
-  #promise .mo-la__sub { max-width: 46ch; margin-top: var(--s-5); font-size: var(--t-lead); color: var(--muted); }
 
   .gx-promise-photo { min-height: 560px; }
   @media (max-width: 1023px) { .gx-promise-photo { min-height: 320px; } }
@@ -224,6 +222,104 @@
   @media (max-width: 1023px) { #promise .gx-promise-photo { height: 420px; } }
   @media (max-width: 639px) { #promise .gx-promise-photo { height: 320px; } }
   @media (max-width: 639px) { main > section.section.g2 > .wrap { row-gap: var(--s-6); } }
+  /* ===== HERO (after tasteskill.dev's hero, in the Pet-X brand) ===== */
+  .gx-hero { position: relative; isolation: isolate; background: #fff; --gx-ease-expo: cubic-bezier(.16,1,.3,1); }
+  main > section.gx-hero { height: auto; min-height: 0; padding: 0; display: block; }
+  .gx-hero__top {
+    position: relative; isolation: isolate; overflow: hidden; color: #fff;
+    padding: clamp(140px, 22vh, 200px) 24px 300px;
+    background:
+      radial-gradient(60% 36% at 50% 80%, rgb(156 76 151 / .5), transparent 70%),
+      linear-gradient(180deg, #0f0d22 0%, #23204A 20%, #301938 44%, #5b2e72 60%, #8a4791 70%, #9C4C97 76%, #c98fc3 86%, #f2e4f1 94%, #fff 100%);
+  }
+  .gx-hero__top::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .2; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .gx-hero__glow { position: absolute; inset: 0; z-index: -2; pointer-events: none; -webkit-mask-image: linear-gradient(#000 70%, transparent 88%); mask-image: linear-gradient(#000 70%, transparent 88%); }
+  .gx-hero__sun { position: absolute; left: -10%; top: 44%; width: 120%; height: 72%; }
+  .gx-hero__core { position: absolute; inset: 0; background: radial-gradient(closest-side, rgb(214 120 205 / .62) 0%, rgb(156 76 151 / .46) 26%, rgb(156 76 151 / .16) 52%, transparent 74%); }
+  .gx-hero__core::after { content: ""; position: absolute; left: 30%; top: 18%; width: 40%; height: 52%; background: radial-gradient(closest-side, rgb(111 198 220 / .42), rgb(30 151 183 / .12) 55%, transparent); }
+  .gx-hero__copy { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 1200px; margin: 0 auto; }
+  .gx-hero__pill { display: inline-flex; align-items: center; gap: 9px; min-height: 34px; max-width: 100%; margin-bottom: 28px; padding: 4px 12px 4px 4px;
+    border-radius: 999px; background: rgb(255 255 255 / .1); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .14); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    color: rgb(250 238 250 / .84); font-size: 14px; text-align: left; transition: background-color .25s ease; }
+  .gx-hero__pill:hover { background: rgb(255 255 255 / .17); }
+  .gx-hero__pill img { width: 26px; height: 26px; border-radius: 999px; background: #fff; flex: none; }
+  .gx-hero__pill b { color: #fff; font-weight: 600; }
+  .gx-arrow { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s ease; }
+  .gx-hero__pill .gx-arrow { width: 14px; height: 14px; }
+  .gx-hero__pill:hover .gx-arrow, .gx-btn-light:hover .gx-arrow { transform: translateX(3px); }
+  .gx-hero h1 { color: #fff7fd; font-size: clamp(32px, 4.5vw, 64px); line-height: 1.08; text-wrap: balance; margin: 0; }
+  .gx-line { display: block; }
+  .gx-w { display: inline-block; overflow: clip; vertical-align: top; padding: .1em .06em .14em; margin: -.1em -.06em -.14em; }
+  .gx-w > span { display: inline-block; }
+  .gx-hero__lead { max-width: 36rem; margin: 24px 0 0; font-size: clamp(16px, 1.45vw, 19px); line-height: 1.55; color: rgb(250 238 250 / .9); text-wrap: pretty; }
+  .gx-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 36px; }
+  .gx-hero__actions .btn { height: 48px; padding-inline: 22px; }
+  .gx-btn-light { background: #fff; color: #23204A; border-color: transparent; box-shadow: 0 4px 12px -6px rgb(35 32 74 / .4); gap: 8px; }
+  .gx-btn-light:hover { background: #f8f1f8; color: #23204A; }
+
+  .gx-work { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; width: min(1080px, 100% - 48px); margin: -232px auto 0; }
+  .gx-work__tabs.tabs { flex-wrap: nowrap; gap: 2px; padding: 4px; border-radius: 999px; max-width: 100%; overflow-x: auto; scrollbar-width: none;
+    background: rgb(255 255 255 / .5); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .55); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .gx-work__tabs .tab { height: 36px; padding: 0 14px; border: 0; border-radius: 999px; color: rgb(35 32 74 / .7); font-size: 14px; white-space: nowrap; }
+  .gx-work__tabs .tab:hover { color: #23204A; }
+  .gx-work__tabs .tab[aria-selected="true"] { background: #fff; color: #23204A; box-shadow: 0 2px 6px -2px rgb(35 32 74 / .25); }
+  html:not([data-motion="off"]) .gx-work__tabs.m-has-ind .tab[aria-selected="true"] { color: #23204A; box-shadow: none; }
+  .gx-work__tabs .m-tab-ind { background: #fff; border-radius: 999px; box-shadow: 0 2px 6px -2px rgb(35 32 74 / .25); }
+  .gx-work__scene { width: 100%; margin-top: 18px; perspective: 1250px; perspective-origin: 50% 0; }
+  .gx-work__frame { --t: 0; transform-origin: 50% 0; padding: 6px; border-radius: 26px; background: rgb(255 255 255 / .68);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / .5), 0 1px 2px rgb(35 32 74 / .05), 0 40px 90px -40px rgb(48 25 56 / .55);
+    transform: translateY(calc(40px * (1 - var(--t)))) rotateX(calc(26deg * (1 - var(--t)))) scale(calc(.84 + .16 * var(--t))); will-change: transform; }
+  .gx-work__stage { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 20px; background: #fff; box-shadow: 0 0 0 1px rgb(35 32 74 / .06); }
+  .gx-work__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+  /* entrance (once, on load) */
+  @keyframes gx-word { from { translate: 0 112%; rotate: 7deg; } }
+  @keyframes gx-rise { from { opacity: 0; translate: 0 18px; } }
+  @keyframes gx-pill { from { opacity: 0; translate: 0 14px; scale: .94; } }
+  @keyframes gx-sunrise { from { opacity: .2; translate: 0 38%; scale: .78; } }
+  @keyframes gx-arrive { from { opacity: 0; translate: 0 120px; } }
+  @keyframes gx-breathe { to { opacity: .86; translate: 2.5% -4%; scale: 1.08; } }
+  @keyframes gx-ember { 50% { translate: -14% -8%; scale: 1.12; } to { translate: 14% 2%; scale: .94; } }
+  @keyframes gx-wipe-next { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0); } }
+  @keyframes gx-wipe-back { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+  @keyframes gx-settle { from { scale: 1.06; } }
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-motion="off"]) .gx-hero__sun { animation: gx-sunrise 1.4s var(--gx-ease-expo) backwards; }
+    html:not([data-motion="off"]) .gx-hero__core { animation: gx-breathe 16s ease-in-out 1.4s infinite alternate; }
+    html:not([data-motion="off"]) .gx-hero__core::after { animation: gx-ember 22s ease-in-out 1.4s infinite alternate; }
+    html:not([data-motion="off"]) .gx-hero__pill { animation: gx-pill .7s var(--gx-ease-expo) 40ms backwards; }
+    html:not([data-motion="off"]) .gx-w > span { transform-origin: 0 100%; animation: gx-word .95s var(--gx-ease-expo) backwards; animation-delay: calc(.13s + var(--w) * 46ms); }
+    html:not([data-motion="off"]) .gx-hero__lead { animation: gx-rise .8s var(--gx-ease-expo) .43s backwards; }
+    html:not([data-motion="off"]) .gx-hero__actions > * { animation: gx-rise .8s var(--gx-ease-expo) .53s backwards; }
+    html:not([data-motion="off"]) .gx-hero__actions > :nth-child(2) { animation-delay: .6s; }
+    html:not([data-motion="off"]) .gx-work { animation: gx-arrive 1.2s var(--gx-ease-expo) .28s backwards; }
+    .gx-work__stage img.is-turned { animation: gx-wipe-next .82s cubic-bezier(.65,0,.35,1) backwards; }
+    .gx-work__stage[data-dir="back"] img.is-turned { animation-name: gx-wipe-back; }
+  }
+  @media (prefers-reduced-motion: reduce) { .gx-work__frame { --t: 1 !important; } }
+
+  @media (max-width: 1023px) {
+    .gx-hero__top { padding-top: 132px; padding-bottom: 230px; }
+    .gx-work { margin-top: -170px; }
+    .gx-work__frame { transform: translateY(calc(18px * (1 - var(--t)))) rotateX(calc(12deg * (1 - var(--t)))) scale(calc(.94 + .06 * var(--t))); }
+  }
+  @media (max-width: 639px) {
+    .gx-hero__top { padding: 112px 24px 190px; }
+    .gx-hero__pill { margin-bottom: 22px; font-size: 13px; }
+    .gx-hero__more { display: none; }
+    .gx-hero__actions { flex-direction: column; align-items: stretch; width: 100%; }
+    .gx-work { width: calc(100% - 32px); margin-top: -130px; }
+    .gx-work__tabs.tabs { width: 100%; justify-content: flex-start; }
+    .gx-work__tabs .tab { padding: 0 9px; font-size: 12.5px; }
+    .gx-work__frame { padding: 4px; border-radius: 18px; }
+    .gx-work__stage { border-radius: 14px; aspect-ratio: 4 / 3; }
+  }
+  /* the photograph's URL sits here so it resolves against the page, not the moment's stylesheet */
+  #promise .mo-gt__type { padding-bottom: .16em; margin-bottom: -.16em; background-image: linear-gradient(var(--mo-tint), var(--mo-tint)), url("img/cat-shampoo-900.webp"); }
+  .gx-tab-short { display: none; }
+  @media (max-width: 639px) { .gx-tab-long { display: none; } .gx-tab-short { display: inline; } }
+  .gx-hero + section { padding-top: calc(var(--gx-pt) + 24px); }
 </style>
 </head>
 <body>
@@ -231,7 +327,7 @@
      deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
            footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
      scene: parts-lock-into-the-whole (#how, the page's one effect)
-     moments: letters-assemble (#promise), liquid-type (the closing name)
+     moments: giant-type-pass (#promise), liquid-type (the closing name)
      components: fx-headline (hero fill), fx-feature-card (#features), fx-stat (#numbers), fx-pricing (#pricing) -->
 
 <header class="nav nav--tone">
@@ -247,7 +343,7 @@
               <p class="t-label">At check-in</p>
               <a href="#features">Style previews<span>The finished groom, before it starts</span></a>
               <a href="#features">Repeat sessions<span>The style a regular loved, again</span></a>
-              <a href="#product">Pet parent approval<span>A yes before the first clip</span></a>
+              <a href="#top">Pet parent approval<span>A yes before the first clip</span></a>
             </div>
             <div class="menu-col span-3">
               <p class="t-label">Behind the desk</p>
@@ -277,47 +373,51 @@
 </header>
 
 <main id="top">
-  <!-- HERO: centred (layout-v4.md, heroes.json "centred"), on the client's dark brand ground, the h1's key phrase filled (fx-headline) -->
-  <section class="hero hero--centred ground-inverse" data-enter aria-labelledby="hero-h">
-    <div class="wrap"><div class="hero-text">
-      <div class="hero__c cx-hero">
-        <a class="pill" href="#pricing"><span>Groom-X launches soon</span><span class="muted">See the plans</span></a>
-        <h1 id="hero-h">The check-in assistant for <span class="gx-accent">pet groomers</span></h1>
-        <p class="hero__lead">Show pet parents a realistic picture of the finished groom before you start. Every plan starts with a 30-day free trial.</p>
-        <div class="btn-row"><a class="btn btn--primary" href="#pricing">Start free trial<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="link" href="#how">See the workflow</a></div>
-      </div>
-      <div class="hero__window" role="img" aria-label="The Groom-X dashboard: grooms completed, first-time and total customers, and today’s check-ins">
-        <div class="ly-piece gx-shot" aria-hidden="true">
-          <div class="gx-shot__bar"><span class="gx-dots"><i></i><i></i><i></i></span></div>
-          <img src="img/app/dashboard-top-880.webp" srcset="img/app/dashboard-top-880.webp 880w, img/app/dashboard-top-1760.webp 1760w" sizes="(max-width: 1023px) 92vw, 880px" width="880" height="441" alt="" fetchpriority="high">
+  <!-- HERO: tasteskill.dev's hero in the Pet-X brand: a dark-to-light brand gradient with a glow rising at its foot,
+       a news pill, the h1 rising word by word, the lead and two pill buttons, then the product in a tilted frame
+       that settles flat as the page scrolls, with tabs that wipe between the real Groom-X screens -->
+  <section class="gx-hero" aria-labelledby="hero-h">
+    <div class="gx-hero__top">
+      <div class="gx-hero__glow" aria-hidden="true"><div class="gx-hero__sun"><div class="gx-hero__core"></div></div></div>
+      <div class="gx-hero__copy">
+        <a class="gx-hero__pill" href="#pricing"><img src="img/petx-mark-64.png" width="26" height="26" alt=""><span><b>Groom-X</b> launches soon<span class="gx-hero__more">: 30 days free on every plan</span></span><svg class="gx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <h1 id="hero-h"><span class="gx-line"><span class="gx-w"><span style="--w:0">The</span></span> <span class="gx-w"><span style="--w:1">check-in</span></span> <span class="gx-w"><span style="--w:2">assistant</span></span></span> <span class="gx-line"><span class="gx-w"><span style="--w:3">for</span></span> <span class="gx-w gx-accent"><span style="--w:4">pet</span></span> <span class="gx-w gx-accent"><span style="--w:5">groomers</span></span></span></h1>
+        <p class="gx-hero__lead">Show pet parents a realistic picture of the finished groom before you start, and run every session, client and tool from one screen.</p>
+        <div class="gx-hero__actions">
+          <a class="btn btn--primary" href="#pricing">Start free trial<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn gx-btn-light" href="#how">See the workflow<svg class="gx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
-    </div></div>
-  </section>
-
-  <!-- APP-FRAME (sections-library.md): today's check-ins (window) beside the open check-in -->
-  <section class="section" id="product" aria-labelledby="product-h">
-    <div class="wrap">
-      <div class="grid">
-        <h2 class="span-5" id="product-h">Every check-in, previewed and approved in one place</h2>
-        <p class="t-lead muted span-6 start-7">Pick the client and pet, add your grooming instruction, and Groom-X generates the finished style. Agree the image and it goes to the pet parent by email or text. <a class="link" href="#features">See every feature</a></p>
+    </div>
+    <div class="gx-work">
+      <div class="tabs gx-work__tabs" role="tablist" aria-label="Groom-X screens">
+        <button class="tab" role="tab" id="wt-1" aria-selected="true" aria-controls="ws-1"><span class="gx-tab-long">Style previews</span><span class="gx-tab-short">Previews</span></button>
+        <button class="tab" role="tab" id="wt-2" aria-selected="false" aria-controls="ws-2" tabindex="-1">Dashboard</button>
+        <button class="tab" role="tab" id="wt-3" aria-selected="false" aria-controls="ws-3" tabindex="-1">Sessions</button>
+        <button class="tab" role="tab" id="wt-4" aria-selected="false" aria-controls="ws-4" tabindex="-1">Clients</button>
+        <button class="tab" role="tab" id="wt-5" aria-selected="false" aria-controls="ws-5" tabindex="-1">Tools</button>
       </div>
-      <div class="gx-appshot" role="img" aria-label="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instructions, with Generate new image and Agreed image">
-        <div class="gx-shot__bar"><span class="gx-dots"><i></i><i></i><i></i></span></div>
-        <img src="img/app/image-generation-1280.webp" srcset="img/app/image-generation-1280.webp 1280w, img/app/image-generation-2200.webp 2200w" sizes="(max-width: 1279px) 92vw, 1280px" width="1280" height="887" alt="" loading="lazy">
+      <div class="gx-work__scene">
+        <div class="gx-work__frame">
+          <div class="gx-work__stage">
+            <img id="ws-1" role="tabpanel" aria-labelledby="wt-1" src="img/app/image-generation-1280.webp" srcset="img/app/image-generation-1280.webp 1280w, img/app/image-generation-2200.webp 2200w" sizes="(min-width: 1180px) 1068px, calc(100vw - 48px)" width="1280" height="887" alt="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instructions" fetchpriority="high">
+            <img id="ws-2" role="tabpanel" aria-labelledby="wt-2" src="img/app/tour-dashboard-1280.webp" srcset="img/app/tour-dashboard-1280.webp 1280w, img/app/tour-dashboard-2200.webp 2200w" sizes="(min-width: 1180px) 1068px, calc(100vw - 48px)" width="1280" height="800" alt="The Groom-X dashboard: grooms completed, customers and today’s check-ins" loading="lazy" hidden>
+            <img id="ws-3" role="tabpanel" aria-labelledby="wt-3" src="img/app/tour-sessions-1280.webp" srcset="img/app/tour-sessions-1280.webp 1280w, img/app/tour-sessions-2200.webp 2200w" sizes="(min-width: 1180px) 1068px, calc(100vw - 48px)" width="1280" height="800" alt="The Groom-X session list with groomer, pet, check-in time and status" loading="lazy" hidden>
+            <img id="ws-4" role="tabpanel" aria-labelledby="wt-4" src="img/app/tour-clients-1280.webp" srcset="img/app/tour-clients-1280.webp 1280w, img/app/tour-clients-2200.webp 2200w" sizes="(min-width: 1180px) 1068px, calc(100vw - 48px)" width="1280" height="800" alt="The Groom-X client list with each client’s pets" loading="lazy" hidden>
+            <img id="ws-5" role="tabpanel" aria-labelledby="wt-5" src="img/app/tour-equipment-1280.webp" srcset="img/app/tour-equipment-1280.webp 1280w, img/app/tour-equipment-2200.webp 2200w" sizes="(min-width: 1180px) 1068px, calc(100vw - 48px)" width="1280" height="800" alt="The Groom-X tools list with each tool’s remaining limit and status" loading="lazy" hidden>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- STATEMENT (moment: letters-assemble) -->
-  <section class="section" id="promise" data-moment="letters-assemble" data-moment-opts='{"spread": 1}' aria-labelledby="promise-h">
+  <!-- STATEMENT (moment: giant-type-pass): the statement at 12vw, the shampoo photograph passing upward through its letters as the section crosses the screen -->
+  <section class="section" id="promise" data-moment="giant-type-pass" data-moment-opts='{"image": "img/cat-shampoo-900.webp", "travel": 60, "focusY": 58}' aria-labelledby="promise-h">
     <div class="wrap">
-      <div class="grid fill">
-        <div class="span-6">
-          <h2 class="mo-la__type" id="promise-h">Show the groom first.</h2>
-          <p class="mo-la__sub">About 1 in 3 grooming customers never come back after the first visit, and miscommunication is often why. Groom-X settles the style before the first clip.</p>
-        </div>
-        <div class="frame frame--photo span-6 start-7 gx-promise-photo"><img width="900" height="900" class="frame__img" src="img/cat-shampoo-900.webp" srcset="img/cat-shampoo-480.webp 480w, img/cat-shampoo-900.webp 900w" sizes="(max-width: 1023px) 92vw, 628px" alt="A long-haired cat being shampooed and rinsed" loading="lazy"></div>
+      <h2 class="mo-gt__type" id="promise-h">Show the<br>groom first.</h2>
+      <div class="mo-gt__row">
+        <p>About 1 in 3 grooming customers never come back after the first visit, and miscommunication is often why. Groom-X settles the style before the first clip.</p>
+        <a class="link" href="#features">See how style previews work</a>
       </div>
     </div>
   </section>
@@ -387,39 +487,6 @@
   </section>
 
 
-  <!-- TABS-TOUR (sections-library.md): the client's own screens, one tab each, in a frame that stays still -->
-  <section class="section ground-surface" id="tour" aria-labelledby="tour-h">
-    <div class="wrap">
-      <div class="grid grid--top">
-        <div class="span-5 stack-4">
-          <div class="section-head"><h2 id="tour-h">One app for the whole salon. <span class="muted">Every screen your team uses, from check-in to closing.</span></h2></div>
-          <div class="tabs gx-tour-tabs" role="tablist" aria-label="Groom-X screens">
-            <button class="tab" role="tab" id="tt-1" aria-selected="true" aria-controls="tp-1 ts-1">Track your day</button>
-            <button class="tab" role="tab" id="tt-2" aria-selected="false" aria-controls="tp-2 ts-2" tabindex="-1">Run sessions</button>
-            <button class="tab" role="tab" id="tt-3" aria-selected="false" aria-controls="tp-3 ts-3" tabindex="-1">Manage clients</button>
-            <button class="tab" role="tab" id="tt-4" aria-selected="false" aria-controls="tp-4 ts-4" tabindex="-1">Manage staff</button>
-            <button class="tab" role="tab" id="tt-5" aria-selected="false" aria-controls="tp-5 ts-5" tabindex="-1">Track tools</button>
-          </div>
-          <div class="gx-tour-panels">
-            <div role="tabpanel" id="tp-1" aria-labelledby="tt-1"><p>The dashboard shows grooms completed, first-time and total customers, today’s check-ins and the tools that need attention.</p></div>
-            <div role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden><p>Every session in one list, with its groomer, pet, check-in time and status, and a button to start the next one.</p></div>
-            <div role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden><p>Each client with their pets, coat details and past sessions, so a repeat visit starts from the last approved style.</p></div>
-            <div role="tabpanel" id="tp-4" aria-labelledby="tt-4" hidden><p>Your groomers and admins with their roles, contact details and speciality, added and edited in one place.</p></div>
-            <div role="tabpanel" id="tp-5" aria-labelledby="tt-5" hidden><p>Every tool with its remaining limit and status, so shears and clippers are serviced before they cause a problem.</p></div>
-          </div>
-        </div>
-        <div class="frame frame--split span-6 start-7 gx-tour-frame">
-          <div class="stage stage--fade-br">
-            <img id="ts-1" class="gx-tour-shot" src="img/app/tour-dashboard-1280.webp" srcset="img/app/tour-dashboard-1280.webp 1280w, img/app/tour-dashboard-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X dashboard" loading="lazy">
-            <img id="ts-2" class="gx-tour-shot" src="img/app/tour-sessions-1280.webp" srcset="img/app/tour-sessions-1280.webp 1280w, img/app/tour-sessions-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X session management list" loading="lazy" hidden>
-            <img id="ts-3" class="gx-tour-shot" src="img/app/tour-clients-1280.webp" srcset="img/app/tour-clients-1280.webp 1280w, img/app/tour-clients-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X client management list" loading="lazy" hidden>
-            <img id="ts-4" class="gx-tour-shot" src="img/app/tour-staff-1280.webp" srcset="img/app/tour-staff-1280.webp 1280w, img/app/tour-staff-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X staff management list" loading="lazy" hidden>
-            <img id="ts-5" class="gx-tour-shot" src="img/app/tour-equipment-1280.webp" srcset="img/app/tour-equipment-1280.webp 1280w, img/app/tour-equipment-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X tools management list" loading="lazy" hidden>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- SCENE: parts-lock-into-the-whole (scenes.md): the Groom-X day view assembles from its panels -->
   <section class="sc" id="how" data-big-scene="parts-lock-into-the-whole" data-big-scene-opts='{"hold":1}' style="--h: 1" aria-labelledby="pl-h">
@@ -584,6 +651,40 @@
   features(document.querySelector('.cx-feat'));
   document.querySelectorAll('.cx-stat').forEach(el => stat(el));
   document.querySelectorAll('.cx-pricing').forEach(el => pricing(el));
+// hero: the product frame settles flat as the page scrolls; a chosen tab wipes its screen in from its side
+(() => {
+  const frame = document.querySelector('.gx-work__frame');
+  const stage = document.querySelector('.gx-work__stage');
+  if (!frame || !stage) return;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
+  if (still) { frame.style.setProperty('--t', '1'); }
+  else {
+    let raf = 0;
+    const set = () => {
+      raf = 0;
+      const r = frame.getBoundingClientRect(), vh = innerHeight;
+      // flat by the time the frame's top reaches 18% of the screen
+      const t = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.74)));
+      frame.style.setProperty('--t', t.toFixed(3));
+    };
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(set); }, { passive: true });
+    addEventListener('resize', set);
+    set();
+  }
+  const tabs = [...document.querySelectorAll('.gx-work__tabs [role="tab"]')];
+  let at = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+  tabs.forEach((t, i) => t.addEventListener('click', () => {
+    if (i === at) return;
+    stage.dataset.dir = i > at ? 'next' : 'back';
+    at = i;
+    const img = document.getElementById(t.getAttribute('aria-controls'));
+    if (!img || still) return;
+    img.classList.remove('is-turned'); void img.offsetWidth; img.classList.add('is-turned');
+  }));
+  // arrow keys select through system.js; keep the direction in step
+  tabs.forEach((t, i) => t.addEventListener('focus', () => { if (t.getAttribute('aria-selected') === 'true' && i !== at) { stage.dataset.dir = i > at ? 'next' : 'back'; at = i; } }));
+})();
+
 </script>
 </body>
 </html>
