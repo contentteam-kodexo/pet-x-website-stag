@@ -55,7 +55,6 @@
 <link rel="modulepreload" href="assets/moments/moments.js">
 <link rel="modulepreload" href="assets/moments/lib.js">
 <link rel="modulepreload" href="assets/moments/giant-type-pass/moment.js">
-<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
 <link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
 <script>document.documentElement.classList.add('sc-js');setTimeout(()=>document.documentElement.classList.add('sc-safe'),2500)</script>
 <link rel="stylesheet" href="assets/scenes/scenes.css">
@@ -222,34 +221,82 @@
   @media (max-width: 1023px) { #promise .gx-promise-photo { height: 420px; } }
   @media (max-width: 639px) { #promise .gx-promise-photo { height: 320px; } }
   @media (max-width: 639px) { main > section.section.g2 > .wrap { row-gap: var(--s-6); } }
-  /* ===== FEATURES: pinned chapters on the brand's dark gradient ===== */
-  #features.gx-feat { --ink: #fff; --muted: rgb(236 226 240 / .66); --line: rgb(255 255 255 / .14); --accent: #6fc6dc;
-    background: radial-gradient(70% 60% at 85% 20%, rgb(156 76 151 / .35), transparent 70%), radial-gradient(50% 50% at 10% 90%, rgb(30 151 183 / .22), transparent 70%), linear-gradient(160deg, #23204A 0%, #301938 100%); color: #fff; }
-  .gx-feat__eyebrow { margin: 0 0 var(--s-3); font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #6fc6dc; }
-  .gx-feat__head h2 { color: #fff; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.12; letter-spacing: -.02em; max-width: 18ch; }
-  .gx-feat__grey { color: rgb(236 226 240 / .55); }
-  .gx-feat .mo-pc__step h3 { display: flex; align-items: baseline; gap: 14px; }
-  .gx-feat__n { flex: none; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: #c98fc3; font-variant-numeric: tabular-nums; }
-  #features .mo-pc__step p { color: rgb(236 226 240 / .8); padding-left: 33px; }
-  .gx-feat.is-live .mo-pc__step { border-left-width: 2px; border-image: none; }
-  #features.is-live .mo-pc__step.is-on { border-left-color: transparent; border-image: linear-gradient(180deg, #1E97B7, #9C4C97) 1; }
-  #features.is-live .mo-pc__step h3 { color: rgb(236 226 240 / .5); }
-  #features.is-live .mo-pc__step.is-on h3 { color: #fff; }
-  .gx-feat.is-live .mo-pc__step.is-on .gx-feat__n { color: #6fc6dc; }
-  /* the frame: a lit panel in the brand colours with the real screen as a window on it */
-  .gx-feat__frame { border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 1px rgb(255 255 255 / .12), 0 50px 100px -40px rgb(0 0 0 / .6); }
-  #features .mo-pc__visual.gx-feat__vis { padding: clamp(20px, 3.4vw, 48px); border-radius: 24px; overflow: hidden; }
-  #features.is-live .mo-pc__visual.gx-feat__vis { border-radius: 0; }
-  #features .mo-pc__visual.gx-feat__vis--a { background: radial-gradient(80% 70% at 20% 10%, #6fc6dc, transparent 60%), linear-gradient(135deg, #1E97B7, #444798); }
-  #features .mo-pc__visual.gx-feat__vis--b { background: radial-gradient(80% 70% at 80% 10%, #c98fc3, transparent 60%), linear-gradient(135deg, #444798, #9C4C97); }
-  #features .mo-pc__visual.gx-feat__vis--c { background: radial-gradient(80% 70% at 20% 90%, #6fd1a0, transparent 60%), linear-gradient(135deg, #158B51, #1E97B7); }
-  #features .mo-pc__visual.gx-feat__vis--d { background: radial-gradient(80% 70% at 80% 90%, #f0b6e6, transparent 60%), linear-gradient(135deg, #9C4C97, #301938); }
-  .gx-feat__win { display: block; width: 100%; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .06), 0 30px 60px -20px rgb(15 13 34 / .55); }
-  .gx-feat .mo-pc__visual .gx-feat__win img, .gx-feat.is-live .mo-pc__visual .gx-feat__win img { display: block; width: 100%; height: auto; aspect-ratio: auto; max-height: none; object-fit: contain; }
-  .gx-feat.is-live .mo-pc__visual .gx-feat__win { transform: translateY(18px) scale(.97); transition: transform 900ms cubic-bezier(.16,1,.3,1); }
-  .gx-feat.is-live .mo-pc__visual.is-on .gx-feat__win { transform: none; }
-  @media (prefers-reduced-motion: reduce) { .gx-feat.is-live .mo-pc__visual .gx-feat__win { transform: none; transition: none; } }
-  @media (max-width: 1023px) { #features .mo-pc__step p { padding-left: 0; } #features .mo-pc__visual.gx-feat__vis { aspect-ratio: auto; padding: 18px; border-radius: 18px; } }
+  /* ===== FEATURES: bento on the brand's dark gradient ===== */
+  #features.gx-bento { color: #fff; background: radial-gradient(60% 50% at 90% 0%, rgb(156 76 151 / .32), transparent 70%), radial-gradient(50% 40% at 0% 100%, rgb(30 151 183 / .2), transparent 70%), linear-gradient(170deg, #1a1838 0%, #23204A 40%, #301938 100%); }
+  .gx-bento__head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gutter); align-items: end; margin-bottom: var(--s-8); }
+  .gx-bento__eyebrow { margin: 0 0 var(--s-3); font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #6fc6dc; }
+  .gx-bento__head h2 { color: #fff; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.12; letter-spacing: -.02em; max-width: 20ch; }
+  .gx-bento__grey { color: rgb(236 226 240 / .55); }
+  .gx-bento__lead { margin: 0; font-size: var(--t-lead); line-height: 1.5; color: rgb(236 226 240 / .78); max-width: 44ch; }
+  .gx-bento__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
+  .gx-card { --mx: 50%; --my: 0%; position: relative; isolation: isolate; display: flex; flex-direction: column; min-height: 0; overflow: hidden; border-radius: 24px;
+    background: rgb(255 255 255 / .045); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .1); grid-column: span 4; transition: box-shadow .4s ease; }
+  .gx-card::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+    background: radial-gradient(420px circle at var(--mx) var(--my), rgb(255 255 255 / .09), transparent 60%); }
+  .gx-card:hover::before { opacity: 1; }
+  .gx-card:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
+  .gx-card--wide { grid-column: span 8; }
+  .gx-card__copy { position: relative; z-index: 2; padding: 32px 32px 0; }
+  .gx-card__copy h3 { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -.01em; color: #fff; }
+  .gx-card__copy p { margin: var(--s-2) 0 0; font-size: 15px; line-height: 1.55; color: rgb(236 226 240 / .72); max-width: 44ch; }
+  .gx-card--wide .gx-card__copy h3 { font-size: 26px; }
+  /* the lit ground: a brand-colour mesh with a fine grain, fading up into the card */
+  .gx-card__stage { position: relative; flex: 1; display: flex; align-items: center; margin-top: 28px; padding: 32px; }
+  .gx-card__stage::before { content: ""; position: absolute; inset: 0; z-index: -1; -webkit-mask-image: linear-gradient(transparent, #000 38%); mask-image: linear-gradient(transparent, #000 38%); }
+  .gx-card--a .gx-card__stage::before { background: radial-gradient(60% 80% at 15% 100%, #1E97B7, transparent 70%), radial-gradient(60% 80% at 85% 90%, #9C4C97, transparent 70%), radial-gradient(40% 50% at 55% 60%, #444798, transparent 80%); }
+  .gx-card--b .gx-card__stage::before { background: radial-gradient(70% 80% at 80% 100%, #9C4C97, transparent 70%), radial-gradient(60% 70% at 10% 90%, #444798, transparent 75%); }
+  .gx-card--c .gx-card__stage::before { background: radial-gradient(70% 80% at 20% 100%, #158B51, transparent 70%), radial-gradient(60% 70% at 90% 90%, #1E97B7, transparent 75%); }
+  .gx-card--d .gx-card__stage::before { background: radial-gradient(70% 80% at 80% 100%, #1E97B7, transparent 70%), radial-gradient(60% 70% at 10% 90%, #9C4C97, transparent 75%); }
+  .gx-card--e .gx-card__stage::before { background: radial-gradient(70% 80% at 30% 100%, #444798, transparent 70%), radial-gradient(60% 70% at 95% 90%, #158B51, transparent 75%); }
+  .gx-card__stage::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .18; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  /* the real screen as a window, out through the card's right and bottom edges */
+  .gx-shot-wrap { position: relative; width: 100%; }
+  .gx-win { position: relative; width: 100%; border-radius: 14px; overflow: hidden; background: #fff;
+    box-shadow: 0 0 0 1px rgb(255 255 255 / .35), 0 40px 80px -30px rgb(10 8 30 / .75); transition: transform .9s cubic-bezier(.16,1,.3,1); }
+  .gx-card--wide .gx-card__stage { padding: 40px 48px 48px; }
+  .gx-win__bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #f4f2f7; border-bottom: 1px solid rgb(35 32 74 / .08); }
+  .gx-win__bar i { width: 9px; height: 9px; border-radius: 50%; background: rgb(35 32 74 / .16); }
+  .gx-win__bar span { margin-left: 8px; font-size: 11px; font-weight: 500; color: rgb(35 32 74 / .55); }
+  .gx-win img { display: block; width: 100%; height: auto; }
+  .gx-card:hover .gx-win { transform: translateY(-6px); }
+  /* the action over the window: one small card */
+  .gx-chip { position: absolute; z-index: 3; right: -12px; bottom: -18px; display: flex; align-items: center; gap: 12px; padding: 12px 16px 12px 12px; border-radius: 14px;
+    background: rgb(255 255 255 / .92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: #23204A; box-shadow: 0 20px 40px -16px rgb(10 8 30 / .6), 0 0 0 1px rgb(255 255 255 / .6); max-width: calc(100% - 48px); }
+  .gx-card--wide .gx-chip { right: -20px; bottom: -22px; padding: 14px 20px 14px 14px; }
+  .gx-chip b { display: block; font-size: 14px; font-weight: 600; line-height: 1.3; }
+  .gx-chip em { display: block; font-style: normal; font-size: 12.5px; line-height: 1.35; color: rgb(35 32 74 / .62); }
+  .gx-chip__icon { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: rgb(68 71 152 / .12); color: #444798; }
+  .gx-chip__icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .gx-chip__icon--ok { background: rgb(21 139 81 / .14); color: #158B51; }
+  .gx-chip__icon--warn { background: rgb(156 76 151 / .14); color: #9C4C97; }
+  /* entrance once in view: the window rises, then the action card arrives */
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-motion="off"]) .gx-bento .gx-card { opacity: 0; translate: 0 28px; transition: opacity .7s ease, translate 1s cubic-bezier(.16,1,.3,1), box-shadow .4s ease; }
+    html:not([data-motion="off"]) .gx-bento .gx-win { translate: 0 60px; transition: translate 1.2s cubic-bezier(.16,1,.3,1) .15s, transform .9s cubic-bezier(.16,1,.3,1); }
+    html:not([data-motion="off"]) .gx-bento .gx-chip { opacity: 0; scale: .92; translate: 0 12px; transition: opacity .5s ease .6s, scale .7s cubic-bezier(.16,1,.3,1) .6s, translate .7s cubic-bezier(.16,1,.3,1) .6s; }
+    html:not([data-motion="off"]) .gx-bento .gx-card.is-in { opacity: 1; translate: 0 0; }
+    html:not([data-motion="off"]) .gx-bento .gx-card.is-in .gx-win { translate: 0 0; }
+    html:not([data-motion="off"]) .gx-bento .gx-card.is-in .gx-chip { opacity: 1; scale: 1; translate: 0 0; }
+    .gx-chip--loop.is-swap { animation: gx-chip-swap .6s cubic-bezier(.16,1,.3,1); }
+  }
+  @keyframes gx-chip-swap { 0% { opacity: 1; translate: 0 0; } 40% { opacity: 0; translate: 0 8px; } 41% { translate: 0 -8px; } 100% { opacity: 1; translate: 0 0; } }
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .gx-card--wide { grid-column: span 12; }
+    .gx-card--b, .gx-card--c, .gx-card--d, .gx-card--e { grid-column: span 6; }
+  }
+  @media (max-width: 1023px) {
+    .gx-bento__head { grid-template-columns: 1fr; gap: var(--s-4); margin-bottom: var(--s-7); }
+    .gx-card, .gx-card--wide { grid-column: span 12; }
+  }
+  @media (max-width: 639px) {
+    .gx-bento__grid { gap: 14px; }
+    .gx-card, .gx-card--wide { border-radius: 20px; }
+    .gx-card__copy { padding: 24px 24px 0; }
+    .gx-card--wide .gx-card__copy h3 { font-size: 21px; }
+    .gx-card__stage, .gx-card--wide .gx-card__stage { padding: 20px 20px 24px; }
+    .gx-chip, .gx-card--wide .gx-chip { right: -6px; bottom: -14px; padding: 10px 14px 10px 10px; }
+  }
   /* ===== HERO (after tasteskill.dev's hero, in the Pet-X brand) ===== */
   .gx-hero { position: relative; isolation: isolate; background: #fff; --gx-ease-expo: cubic-bezier(.16,1,.3,1); }
   main > section.gx-hero { height: auto; min-height: 0; padding: 0; display: block; }
@@ -388,7 +435,7 @@
      deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
            footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
      scene: parts-lock-into-the-whole (#how, the page's one effect)
-     moments: giant-type-pass (#promise), pinned-chapters (#features), liquid-type (the closing name)
+     moments: giant-type-pass (#promise), liquid-type (the closing name)
      components: fx-headline (hero fill), fx-stat (#numbers), fx-pricing (#pricing) -->
 
 <header class="nav nav--tone">
@@ -498,39 +545,73 @@
     </div>
   </section>
 
-  <!-- FEATURES (moment: pinned-chapters): on the client's dark gradient ground the section holds for a screen of scroll;
-       the four tools open one at a time at the left while the frame at the right changes to that tool's real Groom-X screen -->
-  <section class="section ground-inverse gx-feat" id="features" data-moment="pinned-chapters" aria-labelledby="feat-h">
-    <div class="wrap mo-pc__grid">
-      <div class="mo-pc__text">
-        <div class="gx-feat__head">
-          <p class="gx-feat__eyebrow">Inside Groom-X</p>
-          <h2 id="feat-h">Four tools in every check-in. <span class="gx-feat__grey">Each one keeps a customer coming back.</span></h2>
+  <!-- FEATURES (bento, sections-library.md): on the client's dark gradient ground one wide card for the lead tool and four
+       small ones; each card shows the real Groom-X screen as a window on a lit brand-colour ground, cut by the card's
+       right and bottom edges, with one small action card over it. The wide card's action loops; the others play once. -->
+  <section class="section gx-bento" id="features" aria-labelledby="feat-h">
+    <div class="wrap">
+      <div class="gx-bento__head">
+        <div>
+          <p class="gx-bento__eyebrow">Inside Groom-X</p>
+          <h2 id="feat-h">Every check-in in one app. <span class="gx-bento__grey">Five tools that keep customers coming back.</span></h2>
         </div>
-        <ol class="mo-pc__steps">
-          <li class="mo-pc__step">
-            <h3><span class="gx-feat__n">01</span>Style previews before the groom</h3>
-            <p>Groom-X reads the breed, coat type and your instructions, then shows the pet parent how their pet will look after grooming.</p>
-            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--a"><span class="gx-feat__win"><img src="img/app/style-preview-1100.webp" srcset="img/app/style-preview-640.webp 640w, img/app/style-preview-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="588" alt="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instruction box" loading="lazy"></span></figure>
-          </li>
-          <li class="mo-pc__step">
-            <h3><span class="gx-feat__n">02</span>Repeat check-ins for your regulars</h3>
-            <p>Duplicate a regular’s last session after a fresh skin and coat check, so the next visit starts where the last one ended.</p>
-            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--b"><span class="gx-feat__win"><img src="img/app/session-history-1100.webp" srcset="img/app/session-history-640.webp 640w, img/app/session-history-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="548" alt="Groom-X past session history with each visit’s date, groomer and style" loading="lazy"></span></figure>
-          </li>
-          <li class="mo-pc__step">
-            <h3><span class="gx-feat__n">03</span>Equipment alerts at every check-in</h3>
-            <p>Groom-X tracks the tools used in each session and flags maintenance before a tool fails or causes an injury.</p>
-            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--c"><span class="gx-feat__win"><img src="img/app/tools-1100.webp" srcset="img/app/tools-640.webp 640w, img/app/tools-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="544" alt="Groom-X tools list with each tool’s remaining limit and status" loading="lazy"></span></figure>
-          </li>
-          <li class="mo-pc__step">
-            <h3><span class="gx-feat__n">04</span>A business snapshot for pet groomers</h3>
-            <p>Grooms, new and returning customers on one dashboard, with year-over-year comparisons.</p>
-            <figure class="mo-pc__visual mo-pc__visual--lit gx-feat__vis gx-feat__vis--d"><span class="gx-feat__win"><img src="img/app/customers-chart-1100.webp" srcset="img/app/customers-chart-640.webp 640w, img/app/customers-chart-1100.webp 1100w" sizes="(max-width: 1023px) 92vw, 560px" width="1100" height="546" alt="Groom-X chart of first-time and returning customers by month" loading="lazy"></span></figure>
-          </li>
-        </ol>
+        <p class="gx-bento__lead">From the style preview at the desk to the tools on the table, your team runs the whole visit from one screen.</p>
       </div>
-      <div class="mo-pc__visuals frame gx-feat__frame"></div>
+      <div class="gx-bento__grid">
+        <article class="gx-card gx-card--wide gx-card--a">
+          <div class="gx-card__copy">
+            <h3>Shows the finished groom before it starts</h3>
+            <p>Groom-X reads the breed, coat type and your instructions, then shows the pet parent how their pet will look.</p>
+          </div>
+          <div class="gx-card__stage">
+            <div class="gx-shot-wrap">
+            <div class="gx-win gx-win--wide"><div class="gx-win__bar"><i></i><i></i><i></i><span>Groom-X · Image generation</span></div><img src="img/app/style-preview-1100.webp" srcset="img/app/style-preview-640.webp 640w, img/app/style-preview-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 900px" width="1100" height="588" alt="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instruction box" loading="lazy"></div>
+            <div class="gx-chip gx-chip--loop" aria-hidden="true"><span class="gx-chip__icon gx-chip__icon--ok"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><b data-chip-title>Style approved</b><em data-chip-line>Sent to the pet parent by text</em></span></div></div>
+          </div>
+        </article>
+        <article class="gx-card gx-card--b">
+          <div class="gx-card__copy">
+            <h3>Repeats a regular’s last groom</h3>
+            <p>Duplicate the last session after a fresh skin and coat check.</p>
+          </div>
+          <div class="gx-card__stage">
+            <div class="gx-shot-wrap">
+            <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Session history</span></div><img src="img/app/session-history-1100.webp" srcset="img/app/session-history-640.webp 640w, img/app/session-history-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 560px" width="1100" height="548" alt="Groom-X past session history with each visit’s date, groomer and status" loading="lazy"></div>
+            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon"><svg viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="2"/><path d="M3.5 10.5h-.2A1.3 1.3 0 0 1 2 9.2V3.3C2 2.6 2.6 2 3.3 2h5.9c.7 0 1.3.6 1.3 1.3v.2"/></svg></span><span><b>Session duplicated</b><em>Same style as last visit</em></span></div></div>
+          </div>
+        </article>
+        <article class="gx-card gx-card--c">
+          <div class="gx-card__copy">
+            <h3>Flags tools before they fail</h3>
+            <p>Each session logs the tools used, so maintenance comes before a breakdown.</p>
+          </div>
+          <div class="gx-card__stage">
+            <div class="gx-shot-wrap">
+            <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Equipment</span></div><img src="img/app/tools-1100.webp" srcset="img/app/tools-640.webp 640w, img/app/tools-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 560px" width="1100" height="544" alt="Groom-X tools list with each tool’s remaining limit and status" loading="lazy"></div>
+            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon gx-chip__icon--warn"><svg viewBox="0 0 16 16"><path d="M8 2.5 14 13H2L8 2.5Z"/><path d="M8 6.5v3M8 11.2v.1"/></svg></span><span><b>Service due</b><em>Clipper blade near its limit</em></span></div></div>
+          </div>
+        </article>
+        <article class="gx-card gx-card--d">
+          <div class="gx-card__copy">
+            <h3>Tracks your business</h3>
+            <p>New and returning customers by month, with year-over-year comparisons.</p>
+          </div>
+          <div class="gx-card__stage">
+            <div class="gx-shot-wrap">
+            <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Dashboard</span></div><img src="img/app/customers-chart-1100.webp" srcset="img/app/customers-chart-640.webp 640w, img/app/customers-chart-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 560px" width="1100" height="546" alt="Groom-X chart of first-time and returning customers by month" loading="lazy"></div></div>
+          </div>
+        </article>
+        <article class="gx-card gx-card--e">
+          <div class="gx-card__copy">
+            <h3>Keeps every client and pet on file</h3>
+            <p>Contact details, pets and past visits for each client in one record.</p>
+          </div>
+          <div class="gx-card__stage">
+            <div class="gx-shot-wrap">
+            <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Clients</span></div><img src="img/app/tour-clients-1280.webp" srcset="img/app/tour-clients-1280.webp 1280w" sizes="(max-width: 1023px) 120vw, 640px" width="1280" height="800" alt="Groom-X client list with each client’s pets" loading="lazy"></div></div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -697,6 +778,24 @@
   import pricing from './assets/components/fx-pricing/component.js';
     document.querySelectorAll('.cx-stat').forEach(el => stat(el));
   document.querySelectorAll('.cx-pricing').forEach(el => pricing(el));
+// features bento: cards arrive once in view; a soft light follows the pointer on a card; the wide card's action loops
+(() => {
+  const cards = [...document.querySelectorAll('.gx-bento .gx-card')];
+  if (!cards.length) return;
+  const reveal = c => c.classList.add('is-in');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const i = cards.indexOf(e.target); setTimeout(() => reveal(e.target), (i % 3) * 110); io.unobserve(e.target); } }), { threshold: 0.2 });
+    cards.forEach(c => io.observe(c));
+  } else cards.forEach(reveal);
+  cards.forEach(c => c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`); }));
+  const chip = document.querySelector('.gx-chip--loop');
+  if (!chip || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const states = [['Style approved', 'Sent to the pet parent by text'], ['Preview generated', 'From your grooming instructions'], ['Style approved', 'Sent to the pet parent by email']];
+  let n = 0, timer = 0;
+  const t = chip.querySelector('[data-chip-title]'), l = chip.querySelector('[data-chip-line]');
+  const tick = () => { n = (n + 1) % states.length; chip.classList.remove('is-swap'); void chip.offsetWidth; chip.classList.add('is-swap'); setTimeout(() => { t.textContent = states[n][0]; l.textContent = states[n][1]; }, 240); };
+  new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting && !document.hidden) timer = setInterval(tick, 3200); })).observe(chip);
+})();
 // promise: the style preview settles from a slight zoom as it comes on screen
 (() => {
   const card = document.querySelector('.gx-promise-card');
