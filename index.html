@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Groom-X: the check-in assistant for pet groomers, by Pet-X Solutions</title>
-<meta name="description" content="Show pet parents a realistic picture of their pet’s grooming style before the session, get their approval, and keep customers coming back. 30-day free trial.">
+<title>AI Tech for Pet Grooming &amp; Care Businesses | Pet-X Solutions</title>
+<meta name="description" content="Pet-X Solutions was born by the passion and experience of our CEO and Technical Consultants to help pet professionals succeed and have happier and more loyal customers.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Groom-X: the check-in assistant for pet groomers">
-<meta property="og:description" content="Realistic style previews at check-in, approved by the pet parent before the first clip.">
+<meta property="og:title" content="Pet-X Solutions: Building Connections, One Pet at a Time">
+<meta property="og:description" content="Pet-X Solutions was born by the passion and experience of our CEO and Technical Consultants to help pet professionals succeed and have happier and more loyal customers.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/petx-mark-64.png" type="image/png">
@@ -217,10 +217,41 @@
   main > section.section > .wrap, footer.closing > .wrap { height: auto; }
   main > section.section > .wrap > .fill { flex: none; }
   main > section.section.g2 > .wrap { grid-template-rows: auto auto; row-gap: var(--s-8); }
-  #promise .gx-promise-photo { height: 560px; aspect-ratio: auto; }
-  @media (max-width: 1023px) { #promise .gx-promise-photo { height: 420px; } }
-  @media (max-width: 639px) { #promise .gx-promise-photo { height: 320px; } }
+  #who-we-are .gx-promise-photo { height: 560px; aspect-ratio: auto; }
+  @media (max-width: 1023px) { #who-we-are .gx-promise-photo { height: 420px; } }
+  @media (max-width: 639px) { #who-we-are .gx-promise-photo { height: 320px; } }
   @media (max-width: 639px) { main > section.section.g2 > .wrap { row-gap: var(--s-6); } }
+  /* ===== copy pass: company statements, Why Groom-X, numbers lead ===== */
+  .gx-company { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-top: var(--s-8); padding-top: var(--s-7); border-top: 1px solid var(--line); }
+  .gx-company article { display: grid; align-content: start; gap: var(--s-3); }
+  .gx-company__n { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: #9C4C97; }
+  .gx-company h3 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -.01em; }
+  .gx-company p { margin: 0; color: var(--muted); line-height: 1.6; }
+  .gx-who-card .gx-promise-card__img { aspect-ratio: 4 / 5; }
+  .gx-num-lead { margin: var(--s-5) 0 var(--s-7); max-width: 52ch; color: var(--muted); font-size: var(--t-lead); line-height: 1.55; }
+  #numbers h2 { margin: 0; }
+  .gx-num-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); }
+  .gx-num-cta { margin-top: var(--s-7); }
+  .gx-why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .gx-why__card { position: relative; overflow: hidden; display: grid; align-content: start; gap: var(--s-3); padding: 32px; border-radius: 24px; background: #faf7fb; box-shadow: inset 0 0 0 1px rgb(35 32 74 / .07); }
+  .gx-why__card::after { content: ""; position: absolute; inset: auto -20% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; filter: blur(40px); opacity: .35; pointer-events: none; }
+  .gx-why__card--a::after { background: #1E97B7; } .gx-why__card--b::after { background: #9C4C97; } .gx-why__card--c::after { background: #158B51; }
+  .gx-why__icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: #fff; background: var(--gradient-button); }
+  .gx-why__icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .gx-why__card h3 { margin: var(--s-2) 0 0; font-size: 20px; line-height: 1.3; }
+  .gx-why__card p { position: relative; margin: 0; color: var(--muted); line-height: 1.6; font-size: 15px; }
+  #why .section-head--row { display: flex; align-items: end; justify-content: space-between; gap: var(--s-6); margin-bottom: var(--s-7); }
+  .gx-partners-h { margin: var(--s-8) 0 var(--s-5); font-size: 22px; }
+  .closing .gx-social { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); padding: 0; margin: 0; list-style: none; }
+  .closing .footer__lede { font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--muted); max-width: 40ch; }
+  .gx-social a, .gx-foot-p { color: var(--muted); font-size: 15px; line-height: 1.55; }
+  .cx-plan__per s { opacity: .7; margin-right: 4px; }
+  @media (max-width: 1023px) {
+    .gx-company, .gx-why { grid-template-columns: 1fr; gap: var(--s-6); }
+    #why .section-head--row { flex-direction: column; align-items: start; }
+    .footer__col.start-6, .footer__col.start-10 { grid-column: auto; }
+  }
+  @media (max-width: 639px) { .gx-num-row { grid-template-columns: 1fr; } .gx-why__card { padding: 24px; } }
   /* ===== FEATURES: bento on the brand's dark gradient ===== */
   #features.gx-bento { color: #fff; background: radial-gradient(60% 50% at 90% 0%, rgb(156 76 151 / .32), transparent 70%), radial-gradient(50% 40% at 0% 100%, rgb(30 151 183 / .2), transparent 70%), linear-gradient(170deg, #1a1838 0%, #23204A 40%, #301938 100%); }
   .gx-bento__head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gutter); align-items: end; margin-bottom: var(--s-8); }
@@ -236,6 +267,7 @@
   .gx-card:hover::before { opacity: 1; }
   .gx-card:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
   .gx-card--wide { grid-column: span 8; }
+  .gx-bento__grid > .gx-card--d { grid-column: span 8; }
   .gx-card__copy { position: relative; z-index: 2; padding: 32px 32px 0; }
   .gx-card__copy h3 { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -.01em; color: #fff; }
   .gx-card__copy p { margin: var(--s-2) 0 0; font-size: 15px; line-height: 1.55; color: rgb(236 226 240 / .72); max-width: 44ch; }
@@ -283,11 +315,12 @@
   @keyframes gx-chip-swap { 0% { opacity: 1; translate: 0 0; } 40% { opacity: 0; translate: 0 8px; } 41% { translate: 0 -8px; } 100% { opacity: 1; translate: 0 0; } }
   @media (min-width: 1024px) and (max-width: 1279px) {
     .gx-card--wide { grid-column: span 12; }
-    .gx-card--b, .gx-card--c, .gx-card--d, .gx-card--e { grid-column: span 6; }
+    .gx-card--b, .gx-card--c { grid-column: span 6; }
+    .gx-bento__grid > .gx-card--d { grid-column: span 12; }
   }
   @media (max-width: 1023px) {
     .gx-bento__head { grid-template-columns: 1fr; gap: var(--s-4); margin-bottom: var(--s-7); }
-    .gx-card, .gx-card--wide { grid-column: span 12; }
+    .gx-card, .gx-card--wide, .gx-bento__grid > .gx-card--d { grid-column: span 12; }
   }
   @media (max-width: 639px) {
     .gx-bento__grid { gap: 14px; }
@@ -391,11 +424,11 @@
     .gx-work__stage { border-radius: 14px; aspect-ratio: 4 / 3; }
   }
   /* the photograph's URL sits here so it resolves against the page, not the moment's stylesheet */
-  #promise .mo-gt__type { padding-bottom: .16em; margin-bottom: -.16em; background-image: linear-gradient(var(--mo-tint), var(--mo-tint)), url("img/cat-shampoo-900.webp"); }
+  #who-we-are .mo-gt__type { padding-bottom: .16em; margin-bottom: -.16em; background-image: linear-gradient(var(--mo-tint), var(--mo-tint)), url("img/cat-shampoo-900.webp"); }
   /* promise: the giant type with the style preview it promises beside it */
   .gx-promise-head { display: grid; grid-template-columns: minmax(0, 1fr) clamp(150px, calc(28vw - 130px), 280px); gap: var(--s-6); align-items: start; }
   .gx-promise-card { margin: 0; padding-top: .9vw; display: grid; gap: 0; }
-  @media (min-width: 1024px) and (max-width: 1279px) { #promise .mo-gt__type { font-size: 10.4vw; } }
+  @media (min-width: 1024px) and (max-width: 1279px) { #who-we-are .mo-gt__type { font-size: 10.4vw; } }
   .gx-ba { position: relative; }
   .gx-ba__tag { display: inline-block; margin-bottom: var(--s-2); padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .02em;
     background: rgb(35 32 74 / .07); color: #23204A; }
@@ -435,7 +468,7 @@
      deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
            footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
      scene: parts-lock-into-the-whole (#how, the page's one effect)
-     moments: giant-type-pass (#promise), liquid-type (the closing name)
+     moments: giant-type-pass (#who-we-are), liquid-type (the closing name)
      components: fx-headline (hero fill), fx-stat (#numbers), fx-pricing (#pricing) -->
 
 <header class="nav nav--tone">
@@ -443,36 +476,14 @@
     <a class="skip-link" href="#top">Skip to content</a>
     <a class="nav__logo" href="#top" aria-label="Pet-X Solutions home"><img src="img/logo-petx-162.webp" alt="Pet-X Solutions" width="81" height="36"></a>
     <nav class="nav__links" aria-label="Main">
-      <div class="nav__item">
-        <a class="nav__link" href="#features">Product <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <div class="nav__menu">
-          <div class="wrap grid">
-            <div class="menu-col span-3">
-              <p class="t-label">At check-in</p>
-              <a href="#features">Style previews<span>The finished groom, before it starts</span></a>
-              <a href="#features">Repeat sessions<span>The style a regular loved, again</span></a>
-              <a href="#top">Pet parent approval<span>A yes before the first clip</span></a>
-            </div>
-            <div class="menu-col span-3">
-              <p class="t-label">Behind the desk</p>
-              <a href="#features">Equipment care<span>Alerts before a tool fails</span></a>
-              <a href="#features">Business snapshot<span>Trends against last year</span></a>
-            </div>
-            <a class="menu-card span-3 start-10" href="#how">
-              <div class="panel"><img loading="lazy" width="640" height="642" class="frame__img" src="img/style-golden-640.webp" alt="A rendered style preview of a groomed golden dog"></div>
-              <span class="t-card">See the day view</span>
-              <span class="t-small muted">Every check-in on one screen</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="nav__item"><a class="nav__link" href="#how">Workflow</a></div>
-      <div class="nav__item"><a class="nav__link" href="#pricing">Pricing</a></div>
-      <div class="nav__item"><a class="nav__link" href="#reviews">Reviews</a></div>
-      <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
+      <div class="nav__item"><a class="nav__link" href="#top" aria-current="page">Home</a></div>
+      <div class="nav__item"><a class="nav__link" href="https://petxusa.com/books/">Books</a></div>
+      <div class="nav__item"><a class="nav__link" href="#features">GroomX</a></div>
+      <div class="nav__item"><a class="nav__link" href="#who-we-are">About Us</a></div>
+      <div class="nav__item"><a class="nav__link" href="#contact">Contact Us</a></div>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--primary" href="#pricing">Start free trial</a>
+      <a class="btn btn--primary" href="http://app.groomx.net/auth/signup">Get Started</a>
     </div>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -488,12 +499,12 @@
     <div class="gx-hero__top">
       <div class="gx-hero__glow" aria-hidden="true"><div class="gx-hero__sun"><div class="gx-hero__core"></div></div></div>
       <div class="gx-hero__copy">
-        <a class="gx-hero__pill" href="#pricing"><img src="img/petx-mark-64.png" width="26" height="26" alt=""><span><b>Groom-X</b> launches soon<span class="gx-hero__more">: 30 days free on every plan</span></span><svg class="gx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <h1 id="hero-h"><span class="gx-line"><span class="gx-w"><span style="--w:0">The</span></span> <span class="gx-w"><span style="--w:1">check-in</span></span> <span class="gx-w"><span style="--w:2">assistant</span></span></span> <span class="gx-line"><span class="gx-w"><span style="--w:3">for</span></span> <span class="gx-w gx-accent"><span style="--w:4">pet</span></span> <span class="gx-w gx-accent"><span style="--w:5">groomers</span></span></span></h1>
-        <p class="gx-hero__lead">Show pet parents a realistic picture of the finished groom before you start, and run every session, client and tool from one screen.</p>
+        <a class="gx-hero__pill" href="#features"><img src="img/petx-mark-64.png" width="26" height="26" alt=""><span><b>Groom-X</b><span class="gx-hero__more">: The First Check-In Assistant Tool for Pet Grooming</span></span><svg class="gx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <h1 id="hero-h"><span class="gx-line"><span class="gx-w"><span style="--w:0">Building</span></span> <span class="gx-w"><span style="--w:1">Connections,</span></span></span> <span class="gx-line"><span class="gx-w gx-accent"><span style="--w:2">One</span></span> <span class="gx-w gx-accent"><span style="--w:3">Pet</span></span> <span class="gx-w"><span style="--w:4">at</span></span> <span class="gx-w"><span style="--w:5">a</span></span> <span class="gx-w"><span style="--w:6">Time</span></span></span></h1>
+        <p class="gx-hero__lead">Pet-X is perfect for all kinds of pet grooming businesses, from independent groomers and small shops to large grooming chains and franchises.</p>
         <div class="gx-hero__actions">
-          <a class="btn btn--primary" href="#pricing">Start free trial<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-          <a class="btn gx-btn-light" href="#how">See the workflow<svg class="gx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--primary" href="#who-we-are">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn gx-btn-light" href="#who-we-are">About Us<svg class="gx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -519,28 +530,54 @@
     </div>
   </section>
 
-  <!-- STATEMENT (moment: giant-type-pass): the statement at 12vw, the shampoo photograph passing upward through its letters as the section crosses the screen -->
-  <section class="section" id="promise" data-moment="giant-type-pass" data-moment-opts='{"image": "img/cat-shampoo-900.webp", "travel": 60, "focusY": 58}' aria-labelledby="promise-h">
+  <!-- WHO WE ARE (moment: giant-type-pass): the company's statement at 12vw, the shampoo photograph passing through its letters;
+       the groomer photograph beside it, then the company's three commitments -->
+  <section class="section" id="who-we-are" data-moment="giant-type-pass" data-moment-opts='{"image": "img/cat-shampoo-900.webp", "travel": 60, "focusY": 58}' aria-labelledby="promise-h">
     <div class="wrap">
       <div class="gx-promise-head">
-        <h2 class="mo-gt__type" id="promise-h">Show the<br>groom first.</h2>
-        <figure class="gx-promise-card" aria-label="Before and after: the groomer's instruction, then the style preview it produces">
-          <div class="gx-ba gx-ba--before">
-            <span class="gx-ba__tag">Before</span>
-            <p class="gx-ba__ask">“Golden retriever. Trim the feathering on the legs and tail, keep the coat long and neat.”</p>
-            <span class="gx-ba__by">The groomer’s instruction at check-in</span>
-          </div>
-          <div class="gx-ba__link" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
-          <div class="gx-ba gx-ba--after">
-            <span class="gx-ba__tag gx-ba__tag--after">After</span>
-            <div class="gx-promise-card__img"><img src="img/style-golden-640.webp" srcset="img/style-golden-300.webp 300w, img/style-golden-640.webp 640w" sizes="(max-width: 1023px) 40vw, 300px" width="640" height="642" alt="The Groom-X style preview: the golden retriever with its finished groom" loading="lazy"></div>
-            <span class="gx-ba__by">The style preview the pet parent approves</span>
-          </div>
+        <h2 class="mo-gt__type" id="promise-h">Who<br>We Are</h2>
+        <figure class="gx-promise-card gx-who-card">
+          <div class="gx-promise-card__img"><img src="img/who-groomer-640.webp" width="640" height="644" alt="A groomer drying a Pomeranian on the grooming table" loading="lazy"></div>
         </figure>
       </div>
       <div class="mo-gt__row">
-        <p>About 1 in 3 grooming customers never come back after the first visit, and miscommunication is often why. Groom-X settles the style before the first clip.</p>
-        <a class="link" href="#features">See how style previews work</a>
+        <p>Pet-X Solutions was born by the passion and experience of our CEO and Technical Consultants to help pet professionals succeed and have happier and more loyal customers. Our main product, Groom-X, uses advanced technology to bridge the gap in communication between pet owners and pet groomers.</p>
+        <a class="link" href="https://petxusa.com/about-us/">About Us</a>
+      </div>
+      <div class="gx-company">
+        <article><span class="gx-company__n">01</span><h3>Leaders in Pet Industry Technology</h3><p>Pet‑X Solutions is the creator of the world’s first Check-In Assistant application dedicated to the pet industry. Our smart, easy to use solutions, help pet professionals succeed and delight their customers. Partner with us to enhance your pet services and build stronger connections with your clients.</p></article>
+        <article><span class="gx-company__n">02</span><h3>Bringing the Pet Industry to the Next Level</h3><p>Pet‑X Solutions is committed to creating a world where pet professionals and pet owners connect easily. Our long-term vision is to make sure that every pet receives the best care, leading to healthier and happier lives. By updating grooming services with innovative technology, we aim to set new standards of quality and satisfaction in the industry.</p></article>
+        <article><span class="gx-company__n">03</span><h3>Serving the United States, Canada and Beyond</h3><p>Pet‑X Solutions’ tools are currently available across Canada, the United States, and its territories. We are excited to grow our reach to Europe and Latin America, bringing our innovative solutions to pet professionals worldwide.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING THE COMMUNICATION GAP (fx-stat, dark band): the founder's reason for Groom-X and the retention figures -->
+  <section class="section ground-inverse" id="numbers" aria-labelledby="numbers-h">
+    <div class="wrap">
+      <div class="grid">
+      <div class="cx cx-stat span-6">
+        <h2 id="numbers-h">Closing the Communication Gap</h2>
+        <p class="gx-num-lead">Our first product Groom-X was born from years of observing the frustration caused by miscommunication between pet parents and pet professionals. Our founder saw how unclear expectations often led to dissatisfaction and negative reviews resulting in a loss of revenue. The goal of Groom-X is to eliminate these challenges, creating a seamless and positive experience for both pet professionals and pet parents.</p>
+        <dl class="cx-stat__row gx-num-row">
+          <div class="cx-stat__item"><dt class="cx-stat__label">Customer retention in the pet grooming industry</dt><dd class="cx-stat__num" data-fill>60%–80%</dd></div>
+          <div class="cx-stat__item"><dt class="cx-stat__label">Customers don’t return for a second visit</dt><dd class="cx-stat__num" data-fill>1 in 3</dd></div>
+        </dl>
+        <a class="btn btn--primary gx-num-cta" href="http://app.groomx.net/auth/signup">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <div class="frame frame--photo span-6 start-7 gx-num-photo"><img width="900" height="900" class="frame__img" src="img/cat-dryer-900.webp" srcset="img/cat-dryer-480.webp 480w, img/cat-dryer-900.webp 900w" sizes="(max-width: 1023px) 92vw, 628px" alt="A long-haired cat with its fur blown back by a hair dryer" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY GROOM-X: the three reasons, as cards -->
+  <section class="section" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="section-head section-head--row"><h2 id="why-h">Why Groom-X?</h2><a class="btn btn--primary" href="https://petxusa.com/groomx/#wait">Get Yours Now!<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+      <div class="gx-why">
+        <article class="gx-why__card gx-why__card--a"><span class="gx-why__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg></span><h3>Grow Your Business</h3><p>Whether you run a mobile grooming service, a salon, or a pet hotel with grooming offerings, Groom-X enhances communication around grooming styles and expectations—ensuring satisfied clients every time. Our intuitive, easy-to-use tool helps deliver consistent results, leading to stronger customer loyalty, repeat visits, and glowing reviews.</p></article>
+        <article class="gx-why__card gx-why__card--b"><span class="gx-why__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span><h3>Increase Customer Retention</h3><p>Groom-X is the world’s first Check-In Assistant visual grooming application that shows pet owners what their pet could look like before the grooming begins. By eliminating style and communication gaps, it helps customers feel confident in their choices and ensures a smoother enjoyable experience for both clients and groomers.</p></article>
+        <article class="gx-why__card gx-why__card--c"><span class="gx-why__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h3>Stand Out From the Competition</h3><p>Our intuitive tool seamlessly integrates with your current services, boosting client loyalty and setting you apart. Join other pet professionals who are enhancing their services and keeping customers coming back.</p></article>
       </div>
     </div>
   </section>
@@ -552,63 +589,53 @@
     <div class="wrap">
       <div class="gx-bento__head">
         <div>
-          <p class="gx-bento__eyebrow">Inside Groom-X</p>
-          <h2 id="feat-h">Every check-in in one app. <span class="gx-bento__grey">Five tools that keep customers coming back.</span></h2>
+          <p class="gx-bento__eyebrow">Benefits of Groom-X</p>
+          <h2 id="feat-h">The First Check-In Assistant Tool for Pet Grooming</h2>
         </div>
-        <p class="gx-bento__lead">From the style preview at the desk to the tools on the table, your team runs the whole visit from one screen.</p>
+        <p class="gx-bento__lead">We’re proud to introduce the world’s first Check-In Assistant application designed specifically for the pet industry. Our flagship product, Groom-X, empowers pet professionals by improving communication with pet owners through realistic images of grooming styles, helping clients visualize outcomes, set clear expectations, and enhance satisfaction.</p>
       </div>
       <div class="gx-bento__grid">
         <article class="gx-card gx-card--wide gx-card--a">
           <div class="gx-card__copy">
-            <h3>Shows the finished groom before it starts</h3>
-            <p>Groom-X reads the breed, coat type and your instructions, then shows the pet parent how their pet will look.</p>
+            <h3>Precision Grooming Style Simulation</h3>
+            <p>Groom-X uses an advanced software technology to show how a pet will look after grooming by analyzing its breed, coat type and following groomers’ instructions. This helps choose the best style with accuracy and avoid disappointing surprises.</p>
           </div>
           <div class="gx-card__stage">
             <div class="gx-shot-wrap">
             <div class="gx-win gx-win--wide"><div class="gx-win__bar"><i></i><i></i><i></i><span>Groom-X · Image generation</span></div><img src="img/app/style-preview-1100.webp" srcset="img/app/style-preview-640.webp 640w, img/app/style-preview-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 900px" width="1100" height="588" alt="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instruction box" loading="lazy"></div>
-            <div class="gx-chip gx-chip--loop" aria-hidden="true"><span class="gx-chip__icon gx-chip__icon--ok"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><b data-chip-title>Style approved</b><em data-chip-line>Sent to the pet parent by text</em></span></div></div>
+            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon gx-chip__icon--ok"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></span><span><b>Style simulation</b><em>Breed, coat type and instructions</em></span></div></div>
           </div>
         </article>
         <article class="gx-card gx-card--b">
           <div class="gx-card__copy">
-            <h3>Repeats a regular’s last groom</h3>
-            <p>Duplicate the last session after a fresh skin and coat check.</p>
+            <h3>Duplicate Grooming Sessions</h3>
+            <p>Groom-X makes it easy to duplicate sessions when your recurring customers love the style they got previously. This makes the check-in process easier after a thorough pet assessment of skin and coat.</p>
           </div>
           <div class="gx-card__stage">
             <div class="gx-shot-wrap">
             <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Session history</span></div><img src="img/app/session-history-1100.webp" srcset="img/app/session-history-640.webp 640w, img/app/session-history-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 560px" width="1100" height="548" alt="Groom-X past session history with each visit’s date, groomer and status" loading="lazy"></div>
-            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon"><svg viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="2"/><path d="M3.5 10.5h-.2A1.3 1.3 0 0 1 2 9.2V3.3C2 2.6 2.6 2 3.3 2h5.9c.7 0 1.3.6 1.3 1.3v.2"/></svg></span><span><b>Session duplicated</b><em>Same style as last visit</em></span></div></div>
+            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon"><svg viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="2"/><path d="M3.5 10.5h-.2A1.3 1.3 0 0 1 2 9.2V3.3C2 2.6 2.6 2 3.3 2h5.9c.7 0 1.3.6 1.3 1.3v.2"/></svg></span><span><b>Session duplicated</b><em>After a skin and coat assessment</em></span></div></div>
           </div>
         </article>
         <article class="gx-card gx-card--c">
           <div class="gx-card__copy">
-            <h3>Flags tools before they fail</h3>
-            <p>Each session logs the tools used, so maintenance comes before a breakdown.</p>
+            <h3>Equipment Monitoring</h3>
+            <p>Groom-X tracks the tools used for each grooming session and predicts when they need to be maintained or replaced to avoid pet injuries and unexpected breakdowns.</p>
           </div>
           <div class="gx-card__stage">
             <div class="gx-shot-wrap">
             <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Equipment</span></div><img src="img/app/tools-1100.webp" srcset="img/app/tools-640.webp 640w, img/app/tools-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 560px" width="1100" height="544" alt="Groom-X tools list with each tool’s remaining limit and status" loading="lazy"></div>
-            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon gx-chip__icon--warn"><svg viewBox="0 0 16 16"><path d="M8 2.5 14 13H2L8 2.5Z"/><path d="M8 6.5v3M8 11.2v.1"/></svg></span><span><b>Service due</b><em>Clipper blade near its limit</em></span></div></div>
+            <div class="gx-chip" aria-hidden="true"><span class="gx-chip__icon gx-chip__icon--warn"><svg viewBox="0 0 16 16"><path d="M8 2.5 14 13H2L8 2.5Z"/><path d="M8 6.5v3M8 11.2v.1"/></svg></span><span><b>Maintenance alert</b><em>Before an unexpected breakdown</em></span></div></div>
           </div>
         </article>
         <article class="gx-card gx-card--d">
           <div class="gx-card__copy">
-            <h3>Tracks your business</h3>
-            <p>New and returning customers by month, with year-over-year comparisons.</p>
+            <h3>A Snapshot of your business</h3>
+            <p>Groom-X allows business owners and managers to have a quick overview of their business trends in a easy to read dashboard, providing insights and year-over-year comparisons.</p>
           </div>
           <div class="gx-card__stage">
             <div class="gx-shot-wrap">
             <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Dashboard</span></div><img src="img/app/customers-chart-1100.webp" srcset="img/app/customers-chart-640.webp 640w, img/app/customers-chart-1100.webp 1100w" sizes="(max-width: 1023px) 120vw, 560px" width="1100" height="546" alt="Groom-X chart of first-time and returning customers by month" loading="lazy"></div></div>
-          </div>
-        </article>
-        <article class="gx-card gx-card--e">
-          <div class="gx-card__copy">
-            <h3>Keeps every client and pet on file</h3>
-            <p>Contact details, pets and past visits for each client in one record.</p>
-          </div>
-          <div class="gx-card__stage">
-            <div class="gx-shot-wrap">
-            <div class="gx-win"><div class="gx-win__bar"><i></i><i></i><i></i><span>Clients</span></div><img src="img/app/tour-clients-1280.webp" srcset="img/app/tour-clients-1280.webp 1280w" sizes="(max-width: 1023px) 120vw, 640px" width="1280" height="800" alt="Groom-X client list with each client’s pets" loading="lazy"></div></div>
           </div>
         </article>
       </div>
@@ -643,25 +670,37 @@
         </div>
       </div>
       <div class="pl__spec">
-        <h2 id="pl-h">The day view: every check-in on one screen</h2>
-        <dl><div><dt>Works on</dt><dd>Phones, tablets, laptops, desktops</dd></div><div><dt>Support</dt><dd>24/7 virtual agent</dd></div><div><dt>Available</dt><dd>United States and Canada</dd></div><div><dt>Free trial</dt><dd>30 days on every plan</dd></div></dl>
+        <h2 id="pl-h">Groom‑X uses the power of AI to create pictures of how a pet will look after grooming</h2>
+        <dl><div><dt>Works on</dt><dd>Phones, tablets, laptops, and desktops</dd></div><div><dt>Support</dt><dd>24/7 through our virtual agent</dd></div><div><dt>Available</dt><dd>Canada, the United States, and its territories</dd></div><div><dt>Free trial</dt><dd>30-Days Free Trials</dd></div></dl>
       </div>
     </div>
   </section>
 
-  <!-- NUMBERS (fx-stat, dark band) -->
-  <section class="section ground-inverse" id="numbers" aria-labelledby="numbers-h">
+
+
+  <!-- PRICING (fx-pricing): two tabs of three plans, the recommended plan lit -->
+  <section class="section" id="pricing" aria-labelledby="pricing-h">
     <div class="wrap">
-      <div class="grid">
-      <div class="cx cx-stat span-6">
-        <h2 id="numbers-h" style="margin-bottom: var(--s-7)">Why the first visit matters. <span class="muted">Retention decides a salon’s revenue.</span></h2>
-        <dl class="cx-stat__row" style="grid-template-columns: minmax(0, 1fr); gap: var(--s-6)">
-          <div class="cx-stat__item"><dt class="cx-stat__label">Typical customer retention in pet grooming</dt><dd class="cx-stat__num" data-fill>60–80%</dd></div>
-          <div class="cx-stat__item"><dt class="cx-stat__label">Customers who never return for a second visit</dt><dd class="cx-stat__num" data-fill>1 in 3</dd></div>
-          <div class="cx-stat__item"><dt class="cx-stat__label">Support for every Groom-X client</dt><dd class="cx-stat__num" data-fill>24/7</dd></div>
-        </dl>
+      <div class="section-head">
+        <h2 id="pricing-h">Available Plans <span class="muted">30-Days Free Trials</span></h2>
+        <div class="tabs gx-tabs" role="tablist" aria-label="Salon size">
+          <button class="tab" role="tab" id="t-small" aria-selected="true" aria-controls="p-small">Up to 25 grooms a day</button>
+          <button class="tab" role="tab" id="t-large" aria-selected="false" aria-controls="p-large" tabindex="-1">35 grooms a day and more</button>
+        </div>
       </div>
-      <div class="frame frame--photo span-6 start-7 gx-num-photo"><img width="900" height="900" class="frame__img" src="img/cat-dryer-900.webp" srcset="img/cat-dryer-480.webp 480w, img/cat-dryer-900.webp 900w" sizes="(max-width: 1023px) 92vw, 628px" alt="A long-haired cat with its fur blown back by a hair dryer" loading="lazy"></div>
+      <div role="tabpanel" id="p-small" aria-labelledby="t-small">
+        <div class="cx cx-pricing" data-cx-effect="grain-gradient" data-cx-seed="35">
+          <article class="cx-plan"><h3 class="cx-plan__name">Basic</h3><p class="cx-plan__for">Independent 1 Groomer operations<br>Approx. 5 grooms/day</p><p class="cx-plan__price"><span class="cx-plan__amount">$39.99</span><span class="cx-plan__per"><s>$45.99</s> +taxes/month, or $425.99 +taxes/year</span></p><a class="btn btn--secondary cx-plan__cta" href="http://app.groomx.net/auth/signup">Get Started</a><ul class="cx-plan__list"><li>80 Images/month</li><li>FREE Tool Maintenance Alerts (optional)</li><li>24/7 Support</li></ul></article>
+          <article class="cx-plan is-featured" aria-describedby="b-silver"><div class="cx-plan__fx" aria-hidden="true"></div><div class="cx-plan__top"><h3 class="cx-plan__name">Silver</h3><span class="cx-plan__badge" id="b-silver">Best Value</span></div><p class="cx-plan__for">Small Salons<br>Approx. 15 grooms/day</p><p class="cx-plan__price"><span class="cx-plan__amount">$45.99</span><span class="cx-plan__per"><s>$53.99</s> +taxes/month, or $485.99 +taxes/year</span></p><a class="btn btn--primary cx-plan__cta" href="http://app.groomx.net/auth/signup">Get Started</a><ul class="cx-plan__list"><li>300 Images/month</li><li>FREE Tool Maintenance Alerts (optional)</li><li>24/7 Support</li></ul></article>
+          <article class="cx-plan"><h3 class="cx-plan__name">Gold</h3><p class="cx-plan__for">Small/Medium Salons<br>Approx. 25 grooms/day</p><p class="cx-plan__price"><span class="cx-plan__amount">$49.99</span><span class="cx-plan__per"><s>$59.99</s> +taxes/month, or $529.99 +taxes/year</span></p><a class="btn btn--secondary cx-plan__cta" href="http://app.groomx.net/auth/signup">Get Started</a><ul class="cx-plan__list"><li>500 Images/month</li><li>FREE Tool Maintenance Alerts (optional)</li><li>24/7 Support</li></ul></article>
+        </div>
+      </div>
+      <div role="tabpanel" id="p-large" aria-labelledby="t-large" hidden>
+        <div class="cx cx-pricing" data-cx-effect="grain-gradient" data-cx-seed="36">
+          <article class="cx-plan"><h3 class="cx-plan__name">Platinum</h3><p class="cx-plan__for">Medium/Large Salons<br>Approx. 35 grooms/day</p><p class="cx-plan__price"><span class="cx-plan__amount">$59.99</span><span class="cx-plan__per"><s>$63.99</s> +taxes/month, or $635.99 +taxes/year</span></p><a class="btn btn--secondary cx-plan__cta" href="http://app.groomx.net/auth/signup">Get Started</a><ul class="cx-plan__list"><li>700 AI-images/month</li><li>FREE Tool Maintenance Alerts (optional)</li><li>24/7 Support</li></ul></article>
+          <article class="cx-plan is-featured" aria-describedby="b-diamond"><div class="cx-plan__fx" aria-hidden="true"></div><div class="cx-plan__top"><h3 class="cx-plan__name">Diamond</h3><span class="cx-plan__badge" id="b-diamond">High Volume Best Value!</span></div><p class="cx-plan__for">Large Salons<br>Approx. 50 grooms/day</p><p class="cx-plan__price"><span class="cx-plan__amount">$65.99</span><span class="cx-plan__per"><s>$69.99</s> +taxes/month, or $698.99 +taxes/year</span></p><a class="btn btn--primary cx-plan__cta" href="http://app.groomx.net/auth/signup">Get Started</a><ul class="cx-plan__list"><li>1000 Images/month</li><li>FREE Tool Maintenance Alerts (optional)</li><li>24/7 Support</li></ul></article>
+          <article class="cx-plan"><h3 class="cx-plan__name">Star Plus</h3><p class="cx-plan__for">High Volume Salons opened 7 days<br>Approx. 50 grooms/day x7 days</p><p class="cx-plan__price"><span class="cx-plan__amount">$69.99</span><span class="cx-plan__per"><s>$75.99</s> +taxes/month, or $740.99 +taxes/year</span></p><a class="btn btn--secondary cx-plan__cta" href="http://app.groomx.net/auth/signup">Get Started</a><ul class="cx-plan__list"><li>1200 Images/month</li><li>FREE Tool Maintenance Alerts (optional)</li><li>24/7 Support</li></ul></article>
+        </div>
       </div>
     </div>
   </section>
@@ -669,13 +708,14 @@
   <!-- REVIEWS: the three quotes the client publishes, and the partners in their own colours -->
   <section class="section" id="reviews" aria-labelledby="reviews-h">
     <div class="wrap">
-      <div class="section-head"><h2 id="reviews-h">Groomers on Groom-X. <span class="muted">Clear expectations, happier clients.</span></h2></div>
+      <div class="section-head"><h2 id="reviews-h">Client Reviews</h2></div>
       <div class="grid gx-quotes">
-        <figure class="card span-4"><blockquote>“The AI tool eliminates confusion and helps pet parents visualize the end result before we even start. This has led to happier clients and more repeat business.”</blockquote><div class="person"><span class="gx-ava" style="background:#1e97b7" aria-hidden="true">LB</span><span><span class="person__name">Laura Bennett</span></span></div></figure>
-        <figure class="card span-4"><blockquote>“Groom-X has transformed the way I communicate with my clients, ensuring every grooming session meets expectations. My customers love the results.”</blockquote><div class="person"><span class="gx-ava" style="background:#158b51" aria-hidden="true">MP</span><span><span class="person__name">Michael Peterson</span></span></div></figure>
-        <figure class="card span-4"><blockquote>“A game-changing tool that streamlines check-ins, enhances customer retention and improves overall performance for grooming businesses.”</blockquote><div class="person"><span class="gx-ava" style="background:#9c4c97" aria-hidden="true">CB</span><span><span class="person__name">Connie Bailey</span></span></div></figure>
+        <figure class="card span-4"><blockquote>“Groom-X has made a huge difference in my grooming business. The AI tool eliminates confusion and helps pet parents visualize the end result before we even start. This has led to happier clients and more repeat business. Highly recommended!”</blockquote><div class="person"><span class="gx-ava" style="background:#1e97b7" aria-hidden="true">LB</span><span><span class="person__name">Laura Bennett</span></span></div></figure>
+        <figure class="card span-4"><blockquote>“The team at Pet-X Solutions truly understands the needs of pet owners and groomers. Groom-X has transformed the way I communicate with my clients, ensuring every grooming session meets expectations. My customers love the results, and my business has never been better!”</blockquote><div class="person"><span class="gx-ava" style="background:#158b51" aria-hidden="true">MP</span><span><span class="person__name">Michael Peterson</span></span></div></figure>
+        <figure class="card span-4"><blockquote>“Annalisa deeply understands the evolving pet grooming industry and the daily challenges groomers face, from client management to operational efficiency. By leveraging innovation, she has created a game-changing tool that streamlines check-ins, enhances customer retention, and improves overall performance, ultimately positioning grooming businesses for long-term success.”</blockquote><div class="person"><span class="gx-ava" style="background:#9c4c97" aria-hidden="true">CB</span><span><span class="person__name">Connie Bailey</span></span></div></figure>
       </div>
-      <div class="gx-logos" role="list" aria-label="Partners">
+      <h3 class="gx-partners-h">Our Partners</h3>
+      <div class="gx-logos" role="list" aria-label="Our Partners">
         <img width="400" height="400" role="listitem" src="img/TDG-Logo-Transparent-1-400x400-1.webp" alt="The Dog Gurus" loading="lazy">
         <img width="150" height="150" role="listitem" src="img/Untitled-3.png" alt="The Ambitious Groomer" loading="lazy">
         <img width="150" height="150" role="listitem" src="img/Untitled-3.1.png" alt="Snapt Pet Gear" loading="lazy">
@@ -687,52 +727,27 @@
     </div>
   </section>
 
-  <!-- PRICING (fx-pricing): two tabs of three plans, the recommended plan lit -->
-  <section class="section" id="pricing" aria-labelledby="pricing-h">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="pricing-h">Plans by grooms per day. <span class="muted">Every plan starts with a 30-day free trial.</span></h2>
-        <div class="tabs gx-tabs" role="tablist" aria-label="Salon size">
-          <button class="tab" role="tab" id="t-small" aria-selected="true" aria-controls="p-small">Up to 25 grooms a day</button>
-          <button class="tab" role="tab" id="t-large" aria-selected="false" aria-controls="p-large" tabindex="-1">35 grooms a day and more</button>
-        </div>
-      </div>
-      <div role="tabpanel" id="p-small" aria-labelledby="t-small">
-        <div class="cx cx-pricing" data-cx-effect="grain-gradient" data-cx-seed="35">
-          <article class="cx-plan"><h3 class="cx-plan__name">Basic</h3><p class="cx-plan__for">Independent groomers, about 5 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$39.99</span><span class="cx-plan__per">a month, plus taxes, or $425.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Basic%20trial">Try Basic</a><ul class="cx-plan__list"><li>80 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
-          <article class="cx-plan is-featured" aria-describedby="b-silver"><div class="cx-plan__fx" aria-hidden="true"></div><div class="cx-plan__top"><h3 class="cx-plan__name">Silver</h3><span class="cx-plan__badge" id="b-silver">Best value</span></div><p class="cx-plan__for">Small salons, about 15 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$45.99</span><span class="cx-plan__per">a month, plus taxes, or $485.99 a year</span></p><a class="btn btn--primary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20free%20trial">Start free trial</a><ul class="cx-plan__list"><li>300 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
-          <article class="cx-plan"><h3 class="cx-plan__name">Gold</h3><p class="cx-plan__for">Small and medium salons, about 25 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$49.99</span><span class="cx-plan__per">a month, plus taxes, or $529.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Gold%20trial">Try Gold</a><ul class="cx-plan__list"><li>500 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
-        </div>
-      </div>
-      <div role="tabpanel" id="p-large" aria-labelledby="t-large" hidden>
-        <div class="cx cx-pricing" data-cx-effect="grain-gradient" data-cx-seed="36">
-          <article class="cx-plan"><h3 class="cx-plan__name">Platinum</h3><p class="cx-plan__for">Medium and large salons, about 35 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$59.99</span><span class="cx-plan__per">a month, plus taxes, or $635.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Platinum%20trial">Try Platinum</a><ul class="cx-plan__list"><li>700 AI style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
-          <article class="cx-plan is-featured" aria-describedby="b-diamond"><div class="cx-plan__fx" aria-hidden="true"></div><div class="cx-plan__top"><h3 class="cx-plan__name">Diamond</h3><span class="cx-plan__badge" id="b-diamond">High-volume best value</span></div><p class="cx-plan__for">Large salons, about 50 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$65.99</span><span class="cx-plan__per">a month, plus taxes, or $698.99 a year</span></p><a class="btn btn--primary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20free%20trial">Start free trial</a><ul class="cx-plan__list"><li>1,000 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
-          <article class="cx-plan"><h3 class="cx-plan__name">Star Plus</h3><p class="cx-plan__for">High-volume salons open 7 days, about 50 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$69.99</span><span class="cx-plan__per">a month, plus taxes, or $740.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Star%20Plus%20trial">Try Star Plus</a><ul class="cx-plan__list"><li>1,200 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- FAQ: every answer open -->
   <section class="section" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
       <div class="grid">
         <div class="span-5 stack-4">
-          <h2 id="faq-h">Questions</h2>
-          <p class="t-lead muted">Anything else? Email us and we reply Monday to Friday during business hours.</p>
-          <p><a class="link" href="mailto:info@petxusa.com">info@petxusa.com</a></p>
+          <h2 id="faq-h">Frequently Asked Questions (FAQs)</h2>
+          <p><a class="btn btn--primary" href="https://petxusa.com/contact-us/">Contact Us</a></p>
           <ul class="gx-contacts">
-            <li><img loading="lazy" class="ic" src="assets/icons/ui-headset.svg" alt="" width="24" height="24"><span><b>24/7 support</b>Through the Groom-X virtual agent</span></li>
-            <li><img loading="lazy" class="ic" src="assets/icons/ui-mail.svg" alt="" width="24" height="24"><span><b>support@petxusa.com</b>Answered during office hours (EST)</span></li>
+            <li><img loading="lazy" class="ic" src="assets/icons/ui-headset.svg" alt="" width="24" height="24"><span><b>24/7 support</b>Through our virtual agent</span></li>
+            <li><img loading="lazy" class="ic" src="assets/icons/ui-mail.svg" alt="" width="24" height="24"><span><b>support@petxusa.com</b>Emails will be answered during office hours EST Time</span></li>
           </ul>
         </div>
         <div class="faq span-6 start-7">
-          <div class="faq__item"><h3>What does the style preview show?</h3><p>An AI tool that creates pictures of how a pet will look after grooming, so groomers and pet parents agree on a style.</p></div>
-          <div class="faq__item"><h3>Which devices can pet groomers use?</h3><p>Yes. Groom-X works on phones, tablets, laptops and desktops.</p></div>
-          <div class="faq__item"><h3>Which countries can groomers use it in?</h3><p>In Canada, the United States and its territories. Europe and Latin America are next.</p></div>
-          <div class="faq__item"><h3>How do I reach support?</h3><p>Clients get 24/7 support through our virtual agent, or email support@petxusa.com during office hours (EST).</p></div>
-          <div class="faq__item"><h3>Can I suggest a tool for another pet business?</h3><p>Yes. Send ideas for boarding, daycare, vets or trainers to info@petxusa.com.</p></div>
+          <div class="faq__item"><h3>What is Pet‑X Solutions?</h3><p>Pet‑X Solutions helps pet professionals and owners connect better with easy-to-use tools like Groom‑X.</p></div>
+          <div class="faq__item"><h3>How can I contact Customer Support?</h3><p>As a client of Groom-X, you will get access to 24/7 support through our virtual agent or email us at <a href="mailto:support@petxusa.com">support@petxusa.com</a>. (emails will be answered during office hours EST Time)</p></div>
+          <div class="faq__item"><h3>Where is Pet-X Solutions available?</h3><p>Currently in Canada, the United States, and its territories, with plans to expand to Europe and Latin America.</p></div>
+          <div class="faq__item"><h3>How can I get more information about your products?</h3><p>You can Contact Us through our form on the website or email us at <a href="mailto:info@petxusa.com">info@petxusa.com</a>. We monitor our emails Mon-Fri during business hours.</p></div>
+          <div class="faq__item"><h3>I have ideas for products for different service businesses (i.e. Boarding, Daycare, Veterinarian or Pet Trainers). How can I share them with you?</h3><p>We are always looking for new ideas that can answer the needs of the industry. Send us your feedback &amp; Ideas via email at <a href="mailto:info@petxusa.com">info@petxusa.com</a>.</p></div>
+          <div class="faq__item"><h3>What is Groom-X?</h3><p>Groom‑X uses the power of AI to create pictures of how a pet will look after grooming, making it easy to share and agree on styles.</p></div>
+          <div class="faq__item"><h3>Is Groom-X easy to use on my devices?</h3><p>Yes! Groom‑X works on phones, tablets, laptops, and desktops, making it simple for everyone to use.</p></div>
         </div>
       </div>
     </div>
@@ -745,26 +760,27 @@
   <div class="wrap">
     <div class="closing__cta close--word">
       <div class="section-head--split">
-        <div><h2 id="close-h">Start your free trial</h2><p class="t-lead">30 days free on every plan. No surprises at pick-up.</p></div>
-        <a class="btn btn--primary" href="#pricing">Start free trial<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <div><h2 id="close-h">Upscale Your Grooming Services</h2><p class="t-lead">Our smart Check-In Assistant tool enhances your existing services, improving client retention and generating positive reviews. Join pet professionals who are elevating their offerings and keep customers coming back.</p></div>
+        <a class="btn btn--primary" href="https://petxusa.com/groomx/">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
       </div>
-      <p class="close__word mo-lt__type" data-moment="liquid-type" data-moment-opts='{"strength": 1}' aria-hidden="true">Groom-X</p>
+      <p class="close__word mo-lt__type" data-moment="liquid-type" data-moment-opts='{"strength": 1}' aria-hidden="true">Pet-X</p>
     </div>
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
           <a class="nav__logo" href="#top" aria-label="Pet-X Solutions home"><img loading="lazy" src="img/logo-petx-162.webp" alt="Pet-X Solutions" width="81" height="36"></a>
-          <p class="footer__lede">Building connections, one pet at a time.</p>
+          <p class="footer__lede">Pet-X is perfect for all kinds of pet grooming businesses, from independent groomers and small shops to large grooming chains and franchises.</p>
+          <ul class="gx-social"><li><a href="https://www.facebook.com/profile.php?id=61572586269419">Facebook</a></li><li><a href="https://www.instagram.com/petxusa/">Instagram</a></li><li><a href="https://www.linkedin.com/company/pet-x-solutions">Linkedin</a></li></ul>
         </div>
-        <div class="span-2 footer__col"><h3>Product</h3><ul><li><a href="#features">Features</a></li><li><a href="#how">Workflow</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Company</h3><ul><li><a href="#reviews">Reviews</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Questions</h3><ul><li><a href="#faq">FAQ</a></li><li><a href="mailto:support@petxusa.com">Support</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Contact</h3><ul><li><a href="mailto:info@petxusa.com">info@petxusa.com</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="span-2 start-6 footer__col"><h3>Quick Links</h3><ul><li><a href="#top">Home</a></li><li><a href="https://petxusa.com/groomx">Groom X</a></li><li><a href="https://petxusa.com/about-us/">About Us</a></li><li><a href="https://petxusa.com/contact-us/">Contact Us</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Developed By:</h3><ul><li><a href="https://kodexolabs.com/">Kodexo Labs</a></li></ul></div>
+        <div class="span-3 start-10 footer__col"><h3>Groom-X</h3><p class="gx-foot-p">Groom-X makes pet care easy for pet owners. By simplifying pet grooming techniques using AI based models</p><p><a class="link" href="https://petxusa.com/groomx/">Get Started</a></p></div>
       </div>
       <div class="footer__legal">
-        <span>&copy; 2026 Pet-X Solutions &nbsp; Site by <a href="https://kodexolabs.com/">Kodexo Labs</a></span>
+        <span>2025 &copy; Pet-X Solutions. All rights reserved. <a href="https://petxusa.com/terms-and-conditions/">Terms &amp; Conditions</a></span>
         <div class="socials"></div>
       </div>
+    </div>
     </div>
   </div>
 </footer>
@@ -778,7 +794,7 @@
   import pricing from './assets/components/fx-pricing/component.js';
     document.querySelectorAll('.cx-stat').forEach(el => stat(el));
   document.querySelectorAll('.cx-pricing').forEach(el => pricing(el));
-// features bento: cards arrive once in view; a soft light follows the pointer on a card; the wide card's action loops
+// features bento: cards arrive once in view; a soft light follows the pointer on a card
 (() => {
   const cards = [...document.querySelectorAll('.gx-bento .gx-card')];
   if (!cards.length) return;
@@ -788,13 +804,6 @@
     cards.forEach(c => io.observe(c));
   } else cards.forEach(reveal);
   cards.forEach(c => c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`); }));
-  const chip = document.querySelector('.gx-chip--loop');
-  if (!chip || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const states = [['Style approved', 'Sent to the pet parent by text'], ['Preview generated', 'From your grooming instructions'], ['Style approved', 'Sent to the pet parent by email']];
-  let n = 0, timer = 0;
-  const t = chip.querySelector('[data-chip-title]'), l = chip.querySelector('[data-chip-line]');
-  const tick = () => { n = (n + 1) % states.length; chip.classList.remove('is-swap'); void chip.offsetWidth; chip.classList.add('is-swap'); setTimeout(() => { t.textContent = states[n][0]; l.textContent = states[n][1]; }, 240); };
-  new IntersectionObserver(es => es.forEach(e => { clearInterval(timer); if (e.isIntersecting && !document.hidden) timer = setInterval(tick, 3200); })).observe(chip);
 })();
 // promise: the style preview settles from a slight zoom as it comes on screen
 (() => {
