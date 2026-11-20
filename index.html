@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-ground="sky" data-buttons="pill" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Groom-X: the check-in assistant for pet groomers, by Pet-X Solutions</title>
+<meta name="description" content="Show pet parents a realistic picture of their pet’s grooming style before the session, get their approval, and keep customers coming back. 30-day free trial.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Groom-X: the check-in assistant for pet groomers">
+<meta property="og:description" content="Realistic style previews at check-in, approved by the pet parent before the first clip.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/petx-mark-64.png" type="image/png">
+<meta name="theme-color" content="#0b0a16">
+<!-- <link rel="canonical" href="https://petxusa.com/"> -->
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<!-- palette: start.mjs brand --page software --bg #ffffff --ink #0b0a16 --accent #1e97b7 (the client's teal-blue);
+     type: the client's design system (Pet-X Solutions Brand Guidelines 2025): Nasalization for the logo and the
+     largest display line, Poppins for everything else, in place of the dealt pairing -->
+<style>
+@font-face { font-family: "Nasalization"; src: url("assets/brand/Nasalization-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+:root {
+  --p-bg: #ffffff; --p-surface: #f1f1f2; --p-ink: #0b0a16; --p-muted: #4a4a55;
+  --p-accent: #1e97b7; --p-accent-ink: #0b0a16; --p-action: #1e97b7; --p-action-ink: #0b0a16;
+  --p-inv-bg: #0b0a16; --p-inv-surface: #181723; --p-inv-ink: #ffffff; --p-inv-muted: #a3a3ab;
+  --p-inv-accent: #1e97b7; --p-inv-accent-ink: #0b0a16; --p-inv-action: #1e97b7; --p-inv-action-ink: #0b0a16;
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-text: "Poppins", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 600;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.035em;
+  --brand-display: "Nasalization", "Poppins", system-ui, sans-serif;
+  --gradient-button: linear-gradient(90deg, #444798 0%, #9c4c97 100%);
+  --gradient-background: linear-gradient(90deg, #23204a 0%, #301938 100%);
+}
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/components/base.css">
+<link rel="stylesheet" href="assets/components/fx-feature-card/component.css">
+<link rel="stylesheet" href="assets/components/fx-stat/component.css">
+<link rel="stylesheet" href="assets/components/fx-pricing/component.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/letters-assemble/moment.js">
+<link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
+<script>document.documentElement.classList.add('sc-js');setTimeout(()=>document.documentElement.classList.add('sc-safe'),2500)</script>
+<link rel="stylesheet" href="assets/scenes/scenes.css">
+<link rel="stylesheet" href="assets/scenes/parts-lock-into-the-whole/scene.css">
+<!-- page CSS: the client's brand rules, and what sits inside the visuals -->
+<style>
+  /* brand: the h1 and the closing name in Nasalization (one weight: never faked bold); buttons are the
+     design system's gradient pills (Pet-X Brand Guidelines: "gradient-button"), labels in Poppins Medium */
+  .hero h1, .close__word { font-family: var(--brand-display); font-weight: 400; font-synthesis: none; text-transform: uppercase; letter-spacing: 0; }
+  .btn--primary { background: var(--gradient-button); color: #fff; border-color: transparent; }
+  .btn--primary:hover { color: #fff; filter: brightness(1.1); }
+  .nav__logo img { height: 36px; width: auto; display: block; }
+
+  /* hero: the Groom-X check-in window rising out of the lit frame */
+  .hero--centred { background: var(--gradient-background); }
+  .hero--centred .hero__window { overflow: hidden; }
+  .gx-accent { color: #6fc6dc; }
+  .hero--centred .btn-row { align-items: center; gap: var(--s-5); }
+  .hero--centred .btn-row .link { color: var(--ink); }
+  .hero--centred .hero__c { max-width: 1080px; }
+  .hero--centred h1 { max-width: none; font-size: clamp(34px, 4vw, 58px); line-height: 1.04; }
+  .gx-win { background: #fff; color: #0b0a16; border-radius: 16px; overflow: hidden; font: 400 14px/1.45 var(--font-text); box-shadow: 0 0 0 1px rgb(0 0 0 / .06), 0 40px 90px -30px rgb(11 10 22 / .55); }
+  .gx-win__bar { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; border-bottom: 1px solid rgb(0 0 0 / .07); font-size: 13px; color: #5d6268; }
+  .gx-win__bar b { color: #0b0a16; font-weight: 600; }
+  .gx-dots { display: flex; gap: 6px; } .gx-dots i { width: 10px; height: 10px; border-radius: 50%; background: #dcdfe2; }
+  .gx-win__body { display: grid; grid-template-columns: 210px minmax(0, 1fr); }
+  .gx-pet { border-right: 1px solid rgb(0 0 0 / .07); padding: 16px; display: grid; align-content: start; gap: 10px; }
+  .gx-field { border: 1px solid rgb(0 0 0 / .09); border-radius: 10px; padding: 9px 12px; }
+  .gx-field small { display: block; font-size: 12px; color: #6c6c75; } .gx-field b { font-weight: 600; font-size: 14px; }
+  .gx-flow { display: grid; align-content: start; gap: 10px; padding: 14px 18px; }
+  .gx-tool { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6c6c75; }
+  .gx-tool::before { content: ""; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #1e97b7; border-right-color: transparent; }
+  .gx-preview { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px; border-radius: 14px; background: #f4f6f8; }
+  .gx-preview img { width: 150px; height: 92px; object-fit: cover; border-radius: 10px; display: block; }
+  .gx-preview b { display: block; font-size: 15px; } .gx-preview span { font-size: 13px; color: #6c6c75; }
+  .gx-reply { justify-self: end; max-width: 78%; padding: 10px 14px; border-radius: 16px 16px 6px 16px; background: #444798; color: #fff; font-size: 14px; }
+  .gx-acts em { font-style: normal; font-size: 13px; font-weight: 600; color: #0d6a3b; display: inline-flex; align-items: center; gap: 8px; }
+  .gx-acts em::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #158b51; }
+  @media (max-width: 639px) { .gx-win__body { grid-template-columns: 1fr; } .gx-pet { display: none; } .gx-preview { grid-template-columns: 96px minmax(0, 1fr); } .gx-preview img { width: 96px; height: 80px; } }
+
+  /* app-frame (sections-library.md, app-frame): the check-ins list beside the open check-in */
+  .app.ui { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); margin-top: var(--s-7); background: var(--u-bg); border: 1px solid var(--u-border); border-radius: var(--u-r); box-shadow: var(--u-shadow); height: 560px; }
+  .app > .app__pane { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+  .app > .app__pane + .app__pane { border-left: 1px solid var(--u-line); }
+  .app > .app__pane > .ui-panel { width: 100%; border: 0; border-radius: 0; box-shadow: none; }
+  .app > .app__pane::after { content: ""; position: absolute; inset: auto 0 0 0; height: 64px; background: linear-gradient(transparent, var(--u-bg)); pointer-events: none; }
+  .gx-open { padding: 20px 24px; display: grid; gap: 16px; align-content: start; }
+  .gx-open__head { display: flex; align-items: center; gap: 12px; }
+  .gx-open__head b { font-size: 17px; font-weight: 600; } .gx-open__head span { font-size: 13px; color: var(--u-muted, #6c6c75); }
+  .gx-open__grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 18px; }
+  .gx-open__img { height: 260px; border-radius: 12px; overflow: hidden; position: relative; }
+  .gx-open__img img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 62%; transform: scale(1.3); transform-origin: 30% 65%; display: block; }
+  .gx-open__tag { position: absolute; left: 12px; top: 12px; font-size: 12px; font-weight: 600; padding: 5px 8px; border-radius: 6px; background: rgb(255 255 255 / .92); color: #0b0a16; }
+  .gx-steps { display: grid; gap: 12px; align-content: start; font-size: 13px; }
+  .gx-steps li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; list-style: none; }
+  .gx-steps i { width: 22px; height: 22px; border-radius: 50%; background: #1e97b7; display: grid; place-items: center; color: #fff; font-style: normal; font-size: 12px; }
+  .gx-steps li[data-step] i { background: #158b51; }
+  .gx-steps b { display: block; font-weight: 600; font-size: 14px; }
+  .gx-steps ul { margin: 0; padding: 0; display: grid; gap: 12px; }
+  @media (min-width: 1024px) and (max-width: 1279px) { .app.ui { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); } }
+  @media (max-width: 1023px) {
+    .app.ui { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); height: auto; }
+    .app > .app__pane--list { max-height: 252px; } .app > .app__pane--list::after { display: none; }
+    .app .ui-win__side { display: none; } .app .ui-win__body { grid-template-columns: minmax(0, 1fr); }
+    .app > .app__pane + .app__pane { border-left: 0; border-top: 1px solid var(--u-line); }
+  }
+  @media (max-width: 639px) {
+    .app.ui { grid-template-rows: minmax(0, 1fr); } .app > .app__pane--list { display: none; } .app > .app__pane + .app__pane { border-top: 0; }
+    .gx-open__grid { grid-template-columns: 1fr; } .gx-open__img { height: 200px; }
+  }
+
+  /* the statement */
+  #promise .mo-la__type { font-size: clamp(44px, 7vw, 104px); line-height: 1; letter-spacing: -0.04em; max-width: 12ch; }
+  #promise .mo-la__sub { max-width: 46ch; margin-top: var(--s-5); font-size: var(--t-lead); color: var(--muted); }
+
+  .gx-promise-photo { min-height: 560px; }
+  @media (max-width: 1023px) { .gx-promise-photo { min-height: 320px; } }
+  /* the feature cards' windows: Groom-X's own screens */
+  .cx-feat__head { justify-items: start; text-align: left; }
+  .gx-thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 12px 14px; }
+  .gx-thumbs span { position: relative; height: 92px; border-radius: 8px; overflow: hidden; display: block; }
+  .gx-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 639px) { .gx-thumbs em { font-size: 10px; left: 4px; bottom: 4px; padding: 2px 5px; } }
+  .gx-thumbs em { position: absolute; left: 6px; bottom: 6px; font-style: normal; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 99px; background: rgb(255 255 255 / .92); color: #0b0a16; }
+  .gx-thumbs span.is-on { outline: 2px solid #9c4c97; outline-offset: 2px; }
+  .gx-meter { display: block; height: 6px; border-radius: 99px; background: rgb(0 0 0 / .08); overflow: hidden; margin-top: 6px; }
+  .gx-meter i { display: block; height: 100%; border-radius: 99px; }
+
+  /* the scene's screen: the Groom-X day view */
+  .gx .pl__bar { display: flex; align-items: center; gap: 14px; padding: 0 16px; color: var(--muted); }
+  .gx .pl__bar b { color: var(--ink); font-weight: 600; }
+  .gx .pl__bar .tab { padding: 4px 10px; border-radius: 6px; } .gx .pl__bar .tab.on { background: var(--surface); color: var(--ink); }
+  .gx .pl__side { padding: 14px 12px; display: grid; align-content: start; gap: 4px; color: var(--muted); font-size: 13px; }
+  .gx .pl__side span { padding: 6px 8px; border-radius: 6px; } .gx .pl__side span.on { background: var(--surface); color: var(--ink); }
+  .gx .pl__side small { margin: 10px 8px 2px; font-size: 12px; color: var(--muted); }
+  .gx .pl__main { padding: 18px 20px; display: grid; align-content: start; gap: 12px; }
+  .gx .pl__title { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  .gx table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .gx th { text-align: left; font-weight: 400; color: var(--muted); padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
+  .gx td { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .gx th + th, .gx td + td { padding-left: 12px; }
+  .gx .st { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 99px; background: rgb(30 151 183 / .14); color: #0e6a82; white-space: nowrap; }
+  .gx .st.ok { background: rgb(21 139 81 / .12); color: #0d6a3b; } .gx .st.wait { background: rgb(156 76 151 / .12); color: #7d3a78; }
+  .gx .pl__insp { padding: 16px 14px; display: grid; align-content: start; gap: 10px; }
+  .gx .pl__insp h4 { margin: 0; font: 500 13px/1.4 var(--font-text); color: var(--muted); }
+  .gx .note { display: grid; gap: 4px; padding: 10px; border-radius: 8px; background: var(--surface); font-size: 12px; }
+  .gx .note b { font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .gx .note b i { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-style: normal; background: #9c4c97; color: #fff; }
+  .gx .note.agent b i { background: #1e97b7; }
+  @media (max-width: 767px) { .gx .pl__bar .tab:last-child { display: none; } }
+
+  /* proof: the quotes and the partner logos in their own colours */
+  .gx-quotes blockquote { margin: 0; font-size: 20px; line-height: 1.6; }
+  .gx-quotes .card { padding: var(--s-6); }
+  .gx-quotes .person { margin-top: var(--s-5); }
+  .gx-ava { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 600; font-size: 14px; flex: none; }
+  .gx-logos { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--s-4); margin-top: var(--s-8); align-items: center; }
+  .gx-logos img { width: 100%; height: 96px; object-fit: contain; display: block; }
+  @media (min-width: 640px) and (max-width: 1023px) { .gx-logos { display: flex; flex-wrap: wrap; justify-content: center; } .gx-logos img { width: calc((100% - 3 * var(--s-4)) / 4); } }
+  @media (max-width: 639px) { .gx-quotes > figure:nth-child(3) { display: none; } .gx-quotes blockquote { font-size: 16px; } .gx-logos { margin-top: var(--s-6); } .gx-logos { display: flex; flex-wrap: wrap; justify-content: center; } .gx-logos img { width: calc((100% - 2 * var(--s-4)) / 3); height: 44px; } }
+
+  .gx-contacts { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: grid; gap: var(--s-4); }
+  .gx-contacts li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--s-3); align-items: center; }
+  .gx-contacts .ic { width: 48px; height: 48px; padding: 12px; border-radius: 12px; background: var(--surface); }
+  .gx-contacts b { display: block; font-weight: 600; }
+  
+  #features .cx-feat { --cx-feat-h: 260px; }
+  #features .cx-feat__card { background: none; border: 0; box-shadow: none; border-radius: 0; overflow: visible; }
+  #features .cx-feat__copy { padding: 0 0 var(--s-4); }
+  #features .cx-feat__panel { margin: 0; border-radius: var(--r-lg); }
+  #features .cx-feat__grid { gap: 24px; }
+  @media (min-width: 640px) and (max-width: 1023px) { #features .cx-feat { --cx-feat-h: 190px; } #pricing .cx-pricing { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; } #pricing .cx-plan { padding: var(--s-4); } }
+  @media (max-width: 639px) { #features .cx-feat { --cx-feat-h: 180px; } #features .cx-feat__lines li:nth-child(n+3) { display: none; } .gx-acts { display: none; } }
+  #features .cx-feat > .group { display: grid; gap: var(--s-6); }
+  @media (min-width: 1280px) { #features .wrap > .cx-feat__grid:last-child { align-self: end; } }
+  .gx-win .loop-pause:focus-visible { outline: 2px solid #0b0a16; outline-offset: 2px; }
+  @media (max-width: 639px) { .gx-thumbs em { display: none; } }
+  #numbers .gx-num-photo { min-height: 640px; }
+  @media (max-width: 1023px) { #numbers .gx-num-photo { min-height: 320px; } }
+  /* the client's own screens (Figma exports) in a plain window frame */
+  .gx-shot, .gx-appshot { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px rgb(11 10 22 / .08), 0 40px 90px -30px rgb(11 10 22 / .45); }
+  .gx-shot__bar { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 16px; border-bottom: 1px solid rgb(0 0 0 / .07); font-size: 13px; color: #4a4a55; background: #fff; }
+  .gx-shot img, .gx-appshot img { display: block; width: 100%; height: auto; }
+  .gx-appshot { position: relative; margin-top: var(--s-7); height: 600px; }
+  .gx-appshot::after { content: ""; position: absolute; inset: auto 0 0 0; height: 96px; background: linear-gradient(transparent, #fff); pointer-events: none; }
+  .gx-crop { overflow: hidden; padding: 0; } .gx-crop img { display: block; width: 100%; height: auto; }
+  .gx-tour-frame { min-height: 600px; }
+  .gx-tour-shot { position: absolute; left: 40px; top: 40px; width: 900px; max-width: none; height: auto; border-radius: 12px; box-shadow: 0 0 0 1px rgb(11 10 22 / .08), 0 30px 70px -30px rgb(11 10 22 / .4); }
+  .gx-tour-panels p { margin: 0; font-size: 17px; line-height: 1.6; max-width: 46ch; }
+  @media (max-width: 1023px) { .gx-appshot { height: 420px; } .gx-tour-frame { min-height: 420px; } .gx-tour-shot { width: 680px; left: 24px; top: 24px; } }
+  @media (max-width: 639px) { .gx-appshot { height: 300px; } .gx-tour-frame { min-height: 300px; } .gx-tour-shot { width: 520px; left: 16px; top: 16px; } }
+  /* pricing tabs */
+  .gx-tabs { display: flex; gap: var(--s-2); margin-top: var(--s-5); flex-wrap: wrap; }
+  #numbers .cx-stat__num { font-size: clamp(28px, 3.2vw, 46px); }
+  .cx-plan__amount { font-size: clamp(28px, 2.8vw, 40px); }
+  /* tighter rhythm: content sections take their content's height, not a full screen, with less padding
+     (the hero and the pinned #how scene keep the kit's screen heights) */
+  :root { --gx-pt: 72px; --gx-pb: 72px; }
+  @media (max-width: 1023px) { :root { --gx-pt: 56px; --gx-pb: 56px; } }
+  @media (max-width: 639px) { :root { --gx-pt: 48px; --gx-pb: 48px; } }
+  main > section.section, footer.closing { height: auto; min-height: 0; padding: var(--gx-pt) 0 calc(var(--gx-pb) + var(--bar)); scroll-margin-top: var(--nav); }
+  main > section.section > .wrap, footer.closing > .wrap { height: auto; }
+  main > section.section > .wrap > .fill { flex: none; }
+  main > section.section.g2 > .wrap { grid-template-rows: auto auto; row-gap: var(--s-8); }
+  #promise .gx-promise-photo { height: 560px; aspect-ratio: auto; }
+  @media (max-width: 1023px) { #promise .gx-promise-photo { height: 420px; } }
+  @media (max-width: 639px) { #promise .gx-promise-photo { height: 320px; } }
+  @media (max-width: 639px) { main > section.section.g2 > .wrap { row-gap: var(--s-6); } }
+</style>
+</head>
+<body>
+<!-- type: software · site-kind software · kind software (Groom-X, a SaaS check-in assistant for pet groomers)
+     deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
+           footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
+     scene: parts-lock-into-the-whole (#how, the page's one effect)
+     moments: letters-assemble (#promise), liquid-type (the closing name)
+     components: fx-headline (hero fill), fx-feature-card (#features), fx-stat (#numbers), fx-pricing (#pricing) -->
+
+<header class="nav nav--tone">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top" aria-label="Pet-X Solutions home"><img src="img/logo-petx-162.webp" alt="Pet-X Solutions" width="81" height="36"></a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item">
+        <a class="nav__link" href="#features">Product <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <div class="menu-col span-3">
+              <p class="t-label">At check-in</p>
+              <a href="#features">Style previews<span>The finished groom, before it starts</span></a>
+              <a href="#features">Repeat sessions<span>The style a regular loved, again</span></a>
+              <a href="#product">Pet parent approval<span>A yes before the first clip</span></a>
+            </div>
+            <div class="menu-col span-3">
+              <p class="t-label">Behind the desk</p>
+              <a href="#features">Equipment care<span>Alerts before a tool fails</span></a>
+              <a href="#features">Business snapshot<span>Trends against last year</span></a>
+            </div>
+            <a class="menu-card span-3 start-10" href="#how">
+              <div class="panel"><img loading="lazy" width="640" height="642" class="frame__img" src="img/style-golden-640.webp" alt="A rendered style preview of a groomed golden dog"></div>
+              <span class="t-card">See the day view</span>
+              <span class="t-small muted">Every check-in on one screen</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#how">Workflow</a></div>
+      <div class="nav__item"><a class="nav__link" href="#pricing">Pricing</a></div>
+      <div class="nav__item"><a class="nav__link" href="#reviews">Reviews</a></div>
+      <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#pricing">Start free trial</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO: centred (layout-v4.md, heroes.json "centred"), on the client's dark brand ground, the h1's key phrase filled (fx-headline) -->
+  <section class="hero hero--centred ground-inverse" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__c cx-hero">
+        <a class="pill" href="#pricing"><span>Groom-X launches soon</span><span class="muted">See the plans</span></a>
+        <h1 id="hero-h">The check-in assistant for <span class="gx-accent">pet groomers</span></h1>
+        <p class="hero__lead">Show pet parents a realistic picture of the finished groom before you start. Every plan starts with a 30-day free trial.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#pricing">Start free trial<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="link" href="#how">See the workflow</a></div>
+      </div>
+      <div class="hero__window" role="img" aria-label="The Groom-X dashboard: grooms completed, first-time and total customers, and today’s check-ins">
+        <div class="ly-piece gx-shot" aria-hidden="true">
+          <div class="gx-shot__bar"><span class="gx-dots"><i></i><i></i><i></i></span></div>
+          <img src="img/app/dashboard-top-880.webp" srcset="img/app/dashboard-top-880.webp 880w, img/app/dashboard-top-1760.webp 1760w" sizes="(max-width: 1023px) 92vw, 880px" width="880" height="441" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- APP-FRAME (sections-library.md): today's check-ins (window) beside the open check-in -->
+  <section class="section" id="product" aria-labelledby="product-h">
+    <div class="wrap">
+      <div class="grid">
+        <h2 class="span-5" id="product-h">Every check-in, previewed and approved in one place</h2>
+        <p class="t-lead muted span-6 start-7">Pick the client and pet, add your grooming instruction, and Groom-X generates the finished style. Agree the image and it goes to the pet parent by email or text. <a class="link" href="#features">See every feature</a></p>
+      </div>
+      <div class="gx-appshot" role="img" aria-label="Groom-X image generation: the rendered style of a Pomeranian beside the groomer’s instructions, with Generate new image and Agreed image">
+        <div class="gx-shot__bar"><span class="gx-dots"><i></i><i></i><i></i></span></div>
+        <img src="img/app/image-generation-1280.webp" srcset="img/app/image-generation-1280.webp 1280w, img/app/image-generation-2200.webp 2200w" sizes="(max-width: 1279px) 92vw, 1280px" width="1280" height="887" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT (moment: letters-assemble) -->
+  <section class="section" id="promise" data-moment="letters-assemble" data-moment-opts='{"spread": 1}' aria-labelledby="promise-h">
+    <div class="wrap">
+      <div class="grid fill">
+        <div class="span-6">
+          <h2 class="mo-la__type" id="promise-h">Show the groom first.</h2>
+          <p class="mo-la__sub">About 1 in 3 grooming customers never come back after the first visit, and miscommunication is often why. Groom-X settles the style before the first clip.</p>
+        </div>
+        <div class="frame frame--photo span-6 start-7 gx-promise-photo"><img width="900" height="900" class="frame__img" src="img/cat-shampoo-900.webp" srcset="img/cat-shampoo-480.webp 480w, img/cat-shampoo-900.webp 900w" sizes="(max-width: 1023px) 92vw, 628px" alt="A long-haired cat being shampooed and rinsed" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES (fx-feature-card): a 2x2, each an inset panel on a still painted or grain ground holding a Groom-X window -->
+  <section class="section g2" id="features" aria-labelledby="cx-feat-title">
+    <div class="wrap cx cx-feat">
+        <div class="group">
+        <header class="cx-feat__head">
+          <h2 class="cx-feat__h" id="cx-feat-title">Four tools in every check-in</h2>
+          <p class="cx-feat__sub">Groom-X keeps customers coming back by making every style, session and tool clear.</p>
+        </header>
+        <div class="cx-feat__grid">
+          <article class="cx-feat__card">
+            <div class="cx-feat__copy">
+              <h3 class="cx-feat__title">Style previews before the groom</h3>
+              <p class="cx-feat__text">Groom-X reads the breed, coat type and your instructions, then shows how the pet will look after grooming.</p>
+            </div>
+            <div class="cx-feat__panel" data-cx-effect="painterly-landscape" data-cx-scene="day" data-cx-seed="3" data-cx-params='{"horizon":0.4,"side":-1,"slope":10}' data-cx-loop="invoice">
+              <div class="cx-feat__win cx-feat__win--bleed" data-demo aria-hidden="true">
+                <div class="cx-feat__bar">
+                  <span class="cx-feat__name">Mocha · Style preview</span>
+                  <span class="cx-feat__chip" data-state>Draft</span>
+                  <span class="cx-feat__btn" data-target><span data-label>Send</span></span>
+                </div>
+                <div class="gx-thumbs">
+                  <span><img loading="lazy" width="300" height="300" src="img/groomer-poodle-300.webp" srcset="img/groomer-poodle-160.webp 160w, img/groomer-poodle-300.webp 300w" sizes="(max-width: 639px) 90px, 150px" alt="" style="object-position: 80% 50%"><em>Continental</em></span>
+                  <span class="is-on"><img loading="lazy" width="300" height="300" src="img/style-golden-300.webp" srcset="img/style-golden-160.webp 160w, img/style-golden-300.webp 300w" sizes="(max-width: 639px) 90px, 150px" alt=""><em>Lamb cut</em></span>
+                  <span><img loading="lazy" width="300" height="300" src="img/groomer-pom-300.webp" srcset="img/groomer-pom-160.webp 160w, img/groomer-pom-300.webp 300w" sizes="(max-width: 639px) 90px, 150px" alt="" style="object-position: 30% 60%"><em>Teddy</em></span>
+                </div>
+                
+              </div>
+            </div>
+          </article>
+          <article class="cx-feat__card">
+            <div class="cx-feat__copy">
+              <h3 class="cx-feat__title">Repeat check-ins for your regulars</h3>
+              <p class="cx-feat__text">Duplicate a regular’s last session after a fresh skin and coat check. The next visit starts where the last one ended.</p>
+            </div>
+            <div class="cx-feat__panel" data-cx-effect="grain-gradient" data-cx-seed="47">
+              <div class="cx-feat__win cx-feat__win--side gx-crop" aria-hidden="true"><img src="img/app/session-history-640.webp" srcset="img/app/session-history-640.webp 640w, img/app/session-history-1100.webp 1100w" sizes="(max-width: 1023px) 80vw, 520px" width="640" height="319" alt="" loading="lazy"></div>
+            </div>
+          </article>
+        </div>
+        </div>
+        <div class="cx-feat__grid">
+          <article class="cx-feat__card">
+            <div class="cx-feat__copy">
+              <h3 class="cx-feat__title">Equipment alerts at every check-in</h3>
+              <p class="cx-feat__text">Groom-X tracks the tools used in each session and predicts maintenance, to avoid injuries and breakdowns.</p>
+            </div>
+            <div class="cx-feat__panel" data-cx-effect="painterly-landscape" data-cx-scene="dusk" data-cx-seed="9" data-cx-params='{"horizon":0.5,"side":1,"slope":16,"hillY":0.1}'>
+              <div class="cx-feat__win cx-feat__win--bleed gx-crop" aria-hidden="true"><img src="img/app/tools-640.webp" srcset="img/app/tools-640.webp 640w, img/app/tools-1100.webp 1100w" sizes="(max-width: 1023px) 80vw, 520px" width="640" height="316" alt="" loading="lazy"></div>
+            </div>
+          </article>
+          <article class="cx-feat__card">
+            <div class="cx-feat__copy">
+              <h3 class="cx-feat__title">A business snapshot for pet groomers</h3>
+              <p class="cx-feat__text">Business trends on one easy dashboard, with insights and year-over-year comparisons.</p>
+            </div>
+            <div class="cx-feat__panel" data-cx-effect="painterly-landscape" data-cx-scene="meadow" data-cx-seed="14" data-cx-params='{"horizon":0.36,"side":1,"slope":20,"hillY":0.05}'>
+              <div class="cx-feat__win cx-feat__win--narrow gx-crop" aria-hidden="true"><img src="img/app/customers-chart-640.webp" srcset="img/app/customers-chart-640.webp 640w, img/app/customers-chart-1100.webp 1100w" sizes="(max-width: 1023px) 80vw, 440px" width="640" height="318" alt="" loading="lazy"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+  </section>
+
+
+  <!-- TABS-TOUR (sections-library.md): the client's own screens, one tab each, in a frame that stays still -->
+  <section class="section ground-surface" id="tour" aria-labelledby="tour-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5 stack-4">
+          <div class="section-head"><h2 id="tour-h">One app for the whole salon. <span class="muted">Every screen your team uses, from check-in to closing.</span></h2></div>
+          <div class="tabs gx-tour-tabs" role="tablist" aria-label="Groom-X screens">
+            <button class="tab" role="tab" id="tt-1" aria-selected="true" aria-controls="tp-1 ts-1">Track your day</button>
+            <button class="tab" role="tab" id="tt-2" aria-selected="false" aria-controls="tp-2 ts-2" tabindex="-1">Run sessions</button>
+            <button class="tab" role="tab" id="tt-3" aria-selected="false" aria-controls="tp-3 ts-3" tabindex="-1">Manage clients</button>
+            <button class="tab" role="tab" id="tt-4" aria-selected="false" aria-controls="tp-4 ts-4" tabindex="-1">Manage staff</button>
+            <button class="tab" role="tab" id="tt-5" aria-selected="false" aria-controls="tp-5 ts-5" tabindex="-1">Track tools</button>
+          </div>
+          <div class="gx-tour-panels">
+            <div role="tabpanel" id="tp-1" aria-labelledby="tt-1"><p>The dashboard shows grooms completed, first-time and total customers, today’s check-ins and the tools that need attention.</p></div>
+            <div role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden><p>Every session in one list, with its groomer, pet, check-in time and status, and a button to start the next one.</p></div>
+            <div role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden><p>Each client with their pets, coat details and past sessions, so a repeat visit starts from the last approved style.</p></div>
+            <div role="tabpanel" id="tp-4" aria-labelledby="tt-4" hidden><p>Your groomers and admins with their roles, contact details and speciality, added and edited in one place.</p></div>
+            <div role="tabpanel" id="tp-5" aria-labelledby="tt-5" hidden><p>Every tool with its remaining limit and status, so shears and clippers are serviced before they cause a problem.</p></div>
+          </div>
+        </div>
+        <div class="frame frame--split span-6 start-7 gx-tour-frame">
+          <div class="stage stage--fade-br">
+            <img id="ts-1" class="gx-tour-shot" src="img/app/tour-dashboard-1280.webp" srcset="img/app/tour-dashboard-1280.webp 1280w, img/app/tour-dashboard-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X dashboard" loading="lazy">
+            <img id="ts-2" class="gx-tour-shot" src="img/app/tour-sessions-1280.webp" srcset="img/app/tour-sessions-1280.webp 1280w, img/app/tour-sessions-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X session management list" loading="lazy" hidden>
+            <img id="ts-3" class="gx-tour-shot" src="img/app/tour-clients-1280.webp" srcset="img/app/tour-clients-1280.webp 1280w, img/app/tour-clients-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X client management list" loading="lazy" hidden>
+            <img id="ts-4" class="gx-tour-shot" src="img/app/tour-staff-1280.webp" srcset="img/app/tour-staff-1280.webp 1280w, img/app/tour-staff-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X staff management list" loading="lazy" hidden>
+            <img id="ts-5" class="gx-tour-shot" src="img/app/tour-equipment-1280.webp" srcset="img/app/tour-equipment-1280.webp 1280w, img/app/tour-equipment-2200.webp 2200w" sizes="900px" width="1280" height="800" alt="The Groom-X tools management list" loading="lazy" hidden>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE: parts-lock-into-the-whole (scenes.md): the Groom-X day view assembles from its panels -->
+  <section class="sc" id="how" data-big-scene="parts-lock-into-the-whole" data-big-scene-opts='{"hold":1}' style="--h: 1" aria-labelledby="pl-h">
+    <div class="sc__stage">
+      <p class="pl__word" aria-hidden="true">Today</p>
+      <div class="pl__ui gx" data-ui role="img" aria-label="The Groom-X day view: today’s pets, their styles and approvals, and the equipment alerts">
+        <div class="pl__panel pl__bar"><span class="gx-dots"><i></i><i></i><i></i></span><b>Groom-X</b> <span class="tab on">Check-ins</span><span class="tab">Styles</span><span class="tab">Equipment</span></div>
+        <div class="pl__panel pl__side"><small>Check-ins</small><span class="on">Today</span><span>Waiting</span><span>Done</span><small>Business</small><span>Snapshot</span><span>Equipment</span></div>
+        <div class="pl__panel pl__main">
+          <p class="pl__title">Check-ins <span class="pl__title-word">Today</span></p>
+          <table>
+            <thead><tr><th>Pet</th><th>Style</th><th>Pet parent</th></tr></thead>
+            <tbody>
+              <tr><td>Biscuit, Pomeranian</td><td>Teddy trim</td><td data-layer="1"><span class="st ok">Approved</span></td></tr>
+              <tr><td>Sunny, Golden Retriever</td><td>Tidy trim</td><td data-layer="1"><span class="st wait">Previewing</span></td></tr>
+              <tr><td>Mocha, Standard Poodle</td><td>Continental</td><td data-layer="2"><span class="st ok">Approved</span></td></tr>
+              <tr><td>Pepper, Schnauzer</td><td data-layer="2">Repeat of visit 8</td><td data-layer="2"><span class="st ok">Approved</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pl__panel pl__insp">
+          <h4>Alerts</h4>
+          <div class="note agent" data-layer="2"><b><i>G</i>Groom-X</b>Sunny’s parent opened the preview 2 minutes ago.</div>
+          <div class="note" data-layer="3"><b><i>!</i>Equipment</b>Curved shears are due for sharpening after this session.</div>
+        </div>
+      </div>
+      <div class="pl__spec">
+        <h2 id="pl-h">The day view: every check-in on one screen</h2>
+        <dl><div><dt>Works on</dt><dd>Phones, tablets, laptops, desktops</dd></div><div><dt>Support</dt><dd>24/7 virtual agent</dd></div><div><dt>Available</dt><dd>United States and Canada</dd></div><div><dt>Free trial</dt><dd>30 days on every plan</dd></div></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS (fx-stat, dark band) -->
+  <section class="section ground-inverse" id="numbers" aria-labelledby="numbers-h">
+    <div class="wrap">
+      <div class="grid">
+      <div class="cx cx-stat span-6">
+        <h2 id="numbers-h" style="margin-bottom: var(--s-7)">Why the first visit matters. <span class="muted">Retention decides a salon’s revenue.</span></h2>
+        <dl class="cx-stat__row" style="grid-template-columns: minmax(0, 1fr); gap: var(--s-6)">
+          <div class="cx-stat__item"><dt class="cx-stat__label">Typical customer retention in pet grooming</dt><dd class="cx-stat__num" data-fill>60–80%</dd></div>
+          <div class="cx-stat__item"><dt class="cx-stat__label">Customers who never return for a second visit</dt><dd class="cx-stat__num" data-fill>1 in 3</dd></div>
+          <div class="cx-stat__item"><dt class="cx-stat__label">Support for every Groom-X client</dt><dd class="cx-stat__num" data-fill>24/7</dd></div>
+        </dl>
+      </div>
+      <div class="frame frame--photo span-6 start-7 gx-num-photo"><img width="900" height="900" class="frame__img" src="img/cat-dryer-900.webp" srcset="img/cat-dryer-480.webp 480w, img/cat-dryer-900.webp 900w" sizes="(max-width: 1023px) 92vw, 628px" alt="A long-haired cat with its fur blown back by a hair dryer" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS: the three quotes the client publishes, and the partners in their own colours -->
+  <section class="section" id="reviews" aria-labelledby="reviews-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="reviews-h">Groomers on Groom-X. <span class="muted">Clear expectations, happier clients.</span></h2></div>
+      <div class="grid gx-quotes">
+        <figure class="card span-4"><blockquote>“The AI tool eliminates confusion and helps pet parents visualize the end result before we even start. This has led to happier clients and more repeat business.”</blockquote><div class="person"><span class="gx-ava" style="background:#1e97b7" aria-hidden="true">LB</span><span><span class="person__name">Laura Bennett</span></span></div></figure>
+        <figure class="card span-4"><blockquote>“Groom-X has transformed the way I communicate with my clients, ensuring every grooming session meets expectations. My customers love the results.”</blockquote><div class="person"><span class="gx-ava" style="background:#158b51" aria-hidden="true">MP</span><span><span class="person__name">Michael Peterson</span></span></div></figure>
+        <figure class="card span-4"><blockquote>“A game-changing tool that streamlines check-ins, enhances customer retention and improves overall performance for grooming businesses.”</blockquote><div class="person"><span class="gx-ava" style="background:#9c4c97" aria-hidden="true">CB</span><span><span class="person__name">Connie Bailey</span></span></div></figure>
+      </div>
+      <div class="gx-logos" role="list" aria-label="Partners">
+        <img width="400" height="400" role="listitem" src="img/TDG-Logo-Transparent-1-400x400-1.webp" alt="The Dog Gurus" loading="lazy">
+        <img width="150" height="150" role="listitem" src="img/Untitled-3.png" alt="The Ambitious Groomer" loading="lazy">
+        <img width="150" height="150" role="listitem" src="img/Untitled-3.1.png" alt="Snapt Pet Gear" loading="lazy">
+        <img width="150" height="150" role="listitem" src="img/Untitled-3.2.png" alt="Diamond in the Ruff" loading="lazy">
+        <img width="150" height="150" role="listitem" src="img/Untitled-3.3.png" alt="Cosmos Bathing Systems" loading="lazy">
+        <img width="150" height="150" role="listitem" src="img/Untitled-3.4.png" alt="T.E.S." loading="lazy">
+        <img width="150" height="150" role="listitem" src="img/Untitled-3.5.png" alt="Pretty Paws Academy" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING (fx-pricing): two tabs of three plans, the recommended plan lit -->
+  <section class="section" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="pricing-h">Plans by grooms per day. <span class="muted">Every plan starts with a 30-day free trial.</span></h2>
+        <div class="tabs gx-tabs" role="tablist" aria-label="Salon size">
+          <button class="tab" role="tab" id="t-small" aria-selected="true" aria-controls="p-small">Up to 25 grooms a day</button>
+          <button class="tab" role="tab" id="t-large" aria-selected="false" aria-controls="p-large" tabindex="-1">35 grooms a day and more</button>
+        </div>
+      </div>
+      <div role="tabpanel" id="p-small" aria-labelledby="t-small">
+        <div class="cx cx-pricing" data-cx-effect="grain-gradient" data-cx-seed="35">
+          <article class="cx-plan"><h3 class="cx-plan__name">Basic</h3><p class="cx-plan__for">Independent groomers, about 5 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$39.99</span><span class="cx-plan__per">a month, plus taxes, or $425.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Basic%20trial">Try Basic</a><ul class="cx-plan__list"><li>80 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
+          <article class="cx-plan is-featured" aria-describedby="b-silver"><div class="cx-plan__fx" aria-hidden="true"></div><div class="cx-plan__top"><h3 class="cx-plan__name">Silver</h3><span class="cx-plan__badge" id="b-silver">Best value</span></div><p class="cx-plan__for">Small salons, about 15 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$45.99</span><span class="cx-plan__per">a month, plus taxes, or $485.99 a year</span></p><a class="btn btn--primary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20free%20trial">Start free trial</a><ul class="cx-plan__list"><li>300 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
+          <article class="cx-plan"><h3 class="cx-plan__name">Gold</h3><p class="cx-plan__for">Small and medium salons, about 25 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$49.99</span><span class="cx-plan__per">a month, plus taxes, or $529.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Gold%20trial">Try Gold</a><ul class="cx-plan__list"><li>500 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
+        </div>
+      </div>
+      <div role="tabpanel" id="p-large" aria-labelledby="t-large" hidden>
+        <div class="cx cx-pricing" data-cx-effect="grain-gradient" data-cx-seed="36">
+          <article class="cx-plan"><h3 class="cx-plan__name">Platinum</h3><p class="cx-plan__for">Medium and large salons, about 35 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$59.99</span><span class="cx-plan__per">a month, plus taxes, or $635.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Platinum%20trial">Try Platinum</a><ul class="cx-plan__list"><li>700 AI style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
+          <article class="cx-plan is-featured" aria-describedby="b-diamond"><div class="cx-plan__fx" aria-hidden="true"></div><div class="cx-plan__top"><h3 class="cx-plan__name">Diamond</h3><span class="cx-plan__badge" id="b-diamond">High-volume best value</span></div><p class="cx-plan__for">Large salons, about 50 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$65.99</span><span class="cx-plan__per">a month, plus taxes, or $698.99 a year</span></p><a class="btn btn--primary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20free%20trial">Start free trial</a><ul class="cx-plan__list"><li>1,000 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
+          <article class="cx-plan"><h3 class="cx-plan__name">Star Plus</h3><p class="cx-plan__for">High-volume salons open 7 days, about 50 grooms a day.</p><p class="cx-plan__price"><span class="cx-plan__amount">$69.99</span><span class="cx-plan__per">a month, plus taxes, or $740.99 a year</span></p><a class="btn btn--secondary cx-plan__cta" href="mailto:info@petxusa.com?subject=Groom-X%20Star%20Plus%20trial">Try Star Plus</a><ul class="cx-plan__list"><li>1,200 style images a month</li><li>Free tool maintenance alerts</li><li>24/7 support</li></ul></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ: every answer open -->
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="grid">
+        <div class="span-5 stack-4">
+          <h2 id="faq-h">Questions</h2>
+          <p class="t-lead muted">Anything else? Email us and we reply Monday to Friday during business hours.</p>
+          <p><a class="link" href="mailto:info@petxusa.com">info@petxusa.com</a></p>
+          <ul class="gx-contacts">
+            <li><img loading="lazy" class="ic" src="assets/icons/ui-headset.svg" alt="" width="24" height="24"><span><b>24/7 support</b>Through the Groom-X virtual agent</span></li>
+            <li><img loading="lazy" class="ic" src="assets/icons/ui-mail.svg" alt="" width="24" height="24"><span><b>support@petxusa.com</b>Answered during office hours (EST)</span></li>
+          </ul>
+        </div>
+        <div class="faq span-6 start-7">
+          <div class="faq__item"><h3>What does the style preview show?</h3><p>An AI tool that creates pictures of how a pet will look after grooming, so groomers and pet parents agree on a style.</p></div>
+          <div class="faq__item"><h3>Which devices can pet groomers use?</h3><p>Yes. Groom-X works on phones, tablets, laptops and desktops.</p></div>
+          <div class="faq__item"><h3>Which countries can groomers use it in?</h3><p>In Canada, the United States and its territories. Europe and Latin America are next.</p></div>
+          <div class="faq__item"><h3>How do I reach support?</h3><p>Clients get 24/7 support through our virtual agent, or email support@petxusa.com during office hours (EST).</p></div>
+          <div class="faq__item"><h3>Can I suggest a tool for another pet business?</h3><p>Yes. Send ideas for boarding, daycare, vets or trainers to info@petxusa.com.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER.CLOSING: close--word (the name, liquid under the pointer) + footer-columns on the dark ground -->
+<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Start your free trial</h2><p class="t-lead">30 days free on every plan. No surprises at pick-up.</p></div>
+        <a class="btn btn--primary" href="#pricing">Start free trial<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word mo-lt__type" data-moment="liquid-type" data-moment-opts='{"strength": 1}' aria-hidden="true">Groom-X</p>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top" aria-label="Pet-X Solutions home"><img loading="lazy" src="img/logo-petx-162.webp" alt="Pet-X Solutions" width="81" height="36"></a>
+          <p class="footer__lede">Building connections, one pet at a time.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Product</h3><ul><li><a href="#features">Features</a></li><li><a href="#how">Workflow</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Company</h3><ul><li><a href="#reviews">Reviews</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Questions</h3><ul><li><a href="#faq">FAQ</a></li><li><a href="mailto:support@petxusa.com">Support</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Contact</h3><ul><li><a href="mailto:info@petxusa.com">info@petxusa.com</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Pet-X Solutions &nbsp; Site by <a href="https://kodexolabs.com/">Kodexo Labs</a></span>
+        <div class="socials"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script type="module" src="assets/scenes/scenes.js"></script>
+<script type="module">
+  import features from './assets/components/fx-feature-card/component.js';
+  import stat from './assets/components/fx-stat/component.js';
+  import pricing from './assets/components/fx-pricing/component.js';
+  features(document.querySelector('.cx-feat'));
+  document.querySelectorAll('.cx-stat').forEach(el => stat(el));
+  document.querySelectorAll('.cx-pricing').forEach(el => pricing(el));
+</script>
+</body>
+</html>
