@@ -54,8 +54,6 @@
 <link rel="modulepreload" href="assets/moments/lib.js">
 <link rel="modulepreload" href="assets/moments/giant-type-pass/moment.js">
 <link rel="modulepreload" href="assets/moments/iris-opens-late/moment.js">
-<link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
-<link rel="modulepreload" href="assets/moments/closing-lift/moment.js">
 <script>document.documentElement.classList.add('sc-js');setTimeout(()=>document.documentElement.classList.add('sc-safe'),2500)</script>
 <!-- page CSS: the client's brand rules, and what sits inside the visuals -->
 <style>
@@ -207,11 +205,11 @@
   #numbers .cx-stat__num { font-size: clamp(28px, 3.2vw, 46px); }
   /* tighter rhythm: content sections take their content's height, not a full screen, with less padding
      (the hero and the pinned #how scene keep the kit's screen heights) */
-  :root { --gx-pt: 72px; --gx-pb: 72px; }
-  @media (max-width: 1023px) { :root { --gx-pt: 56px; --gx-pb: 56px; } }
-  @media (max-width: 639px) { :root { --gx-pt: 48px; --gx-pb: 48px; } }
-  main > section.section, .gx-cta > section.section, footer.closing { height: auto; min-height: 0; padding: var(--gx-pt) 0 calc(var(--gx-pb) + var(--bar)); scroll-margin-top: var(--nav); }
-  main > section.section > .wrap, .gx-cta > section.section > .wrap, footer.closing > .wrap { height: auto; }
+  :root { --gx-pt: 48px; --gx-pb: 48px; }
+  @media (max-width: 1023px) { :root { --gx-pt: 40px; --gx-pb: 40px; } }
+  @media (max-width: 639px) { :root { --gx-pt: 32px; --gx-pb: 32px; } }
+  main > section.section, footer.closing { height: auto; min-height: 0; padding: var(--gx-pt) 0 calc(var(--gx-pb) + var(--bar)); scroll-margin-top: var(--nav); }
+  main > section.section > .wrap, footer.closing > .wrap { height: auto; }
   main > section.section > .wrap > .fill { flex: none; }
   main > section.section.g2 > .wrap { grid-template-rows: auto auto; row-gap: var(--s-8); }
   #who-we-are .gx-promise-photo { height: 560px; aspect-ratio: auto; }
@@ -382,18 +380,39 @@
   @media (prefers-reduced-motion: reduce) { .rv-card, .rv-card::after, .rv-card.is-out { transition: none !important; } .rv-star.is-lit, .rv-card.is-front .rv-q { animation: none; transform: none; } }
   .gx-rev .gx-partners-h { margin: 88px 0 20px; text-align: center; color: rgb(236 226 240 / .8); font-size: 18px; font-weight: 500; }
   .gx-rev .gx-logos { margin-top: 0; padding: 20px 24px; border-radius: 22px; background: #fff; }
-  /* ===== CTA: closing-lift, the band in the brand colours instead of black ===== */
-  .gx-cta .mo-cl__img { object-position: 64% 18%; }
-  .gx-cta .mo-cl__under { background: #23204A; }
-  .gx-cta .mo-cl__under::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    background: linear-gradient(90deg, rgb(35 32 74 / .88) 0%, rgb(35 32 74 / .62) 45%, rgb(48 25 56 / .15) 100%), linear-gradient(to top, rgb(20 18 46 / .7), transparent 55%); }
-  .gx-cta .mo-cl__band { z-index: 2; background: none; padding: clamp(96px, 16vh, 160px) 0 clamp(56px, 9vh, 96px); }
-  .gx-cta .mo-cl__band h2 { max-width: 14ch; font-size: clamp(40px, 5.2vw, 76px); line-height: 1.02; letter-spacing: -.035em; }
-  .gx-cta .mo-cl__band p { max-width: 46ch; color: rgb(244 236 247 / .9); line-height: 1.55; }
-  .gx-cta.mo-cl .mo-cl__band .btn--primary { height: 54px; padding-inline: 28px; font-size: 16px; background: var(--gradient-button); color: #fff; border-color: transparent; box-shadow: 0 14px 30px -12px rgb(156 76 151 / .8); }
-  @media (max-width: 639px) {
-    .gx-cta .mo-cl__under::before { background: linear-gradient(to top, rgb(35 32 74 / .94) 10%, rgb(35 32 74 / .55) 60%, rgb(35 32 74 / .2)); }
-    .gx-cta.mo-cl .mo-cl__band .btn--primary { width: 100%; justify-content: center; }
+  /* ===== CTA: the light flood, after tasteskill.dev's closing (not a kit component), in the Pet-X brand.
+     The section holds while a glow rises from below and floods the ground pink; the first line comes into focus
+     from a blur, the second rises in white, the action follows; then the night rises into the footer. ===== */
+  #get-started.lf { --lf-day: #f7f4f8; --lf-halo: #d9a8d3; --lf-core: #9C4C97; --lf-teal: #1E97B7; --lf-night: #0b0a16; --lf-ink: #14122e; --lf-key: #fff7fd;
+    position: relative; height: 100svh; padding: 0; background: #0b0a16; container-type: inline-size; }
+  #get-started.lf.is-live { height: 330svh; }
+  .lf-stage { position: relative; height: 100svh; overflow: clip; display: grid; place-items: center; isolation: isolate; }
+  .lf.is-live .lf-stage { position: sticky; top: 0; }
+  .lf-ground { position: absolute; inset: 0; z-index: 0; background: var(--lf-day); }
+  .lf-ground--core { background: radial-gradient(70% 60% at 50% 100%, #b062aa, var(--lf-core) 60%, #7d3a8c); opacity: var(--lf-flood, 1); }
+  .lf-sun { position: absolute; z-index: 1; left: 50%; top: 100%; width: 150%; height: 150%; transform: translate(-50%, calc(-50% + var(--lf-rise, 0) * 1%)) scale(var(--lf-sun-s, 1)); opacity: var(--lf-sun-o, 0); pointer-events: none; }
+  .lf-halo, .lf-core { position: absolute; border-radius: 50%; }
+  .lf-halo { inset: 11%; background: var(--lf-halo); filter: blur(6.5cqw); }
+  .lf-core { inset: 22%; background: radial-gradient(closest-side, #c46fbe, var(--lf-core) 70%); filter: blur(4.5cqw); }
+  .lf-core::after { content: ""; position: absolute; inset: 30% 34% 40%; border-radius: 50%; background: var(--lf-teal); opacity: .35; filter: blur(5cqw); }
+  .lf-night { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 34%; transform: translateY(calc((1 - var(--lf-dusk, 0)) * 100%)); pointer-events: none; }
+  .lf-night__fill { position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(11 10 22 / 0), rgb(11 10 22 / .85) 55%, #0b0a16); }
+  .lf-grain { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .2; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nLjg1JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI24pJy8+PC9zdmc+"); }
+  .lf-body { position: relative; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; padding: 4svh 24px 0; text-align: center; }
+  .lf-line { display: flex; flex-direction: column; align-items: center; gap: .06em; margin: 0; font-weight: 600; letter-spacing: -.048em; line-height: 1; text-wrap: balance; }
+  .lf-lead, .lf-key { display: block; padding-bottom: .08em; white-space: nowrap; }
+  .lf-lead { font-size: clamp(2.5rem, 6.8cqw, 7.5rem); color: var(--lf-lead-ink, var(--lf-ink)); filter: blur(var(--lf-blur, 0px)); opacity: var(--lf-lead-o, 1); transform: scale(var(--lf-lead-s, 1)); }
+  .lf-key { font-size: clamp(3rem, 8.6cqw, 9.5rem); color: var(--lf-key); opacity: var(--lf-key-o, 1); transform: translateY(calc(var(--lf-key-y, 0) * 1em)); }
+  .lf-sub { max-width: 44ch; margin: clamp(20px, 3svh, 32px) 0 0; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.55; color: rgb(255 247 253 / .92); opacity: var(--lf-act-o, 1); transform: translateY(calc((1 - var(--lf-act-o, 1)) * 14px)); }
+  .lf-act { margin-top: clamp(18px, 2.6svh, 28px); opacity: var(--lf-act-o, 1); transform: translateY(calc((1 - var(--lf-act-o, 1)) * 14px)); }
+  .lf-act .btn--primary { height: 54px; padding-inline: 28px; font-size: 16px; background: #fff7fd; color: #23204A; border-color: transparent; box-shadow: 0 16px 34px -14px rgb(20 18 46 / .6); }
+  .lf-act .btn--primary:hover { background: #fff; color: #23204A; }
+  @media (max-width: 767px) {
+    .lf-sun { width: 240%; height: 100%; }
+    .lf-halo { filter: blur(13cqw); } .lf-core { filter: blur(9cqw); }
+    .lf-lead { font-size: clamp(2rem, 9.6cqw, 3rem); white-space: normal; } .lf-key { font-size: clamp(2.4rem, 11.5cqw, 3.6rem); white-space: normal; }
+    .lf-act, .lf-act .btn { width: 100%; } .lf-act .btn { justify-content: center; }
   }
   /* ===== WHY GROOM-X: feature cards after tasteskill.dev's "How it works", in the Pet-X brand ===== */
   #why.gx-feats { --f-ink: #14122e; --f-ink2: #4a4a55; --f-ink3: #7b7a88; --f-hair: rgb(35 32 74 / .08); --f-sunk: #f4f1f6; --f-label: #9C4C97;
@@ -594,14 +613,47 @@
   .gx-num-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); }
   .gx-num-cta { margin-top: var(--s-7); }
   .gx-partners-h { margin: var(--s-8) 0 var(--s-5); font-size: 22px; }
-  .closing .gx-social { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); padding: 0; margin: 0; list-style: none; }
-  .closing .footer__lede { font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--muted); max-width: 40ch; }
-  .gx-social a, .gx-foot-p { color: var(--muted); font-size: 15px; line-height: 1.55; }
   @media (max-width: 1023px) {
     .gx-company { grid-template-columns: 1fr; gap: var(--s-6); }
-    .footer__col.start-6, .footer__col.start-10 { grid-column: auto; }
   }
   @media (max-width: 639px) { .gx-num-row { grid-template-columns: 1fr; } }
+  /* ===== FOOTER: after tasteskill.dev's footer, in the Pet-X brand. The CTA's night (#0b0a16) carries on as the
+     footer's ground; the name rises letter by letter out of a pink sunrise as the page reaches its end. ===== */
+  .pf { --pf-ink: #0b0a16; --pf-ease: cubic-bezier(.16,1,.3,1); position: relative; isolation: isolate; overflow: hidden;
+    padding: 40px 24px 0; background: var(--pf-ink); color: rgba(255,240,252,.72); font-family: "Poppins", system-ui, sans-serif; }
+  .pf-wrap { width: min(1240px, 100%); margin: 0 auto; }
+  .pf-grid { display: grid; grid-template-columns: minmax(0,1.4fr) repeat(3, minmax(0,1fr)); gap: 32px; padding-top: 36px; border-top: 1px solid rgba(255,240,252,.1); }
+  .pf-brand { display: flex; flex-direction: column; gap: 14px; }
+  .pf-logo { display: inline-flex; width: max-content; }
+  .pf-logo img { display: block; height: 36px; width: auto; }
+  .pf-brand p { max-width: 34ch; margin: 0; font-size: 14px; line-height: 1.55; }
+  .pf-col h3 { margin: 0; font-size: 13px; font-weight: 500; letter-spacing: 0; color: rgba(255,240,252,.66); }
+  .pf-col p { max-width: 28ch; margin: 14px 0 0; font-size: 14px; line-height: 1.55; }
+  .pf-col ul { display: grid; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; }
+  .pf-col a, .pf-legal a { position: relative; color: rgba(255,240,252,.82); font-size: 14.5px; text-decoration: none; transition: color .35s var(--pf-ease); }
+  .pf-col a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: 100% 50%; transition: transform .35s var(--pf-ease); }
+  .pf-col a:hover, .pf-legal a:hover { color: #fff; }
+  .pf-col a:hover::after { transform: scaleX(1); transform-origin: 0 50%; transition-duration: .5s; }
+  .pf a:focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 3px; border-radius: 3px; }
+  .pf-legal { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 40px; font-size: 13px; color: rgba(255,240,252,.66); }
+  .pf-legal p { margin: 0; }
+  .pf-legal a { font-size: 13px; text-decoration: underline; text-decoration-color: rgba(255,240,252,.25); text-underline-offset: 3px; }
+  /* the sunrise: a pink sun under the bottom edge, the name standing in it, cut by the page's end */
+  .pf-sunrise { position: relative; height: clamp(150px, 25vw, 400px); margin: clamp(40px, 5vw, 72px) -24px 0; pointer-events: none; user-select: none; container-type: inline-size; }
+  .pf-glow { position: absolute; z-index: -1; left: -30%; right: -30%; bottom: -110%; height: 220%; transform-origin: 50% 50%; will-change: transform, opacity;
+    background: radial-gradient(closest-side, #ffe3fa 0%, #f2c4ea 10%, #d98ccf 26%, #b862ad 40%, #9C4C97 54%, rgba(88,38,96,.72) 70%, rgba(35,32,74,.36) 86%, rgba(11,10,22,0) 100%);
+    transform: translateY(var(--pf-gy, 0%)) scale(var(--pf-gx, 1), var(--pf-gs, 1)); opacity: var(--pf-go, 1); }
+  .pf-glow::after { content: ""; position: absolute; inset: 28% 30%; background: radial-gradient(closest-side, rgba(255,236,252,.7) 0%, rgba(240,180,230,.32) 45%, rgba(230,160,220,0) 100%); }
+  .pf-sunrise[data-awake] .pf-glow::after { animation: pf-ember 9s ease-in-out infinite alternate; }
+  @keyframes pf-ember { from { opacity: .7; transform: scale(.9); } to { opacity: 1; transform: scale(1.1); } }
+  .pf-word { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; margin: 0; white-space: nowrap;
+    font: 400 33cqw/1 var(--brand-display); letter-spacing: -.02em; color: #fff7fd; translate: 0 .2em; }
+  .pf-word > span { display: inline-block; padding-top: .06em; will-change: transform; transform: translateY(var(--y, 0%));
+    background: linear-gradient(180deg, #fff7fd 34%, #f2c4ea 84%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  html.pf-js .pf [data-pf-in] { opacity: 0; transition: opacity .9s var(--pf-ease); transition-delay: calc(var(--pf-i, 0) * 80ms); }
+  html.pf-js .pf.is-in [data-pf-in] { opacity: 1; }
+  @media (max-width: 900px) { .pf-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } .pf-brand { grid-column: 1 / -1; } .pf-legal { flex-direction: column; } }
+  @media (prefers-reduced-motion: reduce) { html.pf-js .pf [data-pf-in] { opacity: 1; transition: none; } .pf-sunrise[data-awake] .pf-glow::after { animation: none; } }
   /* ===== BENEFITS OF GROOM-X: after tasteskill.dev's "Before and after" scene, in the Pet-X brand ===== */
   #features.gx-ba { --b-ink: #14122e; --b-ink2: #4a4a55; --b-ink3: #8a8896; --b-label: #9C4C97; --b-ease: cubic-bezier(.16,1,.3,1);
     position: relative; height: auto; min-height: 0; padding: 0; background: #fff; color: var(--b-ink); }
@@ -818,7 +870,7 @@
   }
   .gx-tab-short { display: none; }
   @media (max-width: 639px) { .gx-tab-long { display: none; } .gx-tab-short { display: inline; } }
-  .gx-hero + section { padding-top: calc(var(--gx-pt) + 24px); }
+  .gx-hero + section { padding-top: calc(var(--gx-pt) + 16px); }
 </style>
 </head>
 <body>
@@ -826,7 +878,7 @@
      deal: hero centred (kept from the approved V1 direction), nav nav-mega (nav--tone), close close-word,
            footer footer-columns on footer--dark, rhythm dark-band, buttons pill (the client's gradient pills), mark: the client's logo
      scene: parts-lock-into-the-whole (#how, the page's one effect)
-     moments: giant-type-pass (#who-we-are), iris-opens-late (#numbers), liquid-type (the closing name)
+     moments: giant-type-pass (#who-we-are), iris-opens-late (#numbers)
      fx-pricing (#pricing) -->
 
 <header class="nav nav--tone">
@@ -952,7 +1004,7 @@
           <div class="feature-copy">
             <span class="feat-label" data-enter style="--enter-i:0">Business</span>
             <h3 data-enter style="--enter-i:1">Grow Your Business</h3>
-            <p data-enter style="--enter-i:2">Whether you run a mobile grooming service, a salon, or a pet hotel with grooming offerings, Groom-X enhances communication around grooming styles and expectations—ensuring satisfied clients every time. Our intuitive, easy-to-use tool helps deliver consistent results, leading to stronger customer loyalty, repeat visits, and glowing reviews.</p>
+            <p data-enter style="--enter-i:2">Whether you run a mobile grooming service, a salon, or a pet hotel with grooming offerings, Groom-X enhances communication around grooming styles and expectations, ensuring satisfied clients every time. Our intuitive, easy-to-use tool helps deliver consistent results, leading to stronger customer loyalty, repeat visits, and glowing reviews.</p>
           </div>
         </article>
         <article class="feature feat is-dark flip" data-story="retain">
@@ -1145,11 +1197,8 @@
   </section>
 
 
-  <!-- CTA (kit moment closing-lift): the FAQ scrolls away like a sheet and uncovers the closing photograph held under it;
-       the photograph settles from a close crop and the closing line with the one action fades up on it -->
-  <div class="gx-cta" data-moment="closing-lift" data-moment-opts='{"settle": 1.18, "focus": "64% 18%"}'>
   <!-- FAQ: every answer open -->
-  <section class="section mo-cl__sheet" id="faq" aria-labelledby="faq-h">
+  <section class="section" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
       <div class="grid">
         <div class="span-5 stack-4">
@@ -1172,44 +1221,141 @@
       </div>
     </div>
   </section>
-    <section class="mo-cl__under" id="get-started" aria-labelledby="cta-h">
-      <img class="mo-cl__img" src="img/cta-afghan-960.webp" alt="An Afghan hound sitting under a retro hair dryer" width="960" height="640" loading="lazy">
-      <div class="mo-cl__band"><div class="container wrap">
-        <h2 id="cta-h">Upscale Your Grooming Services</h2>
-        <p>Our smart Check-In Assistant tool enhances your existing services, improving client retention and generating positive reviews. Join pet professionals who are elevating their offerings and keep customers coming back.</p>
-        <div class="btn-row"><a class="btn btn--primary" href="https://petxusa.com/groomx/">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
-      </div></div>
-    </section>
-  </div>
+
+  <!-- CTA (light flood, after tasteskill.dev's closing; not a kit component): the section holds while a glow rises and
+       floods the ground in the brand pink; the first line comes into focus from a blur, the second rises in white, the
+       paragraph and the action follow, then the night rises into the footer -->
+  <section class="lf" id="get-started" aria-labelledby="cta-h">
+    <div class="lf-stage">
+      <div class="lf-ground" aria-hidden="true"></div>
+      <div class="lf-ground lf-ground--core" aria-hidden="true"></div>
+      <div class="lf-sun" aria-hidden="true"><div class="lf-halo"></div><div class="lf-core"></div></div>
+      <div class="lf-grain" aria-hidden="true"></div>
+      <div class="lf-body">
+        <h2 class="lf-line" id="cta-h"><span class="lf-lead">Upscale Your</span> <span class="lf-key">Grooming Services</span></h2>
+        <p class="lf-sub">Our smart Check-In Assistant tool enhances your existing services, improving client retention and generating positive reviews. Join pet professionals who are elevating their offerings and keep customers coming back.</p>
+        <div class="lf-act"><a class="btn btn--primary" href="https://petxusa.com/groomx/">Get Started<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+      </div>
+      <div class="lf-night" aria-hidden="true"><div class="lf-night__fill"></div></div>
+    </div>
+  </section>
 
 </main>
 
-<!-- FOOTER.CLOSING: close--word (the name, liquid under the pointer) + footer-columns on the dark ground -->
-<footer class="footer closing footer--dark ground-inverse" id="contact" aria-label="Pet-X Solutions">
-  <div class="wrap">
-    <div class="closing__cta close--word">
-      <p class="close__word mo-lt__type" data-moment="liquid-type" data-moment-opts='{"strength": 1}' aria-hidden="true">Pet-X</p>
+<!-- FOOTER: after tasteskill.dev's footer (link grid, legal row, the name rising out of a sunrise glow), in the Pet-X brand -->
+<footer class="pf" id="contact" aria-label="Pet-X Solutions">
+  <div class="pf-wrap pf-grid">
+    <div class="pf-brand" data-pf-in style="--pf-i:0">
+      <a class="pf-logo" href="#top" aria-label="Pet-X Solutions home"><img loading="lazy" src="img/logo-petx-162.webp" alt="Pet-X Solutions" width="81" height="36"></a>
+      <p>Pet-X is perfect for all kinds of pet grooming businesses, from independent groomers and small shops to large grooming chains and franchises.</p>
     </div>
-    <div class="closing__links">
-      <div class="grid">
-        <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top" aria-label="Pet-X Solutions home"><img loading="lazy" src="img/logo-petx-162.webp" alt="Pet-X Solutions" width="81" height="36"></a>
-          <p class="footer__lede">Pet-X is perfect for all kinds of pet grooming businesses, from independent groomers and small shops to large grooming chains and franchises.</p>
-          <ul class="gx-social"><li><a href="https://www.facebook.com/profile.php?id=61572586269419">Facebook</a></li><li><a href="https://www.instagram.com/petxusa/">Instagram</a></li><li><a href="https://www.linkedin.com/company/pet-x-solutions">Linkedin</a></li></ul>
-        </div>
-        <div class="span-2 start-6 footer__col"><h3>Quick Links</h3><ul><li><a href="#top">Home</a></li><li><a href="https://petxusa.com/groomx">Groom X</a></li><li><a href="https://petxusa.com/about-us/">About Us</a></li><li><a href="https://petxusa.com/contact-us/">Contact Us</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Developed By:</h3><ul><li><a href="https://kodexolabs.com/">Kodexo Labs</a></li></ul></div>
-        <div class="span-3 start-10 footer__col"><h3>Groom-X</h3><p class="gx-foot-p">Groom-X makes pet care easy for pet owners. By simplifying pet grooming techniques using AI based models</p><p><a class="link" href="https://petxusa.com/groomx/">Get Started</a></p></div>
-      </div>
-      <div class="footer__legal">
-        <span>2025 &copy; Pet-X Solutions. All rights reserved. <a href="https://petxusa.com/terms-and-conditions/">Terms &amp; Conditions</a></span>
-        <div class="socials"></div>
-      </div>
-    </div>
-    </div>
+    <nav class="pf-col" aria-label="Quick Links" data-pf-in style="--pf-i:1"><h3>Quick Links</h3><ul><li><a href="#top">Home</a></li><li><a href="https://petxusa.com/groomx">Groom X</a></li><li><a href="https://petxusa.com/about-us/">About Us</a></li><li><a href="https://petxusa.com/contact-us/">Contact Us</a></li></ul></nav>
+    <nav class="pf-col" aria-label="Groom-X" data-pf-in style="--pf-i:2"><h3>Groom-X</h3><p>Groom-X makes pet care easy for pet owners. By simplifying pet grooming techniques using AI based models</p><ul><li><a href="https://petxusa.com/groomx/">Get Started</a></li></ul></nav>
+    <nav class="pf-col" aria-label="Social" data-pf-in style="--pf-i:3"><h3>Social</h3><ul><li><a href="https://www.facebook.com/profile.php?id=61572586269419">Facebook</a></li><li><a href="https://www.instagram.com/petxusa/">Instagram</a></li><li><a href="https://www.linkedin.com/company/pet-x-solutions">Linkedin</a></li></ul></nav>
+  </div>
+  <div class="pf-wrap pf-legal">
+    <p>2025 &copy; Pet-X Solutions. All rights reserved. <a href="https://petxusa.com/terms-and-conditions/">Terms &amp; Conditions</a></p>
+    <p>Developed By: <a href="https://kodexolabs.com/">Kodexo Labs</a></p>
+  </div>
+  <div class="pf-sunrise" aria-hidden="true">
+    <div class="pf-glow"></div>
+    <p class="pf-word"><span>P</span><span>e</span><span>t</span><span>-</span><span>X</span></p>
   </div>
 </footer>
 
+<script>
+/* footer sunrise (tasteskill.dev's timeline, by hand): from the sunrise's top at the screen's bottom to the page's end,
+   the glow grows from a low ellipse to the full sun (power2.out over the whole run) and the letters rise from 104%
+   (power3.out over half the run, starting at .12, 45ms apart from the centre); scrubbed with a .6s lag */
+(() => {
+  const foot = document.querySelector('.pf'); if (!foot) return;
+  document.documentElement.classList.add('pf-js');
+  const io0 = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { foot.classList.add('is-in'); io0.disconnect(); } }), { threshold: .15 });
+  io0.observe(foot);
+  const sun = foot.querySelector('.pf-sunrise'), glow = sun.querySelector('.pf-glow'), letters = [...sun.querySelectorAll('.pf-word > span')];
+  new IntersectionObserver(es => es.forEach(e => sun.toggleAttribute('data-awake', e.isIntersecting))).observe(sun);
+  const mq = matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq.matches) return;
+  const phone = matchMedia('(max-width: 767px)').matches, each = phone ? .035 : .045, lag = phone ? .35 : .6;
+  const mid = (letters.length - 1) / 2, o2 = t => 1 - (1 - t) ** 2, o3 = t => 1 - (1 - t) ** 3, cl = t => Math.min(1, Math.max(0, t));
+  let cur = 0, goal = 0, raf = 0, last = 0;
+  const target = () => {
+    const top = sun.getBoundingClientRect().top + scrollY, start = Math.max(0, top - innerHeight);
+    const end = document.documentElement.scrollHeight - innerHeight;
+    return end > start ? cl((scrollY - start) / (end - start)) : 1;
+  };
+  const paint = p => {
+    const g = o2(p);
+    glow.style.setProperty('--pf-gy', (14 * (1 - g)).toFixed(2) + '%');
+    glow.style.setProperty('--pf-gx', (.72 + .28 * g).toFixed(4));
+    glow.style.setProperty('--pf-gs', (.42 + .58 * g).toFixed(4));
+    glow.style.setProperty('--pf-go', (.55 + .45 * g).toFixed(3));
+    letters.forEach((l, i) => { const t = cl((p - .12 - Math.abs(i - mid) * each) / .5); l.style.setProperty('--y', (104 * (1 - o3(t))).toFixed(2) + '%'); });
+  };
+  const tick = now => {
+    const dt = last ? Math.min(.1, (now - last) / 1000) : .016; last = now;
+    cur += (goal - cur) * (1 - Math.exp(-dt / (lag / 3)));
+    if (Math.abs(goal - cur) < .0005) cur = goal;
+    paint(cur);
+    raf = cur === goal ? 0 : requestAnimationFrame(tick); if (!raf) last = 0;
+  };
+  const kick = () => { goal = target(); if (!raf) raf = requestAnimationFrame(tick); };
+  cur = goal = target(); paint(cur);
+  addEventListener('scroll', kick, { passive: true }); addEventListener('resize', kick);
+})();
+</script>
+<script>
+/* smooth scroll (asked for by the client): wheel, keys and in-page links glide to their target with an eased,
+   frame-rate-independent follow, and every scroll-linked scene reads the glided position, so it moves smoothly too.
+   Touch keeps the phone's own momentum; reduced motion keeps native scrolling. */
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const root = document.documentElement, fine = !matchMedia('(pointer: coarse)').matches;
+  const max = () => root.scrollHeight - innerHeight, cl = y => Math.max(0, Math.min(max(), y));
+  let cur = scrollY, goal = scrollY, raf = 0, last = 0, k = 9;
+  const step = now => {
+    const dt = last ? Math.min(.05, (now - last) / 1000) : 1 / 60; last = now;
+    cur += (goal - cur) * (1 - Math.exp(-dt * k));
+    if (Math.abs(goal - cur) < .4) cur = goal;
+    scrollTo(0, cur);
+    if (cur === goal) { raf = 0; last = 0; } else raf = requestAnimationFrame(step);
+  };
+  const go = (y, speed = 9) => { if (!raf) cur = scrollY; goal = cl(y); k = speed; if (!raf) raf = requestAnimationFrame(step); };
+  window.gxScroll = { to: y => go(y, 6) };
+  addEventListener('scroll', () => { if (!raf) cur = goal = scrollY; }, { passive: true });
+  addEventListener('resize', () => { goal = cl(goal); });
+  const canScroll = (el, dy) => {
+    for (; el && el !== document.body && el !== root; el = el.parentElement) {
+      const st = getComputedStyle(el), oy = st.overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1
+          && (dy < 0 ? el.scrollTop > 0 : el.scrollTop + el.clientHeight < el.scrollHeight - 1)) return true;
+    }
+    return false;
+  };
+  if (fine) addEventListener('wheel', e => {
+    if (e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1);
+    if (canScroll(e.target, dy) || document.body.style.overflow === 'hidden' || root.style.overflow === 'hidden') return;
+    e.preventDefault(); go((raf ? goal : scrollY) + dy);
+  }, { passive: false });
+  addEventListener('keydown', e => {
+    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    const t = e.target; if (t.closest('input, textarea, select, [contenteditable], [role="radiogroup"], [role="tablist"], [role="slider"]') || canScroll(t, 1) || canScroll(t, -1)) return;
+    const page = innerHeight * .85, base = raf ? goal : scrollY;
+    const d = { ArrowDown: 80, ArrowUp: -80, PageDown: page, PageUp: -page, ' ': e.shiftKey ? -page : page }[e.key];
+    if (e.key === 'Home') { e.preventDefault(); go(0, 6); } else if (e.key === 'End') { e.preventDefault(); go(max(), 6); }
+    else if (d !== undefined) { if (e.key === ' ' && t.closest('button, a, summary')) return; e.preventDefault(); go(base + d); }
+  });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const id = a.getAttribute('href'); const el = id === '#' || id === '#top' ? root : document.querySelector(id); if (!el) return;
+    e.preventDefault();
+    const y = el === root ? 0 : el.getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(el).scrollMarginTop) || 0);
+    go(y, 5); history.pushState(null, '', id);
+    if (el !== root) { if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); }
+  });
+})();
+</script>
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
@@ -1308,9 +1454,9 @@
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
   addEventListener('resize', () => { at = -1; tick(); });
   steps.forEach((s, k) => s.querySelector('button')?.addEventListener('click', () => {
-    if (!sec.classList.contains('is-live')) { s.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (!sec.classList.contains('is-live')) { const r = s.getBoundingClientRect(); window.gxScroll ? gxScroll.to(r.top + scrollY - (innerHeight - r.height) / 2) : s.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     const span = sec.offsetHeight - innerHeight, top = sec.getBoundingClientRect().top + scrollY;
-    scrollTo({ top: top + ((k + .35) / n) * span, behavior: 'smooth' });
+    const y = top + ((k + .35) / n) * span; window.gxScroll ? gxScroll.to(y) : scrollTo({ top: y, behavior: 'smooth' });
   }));
   setMode();
 })();
@@ -1449,6 +1595,55 @@
     addEventListener('resize', fit); fit(); place();
     if (document.fonts) document.fonts.ready.then(fit);
   });
+})();
+
+// cta light flood: while the section holds, a glow rises from below and floods the ground; the first line sharpens
+// from a blur, the second rises in, the paragraph and action follow; the night rises at the end into the footer.
+// Reduced motion and narrow-height screens: the finished state, no hold.
+(() => {
+  const sec = document.querySelector('#get-started.lf');
+  if (!sec) return;
+  const ok = matchMedia('(prefers-reduced-motion: no-preference) and (min-height: 560px)');
+  const clamp = v => Math.min(1, Math.max(0, v));
+  const seg = (p, a, b) => clamp((p - a) / (b - a));
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const out = t => 1 - Math.pow(1 - t, 3);
+  const set = (k, v) => sec.style.setProperty(k, v);
+  const draw = p => {
+    const sun = ease(seg(p, 0, .5));
+    set('--lf-sun-o', (seg(p, 0, .12)).toFixed(3));
+    set('--lf-rise', ((1 - sun) * 45 - sun * 18).toFixed(2));
+    set('--lf-sun-s', (0.7 + sun * 0.6).toFixed(3));
+    set('--lf-flood', ease(seg(p, .3, .58)).toFixed(3));
+    const lead = out(seg(p, .08, .48));
+    set('--lf-blur', `${((1 - lead) * 22).toFixed(1)}px`);
+    set('--lf-lead-o', (.15 + .85 * lead).toFixed(3));
+    set('--lf-lead-s', (1.06 - .06 * lead).toFixed(3));
+    const key = out(seg(p, .42, .66));
+    set('--lf-key-o', key.toFixed(3));
+    set('--lf-key-y', ((1 - key) * .35).toFixed(3));
+    set('--lf-act-o', out(seg(p, .62, .78)).toFixed(3));
+    set('--lf-dusk', ease(seg(p, .86, 1)).toFixed(3));
+  };
+  let raf = 0;
+  const tick = () => {
+    raf = 0;
+    if (!sec.classList.contains('is-live')) return;
+    const r = sec.getBoundingClientRect(), span = sec.offsetHeight - innerHeight;
+    draw(clamp(-r.top / span));
+  };
+  const mode = () => {
+    const live = ok.matches;
+    sec.classList.toggle('is-live', live);
+    if (!live) { ['--lf-sun-o', '--lf-rise', '--lf-sun-s', '--lf-flood', '--lf-blur', '--lf-lead-o', '--lf-lead-s', '--lf-key-o', '--lf-key-y', '--lf-act-o', '--lf-dusk'].forEach(k => sec.style.removeProperty(k)); set('--lf-sun-o', 1); set('--lf-rise', -18); set('--lf-sun-s', 1.3); return; }
+    tick();
+  };
+  ok.addEventListener('change', mode);
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+  addEventListener('resize', tick);
+  // keyboard: tabbing to the action scrolls to where it is shown
+  sec.querySelector('.lf-act a')?.addEventListener('focus', e => { if (!e.target.matches(':focus-visible') || !sec.classList.contains('is-live')) return; const top = sec.getBoundingClientRect().top + scrollY; scrollTo(0, top + (sec.offsetHeight - innerHeight) * .82); });
+  mode();
 })();
 
 // promise: the style preview settles from a slight zoom as it comes on screen
