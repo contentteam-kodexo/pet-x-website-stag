@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing | Pet-X Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root { --font-text: "Poppins", system-ui, sans-serif; --gradient-button: linear-gradient(90deg, #444798, #9C4C97); --s-8: 48px; }
+  body { margin: 0; background: #fff; -webkit-font-smoothing: antialiased; }
+  .section { padding: 96px 24px; }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  /* ===== PRICING: billing toggle, odometer prices, demonstration cursor (Pet-X brand) ===== */
+  #pricing.gx-price { --p-ink: #14122e; --p-ink2: #4a4a55; --p-ink3: #7b7a88; --p-hair: rgb(35 32 74 / .09); --p-ease: cubic-bezier(.16,1,.3,1); --p-spring: cubic-bezier(.34,1.56,.64,1);
+    background: #fff; color: var(--p-ink); font-family: var(--font-text, "Poppins", system-ui, sans-serif); }
+  .pg-wrap { position: relative; }
+  .pg-head { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: var(--s-8, 48px); }
+  .pg-head h2 { margin: 0; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -.035em; color: var(--p-ink); }
+  .pg-sub { margin: 10px 0 28px; font-size: 17px; color: var(--p-ink2); }
+  .pg-toggle-row { position: relative; display: flex; align-items: center; justify-content: center; }
+  .pg-toggle { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 999px; background: #f2eff5; box-shadow: inset 0 0 0 1px var(--p-hair); }
+  .pg-toggle button { position: relative; z-index: 1; min-width: 116px; height: 42px; padding: 0 20px; border: 0; border-radius: 999px; background: none; font: 500 15px/1 inherit; font-family: inherit; color: var(--p-ink2); cursor: pointer; transition: color .35s var(--p-ease); }
+  .pg-toggle button[aria-checked="true"] { color: #fff; }
+  .pg-toggle button:focus-visible { outline: 2px solid #1E97B7; outline-offset: 2px; }
+  .pg-pill { position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background: #23204A; box-shadow: 0 6px 16px -6px rgb(35 32 74 / .55); transition: transform .5s var(--p-ease); }
+  .gx-price.is-y .pg-pill { transform: translateX(100%); }
+  .pg-save { position: absolute; left: calc(50% + 128px); top: 50%; padding: 6px 12px; border-radius: 999px; background: rgb(21 139 81 / .12); color: #158B51; font-size: 13px; font-weight: 600; white-space: nowrap;
+    box-shadow: inset 0 0 0 1px rgb(21 139 81 / .25); opacity: 0; transform: translate(-6px, -50%) scale(.6); transform-origin: 0 50%; transition: opacity .2s ease, transform .2s ease; pointer-events: none; }
+  .gx-price.is-y .pg-save { opacity: 1; transform: translate(0, -50%) scale(1); transition: opacity .3s ease, transform .55s var(--p-spring); }
+  .pg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .pg-card { position: relative; display: flex; flex-direction: column; padding: 28px; border-radius: 24px; background: #fff;
+    box-shadow: 0 0 0 1px var(--p-hair), 0 1px 2px rgb(35 32 74 / .04), 0 20px 40px -32px rgb(35 32 74 / .3); transition: transform .45s var(--p-ease), box-shadow .45s var(--p-ease); }
+  .pg-card:hover, .pg-card.is-hover { transform: translateY(-6px); box-shadow: 0 0 0 1px var(--p-hair), 0 30px 60px -30px rgb(68 71 152 / .45); }
+  .pg-card.is-featured { color: #fff; background: radial-gradient(80% 60% at 100% 0%, rgb(156 76 151 / .45), transparent 70%), linear-gradient(160deg, #23204A, #301938);
+    box-shadow: 0 30px 60px -30px rgb(48 25 56 / .7); }
+  .pg-card.is-featured:hover, .pg-card.is-featured.is-hover { box-shadow: 0 40px 70px -30px rgb(48 25 56 / .85); }
+  .pg-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 28px; }
+  .pg-top h3 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+  .pg-chip { padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; color: #fff; background: linear-gradient(90deg, #444798, #9C4C97); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
+  .pg-for { margin: 8px 0 20px; font-size: 14px; line-height: 1.5; color: var(--p-ink2); }
+  .is-featured .pg-for, .is-featured .pg-billed, .is-featured .pg-list { color: rgb(236 226 240 / .8); }
+  .pg-price { position: relative; display: flex; align-items: baseline; gap: 8px; margin: 0; }
+  .pg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .pg-odo { display: inline-flex; align-items: baseline; font-size: clamp(36px, 3.4vw, 46px); font-weight: 600; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .pg-col { display: inline-block; width: .62em; height: 1em; overflow: hidden; transition: width .45s var(--p-ease), opacity .3s ease; }
+  .pg-col.is-off { width: 0; opacity: 0; }
+  .pg-strip { display: flex; flex-direction: column; transform: translateY(calc(var(--pos, 10) * -1em)); }
+  .pg-strip.is-spin { transition: transform var(--dur, .9s) var(--p-ease); }
+  .pg-strip > span { display: block; height: 1em; text-align: center; }
+  .pg-per { position: relative; display: inline-grid; font-size: 15px; color: var(--p-ink3); }
+  .is-featured .pg-per { color: rgb(236 226 240 / .7); }
+  .pg-billed { position: relative; display: grid; margin: 8px 0 22px; min-height: 1.5em; font-size: 13.5px; color: var(--p-ink3); }
+  .pg-billed s { margin-right: 4px; opacity: .8; }
+  .pg-swap { grid-area: 1 / 1; opacity: 0; transform: translateY(4px); transition: opacity .18s ease, transform .18s ease; white-space: nowrap; }
+  .pg-swap.is-on { opacity: 1; transform: none; transition: opacity .22s ease .08s, transform .22s ease .08s; }
+  .pg-btn { display: inline-flex; align-items: center; justify-content: center; height: 46px; border-radius: 999px; font-size: 15px; font-weight: 600; text-decoration: none;
+    color: #23204A; box-shadow: inset 0 0 0 1.5px rgb(35 32 74 / .2); transition: background-color .25s ease, box-shadow .25s ease; }
+  .pg-btn:hover { background: #f4f1f6; box-shadow: inset 0 0 0 1.5px rgb(35 32 74 / .35); }
+  .pg-btn--primary { color: #fff; background: var(--gradient-button, linear-gradient(90deg, #444798, #9C4C97)); box-shadow: 0 10px 24px -10px rgb(156 76 151 / .7); }
+  .pg-btn--primary:hover { background: var(--gradient-button, linear-gradient(90deg, #444798, #9C4C97)); filter: brightness(1.08); box-shadow: 0 10px 24px -10px rgb(156 76 151 / .8); }
+  .pg-list { display: grid; gap: 10px; margin: 22px 0 0; padding: 22px 0 0; list-style: none; border-top: 1px solid var(--p-hair); font-size: 14px; color: var(--p-ink2); }
+  .is-featured .pg-list { border-top-color: rgb(255 255 255 / .14); }
+  .pg-list li { display: flex; align-items: center; gap: 10px; }
+  .pg-list svg { width: 16px; height: 16px; flex: none; fill: none; stroke: #1E97B7; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .is-featured .pg-list svg { stroke: #6fc6dc; }
+  /* demonstration cursor */
+  .pg-cursor { position: absolute; z-index: 5; left: 0; top: 0; width: 26px; height: 26px; pointer-events: none; opacity: 0;
+    transition: transform .9s var(--p-ease), opacity .3s ease; filter: drop-shadow(0 3px 6px rgb(20 18 46 / .35)); }
+  .pg-cursor svg { width: 100%; height: 100%; fill: #fff; stroke: #23204A; stroke-width: 1.4; stroke-linejoin: round; }
+  .pg-cursor::after { content: ""; position: absolute; left: 2px; top: 1px; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: rgb(30 151 183 / .35); transform: scale(0); opacity: 0; }
+  .pg-cursor.is-click::after { animation: pg-click .45s ease-out; }
+  .pg-cursor.is-click svg { transform: scale(.88); transform-origin: 20% 15%; transition: transform .12s ease; }
+  @keyframes pg-click { from { transform: scale(.3); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+  @media (max-width: 1023px) { .pg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 639px) {
+    .pg-grid { grid-template-columns: 1fr; }
+    .pg-toggle-row { flex-direction: column; gap: 12px; }
+    .pg-save { position: static; transform: scale(.6); }
+    .gx-price.is-y .pg-save { transform: none; }
+    .pg-toggle button { min-width: 104px; }
+    .pg-cursor { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pg-strip.is-spin, .pg-pill, .pg-card, .pg-swap, .pg-save, .pg-col { transition: none !important; } .pg-cursor { display: none; } }
+
+</style>
+</head>
+<body>
+<main>
+  <!-- PRICING: Monthly/Yearly toggle with a sliding pill; prices roll like an odometer on each switch; the billing line
+       crossfades; a demonstration cursor shows the switch until the visitor touches the section -->
+  <section class="section gx-price" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap pg-wrap">
+      <div class="pg-head">
+        <h2 id="pricing-h">Available Plans</h2>
+        <p class="pg-sub">30-Days Free Trials</p>
+        <div class="pg-toggle-row">
+          <div class="pg-toggle" role="radiogroup" aria-label="Billing period">
+            <i class="pg-pill" aria-hidden="true"></i>
+            <button type="button" role="radio" aria-checked="true" data-period="m">Monthly</button>
+            <button type="button" role="radio" aria-checked="false" data-period="y">Annual</button>
+          </div>
+          <span class="pg-save" aria-hidden="true">Save over 11%</span>
+        </div>
+      </div>
+      <div class="pg-grid">
+        <article class="pg-card" data-m="39.99" data-y="425.99">
+          <div class="pg-top"><h3>Basic</h3></div>
+          <p class="pg-for">Independent 1 Groomer operations<br>Approx. 5 grooms/day</p>
+          <p class="pg-price"><span class="pg-sr" data-sr></span><span class="pg-odo" aria-hidden="true"><span class="pg-cur">$</span><span class="pg-col" data-c="i0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i2"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-dot">.</span><span class="pg-col" data-c="c0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="c1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span><span class="pg-per"><span class="pg-swap is-on" data-mode="m">/month</span><span class="pg-swap" data-mode="y">/year</span></span></p>
+          <p class="pg-billed"><span class="pg-swap is-on" data-mode="m"><s>$45.99</s> +taxes, billed monthly</span><span class="pg-swap" data-mode="y"><s>$530.99</s> +taxes, billed yearly</span></p>
+          <a class="pg-btn" href="http://app.groomx.net/auth/signup">Get Started</a>
+          <ul class="pg-list"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>80 Images/month</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>FREE Tool Maintenance Alerts (optional)</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>24/7 Support</li></ul>
+        </article>
+        <article class="pg-card is-featured" data-m="45.99" data-y="485.99">
+          <div class="pg-top"><h3>Silver</h3><span class="pg-chip">Best Value</span></div>
+          <p class="pg-for">Small Salons<br>Approx. 15 grooms/day</p>
+          <p class="pg-price"><span class="pg-sr" data-sr></span><span class="pg-odo" aria-hidden="true"><span class="pg-cur">$</span><span class="pg-col" data-c="i0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i2"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-dot">.</span><span class="pg-col" data-c="c0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="c1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span><span class="pg-per"><span class="pg-swap is-on" data-mode="m">/month</span><span class="pg-swap" data-mode="y">/year</span></span></p>
+          <p class="pg-billed"><span class="pg-swap is-on" data-mode="m"><s>$53.99</s> +taxes, billed monthly</span><span class="pg-swap" data-mode="y"><s>$573.99</s> +taxes, billed yearly</span></p>
+          <a class="pg-btn pg-btn--primary" href="http://app.groomx.net/auth/signup">Get Started</a>
+          <ul class="pg-list"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>300 Images/month</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>FREE Tool Maintenance Alerts (optional)</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>24/7 Support</li></ul>
+        </article>
+        <article class="pg-card" data-m="49.99" data-y="529.99">
+          <div class="pg-top"><h3>Gold</h3></div>
+          <p class="pg-for">Small/Medium Salons<br>Approx. 25 grooms/day</p>
+          <p class="pg-price"><span class="pg-sr" data-sr></span><span class="pg-odo" aria-hidden="true"><span class="pg-cur">$</span><span class="pg-col" data-c="i0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i2"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-dot">.</span><span class="pg-col" data-c="c0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="c1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span><span class="pg-per"><span class="pg-swap is-on" data-mode="m">/month</span><span class="pg-swap" data-mode="y">/year</span></span></p>
+          <p class="pg-billed"><span class="pg-swap is-on" data-mode="m"><s>$59.99</s> +taxes, billed monthly</span><span class="pg-swap" data-mode="y"><s>$633.99</s> +taxes, billed yearly</span></p>
+          <a class="pg-btn" href="http://app.groomx.net/auth/signup">Get Started</a>
+          <ul class="pg-list"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>500 Images/month</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>FREE Tool Maintenance Alerts (optional)</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>24/7 Support</li></ul>
+        </article>
+        <article class="pg-card" data-m="59.99" data-y="635.99">
+          <div class="pg-top"><h3>Platinum</h3></div>
+          <p class="pg-for">Medium/Large Salons<br>Approx. 35 grooms/day</p>
+          <p class="pg-price"><span class="pg-sr" data-sr></span><span class="pg-odo" aria-hidden="true"><span class="pg-cur">$</span><span class="pg-col" data-c="i0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i2"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-dot">.</span><span class="pg-col" data-c="c0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="c1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span><span class="pg-per"><span class="pg-swap is-on" data-mode="m">/month</span><span class="pg-swap" data-mode="y">/year</span></span></p>
+          <p class="pg-billed"><span class="pg-swap is-on" data-mode="m"><s>$63.99</s> +taxes, billed monthly</span><span class="pg-swap" data-mode="y"><s>$675.99</s> +taxes, billed yearly</span></p>
+          <a class="pg-btn" href="http://app.groomx.net/auth/signup">Get Started</a>
+          <ul class="pg-list"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>700 AI-images/month</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>FREE Tool Maintenance Alerts (optional)</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>24/7 Support</li></ul>
+        </article>
+        <article class="pg-card is-featured" data-m="65.99" data-y="698.99">
+          <div class="pg-top"><h3>Diamond</h3><span class="pg-chip">High Volume Best Value!</span></div>
+          <p class="pg-for">Large Salons<br>Approx. 50 grooms/day</p>
+          <p class="pg-price"><span class="pg-sr" data-sr></span><span class="pg-odo" aria-hidden="true"><span class="pg-cur">$</span><span class="pg-col" data-c="i0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i2"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-dot">.</span><span class="pg-col" data-c="c0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="c1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span><span class="pg-per"><span class="pg-swap is-on" data-mode="m">/month</span><span class="pg-swap" data-mode="y">/year</span></span></p>
+          <p class="pg-billed"><span class="pg-swap is-on" data-mode="m"><s>$69.99</s> +taxes, billed monthly</span><span class="pg-swap" data-mode="y"><s>$740.99</s> +taxes, billed yearly</span></p>
+          <a class="pg-btn pg-btn--primary" href="http://app.groomx.net/auth/signup">Get Started</a>
+          <ul class="pg-list"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>1000 Images/month</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>FREE Tool Maintenance Alerts (optional)</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>24/7 Support</li></ul>
+        </article>
+        <article class="pg-card" data-m="69.99" data-y="740.99">
+          <div class="pg-top"><h3>Star Plus</h3></div>
+          <p class="pg-for">High Volume Salons opened 7 days<br>Approx. 50 grooms/day x7 days</p>
+          <p class="pg-price"><span class="pg-sr" data-sr></span><span class="pg-odo" aria-hidden="true"><span class="pg-cur">$</span><span class="pg-col" data-c="i0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="i2"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-dot">.</span><span class="pg-col" data-c="c0"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="pg-col" data-c="c1"><span class="pg-strip"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span><span class="pg-per"><span class="pg-swap is-on" data-mode="m">/month</span><span class="pg-swap" data-mode="y">/year</span></span></p>
+          <p class="pg-billed"><span class="pg-swap is-on" data-mode="m"><s>$75.99</s> +taxes, billed monthly</span><span class="pg-swap" data-mode="y"><s>$803.99</s> +taxes, billed yearly</span></p>
+          <a class="pg-btn" href="http://app.groomx.net/auth/signup">Get Started</a>
+          <ul class="pg-list"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>1200 Images/month</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>FREE Tool Maintenance Alerts (optional)</li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>24/7 Support</li></ul>
+        </article>
+      </div>
+      <i class="pg-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3.5 19 11l-6.2 1.6L9.6 19Z"/></svg></i>
+    </div>
+  </section>
+</main>
+<script>
+// pricing: the billing toggle slides its pill; every price rolls like an odometer (each digit a 0-9 strip, the last
+// digit taking one extra full turn); the billing line crossfades; a demonstration cursor clicks Annual, hovers a
+// featured plan, clicks Monthly, every 7 s while the section is on screen, and stops for good once the visitor
+// points at, clicks or tabs into the section.
+(() => {
+  const sec = document.querySelector('#pricing.gx-price');
+  if (!sec) return;
+  const btns = [...sec.querySelectorAll('.pg-toggle button')];
+  const cards = [...sec.querySelectorAll('.pg-card')];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt = v => { const [i, c] = v.split('.'); return { i: i.padStart(3, ' '), c }; };
+  const setPrice = (card, v, first) => {
+    const { i, c } = fmt(v);
+    const digits = { i0: i[0], i1: i[1], i2: i[2], c0: c[0], c1: c[1] };
+    card.querySelectorAll('.pg-col').forEach(col => {
+      const key = col.dataset.c, d = digits[key], strip = col.firstElementChild;
+      if (d === ' ') { col.classList.add('is-off'); return; }
+      col.classList.remove('is-off');
+      const n = +d;
+      if (first || still) { strip.classList.remove('is-spin'); strip.style.setProperty('--pos', n + 10); return; }
+      strip.classList.add('is-spin');
+      const extra = key === 'c1';
+      strip.style.setProperty('--dur', extra ? '1.25s' : `${.75 + Object.keys(digits).indexOf(key) * .06}s`);
+      // every column turns forward to its new digit; the last digit adds one full extra turn
+      const cd = (parseFloat(strip.style.getPropertyValue('--pos')) || 10) - 10;
+      if (n === cd && !extra) return;
+      let target = n > cd ? n + 10 : n + 20;
+      if (extra) target += 10;
+      strip.style.setProperty('--pos', target);
+      clearTimeout(strip._t);
+      strip._t = setTimeout(() => { strip.classList.remove('is-spin'); strip.style.setProperty('--pos', n + 10); }, extra ? 1300 : 1000);
+    });
+    card.querySelector('[data-sr]').textContent = `$${v}`;
+  };
+  let period = 'm';
+  const set = (p, first) => {
+    period = p;
+    sec.classList.toggle('is-y', p === 'y');
+    btns.forEach(b => b.setAttribute('aria-checked', String(b.dataset.period === p)));
+    cards.forEach(card => {
+      setPrice(card, card.dataset[p], first);
+      card.querySelectorAll('.pg-swap').forEach(s => s.classList.toggle('is-on', s.dataset.mode === p));
+    });
+  };
+  btns.forEach(b => b.addEventListener('click', () => { if (b.dataset.period !== period) set(b.dataset.period); }));
+  sec.querySelector('.pg-toggle').addEventListener('keydown', e => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+    e.preventDefault(); const p = period === 'm' ? 'y' : 'm'; set(p); btns.find(b => b.dataset.period === p).focus();
+  });
+  set('m', true);
+
+  // demonstration cursor
+  const cur = sec.querySelector('.pg-cursor'), wrap = sec.querySelector('.pg-wrap');
+  if (!cur || still || !matchMedia('(min-width: 640px)').matches) return;
+  let stopped = false, timers = [], loop = 0, visible = false;
+  const at = (el, fx = .5, fy = .55) => {
+    const w = wrap.getBoundingClientRect(), r = el.getBoundingClientRect();
+    cur.style.transform = `translate(${(r.left - w.left + r.width * fx).toFixed(0)}px, ${(r.top - w.top + r.height * fy).toFixed(0)}px)`;
+  };
+  const click = () => { cur.classList.remove('is-click'); void cur.offsetWidth; cur.classList.add('is-click'); };
+  const later = (ms, fn) => timers.push(setTimeout(() => { if (!stopped) fn(); }, ms));
+  const featured = cards.find(c => c.classList.contains('is-featured'));
+  const run = () => {
+    if (stopped || !visible) return;
+    const [m, y] = [btns[0], btns[1]];
+    cur.style.transition = 'none'; at(featured, .5, 1.1); void cur.offsetWidth; cur.style.transition = '';
+    later(100, () => { cur.style.opacity = 1; at(y); });
+    later(1150, () => { click(); set('y'); });
+    later(2200, () => { at(featured, .62, .42); });
+    later(2900, () => featured.classList.add('is-hover'));
+    later(4300, () => { featured.classList.remove('is-hover'); at(m); });
+    later(5300, () => { click(); set('m'); });
+    later(6200, () => { cur.style.opacity = 0; });
+  };
+  const stop = () => {
+    if (stopped) return; stopped = true; clearInterval(loop); timers.forEach(clearTimeout);
+    cur.style.opacity = 0; featured.classList.remove('is-hover');
+  };
+  ['pointerdown', 'focusin'].forEach(ev => sec.addEventListener(ev, e => { if (e.isTrusted) stop(); }));
+  sec.addEventListener('pointermove', e => { if (e.isTrusted && e.pointerType === 'mouse') stop(); });
+  new IntersectionObserver(es => es.forEach(e => {
+    visible = e.isIntersecting;
+    clearInterval(loop); timers.forEach(clearTimeout); timers = [];
+    if (visible && !stopped) { run(); loop = setInterval(run, 7000); }
+    else { cur.style.opacity = 0; featured.classList.remove('is-hover'); }
+  }), { threshold: .45 }).observe(sec.querySelector('.pg-grid'));
+})();
+
+</script>
+</body>
+</html>

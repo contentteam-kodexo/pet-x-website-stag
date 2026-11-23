@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testimonial stack (sample content) | Pet-X Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: "Poppins", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .section { min-height: 100vh; padding: 96px 24px; display: grid; align-content: center; }
+  .wrap { max-width: 1100px; margin: 0 auto; width: 100%; }
+  /* ===== REVIEWS: a stack of review cards that swipes forward (Pet-X brand) ===== */
+  .gx-rev { --r-ease: cubic-bezier(.65,0,.35,1); color: #fff;
+    background: radial-gradient(50% 50% at 50% 30%, rgb(68 71 152 / .35), transparent 70%), radial-gradient(40% 40% at 90% 100%, rgb(156 76 151 / .22), transparent 70%), #0f0d22; }
+  .gx-rev .rv-head { text-align: center; margin-bottom: 72px; }
+  .gx-rev .rv-head h2 { margin: 0; color: #fff; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -.035em; }
+  .rv-stack { position: relative; width: min(680px, 100%); margin: 0 auto; height: var(--rv-h, 360px); }
+  .rv-card { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 22px; min-height: 100%; padding: 36px 40px 32px; border-radius: 26px;
+    background: #fff; color: #14122e; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .7); transform-origin: 50% 0;
+    transform: translateY(calc(var(--k) * -26px)) scale(calc(1 - var(--k) * .06)); z-index: calc(10 - var(--k));
+    transition: transform .7s var(--r-ease), opacity .5s ease; }
+  .rv-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: #0f0d22; opacity: calc(var(--k) * .14); pointer-events: none; transition: opacity .7s var(--r-ease); }
+  .rv-card.is-out { transform: translateX(-120%) rotate(-9deg) !important; opacity: 0; transition: transform .55s cubic-bezier(.5,0,.75,0), opacity .25s ease .28s; }
+  .rv-card.is-back { opacity: 0; transition: none; }
+  .rv-card[data-k="4"], .rv-card[data-k="5"] { opacity: 0; }
+  .rv-mark { display: flex; gap: 4px; height: 22px; }
+  .rv-star { width: 22px; height: 22px; fill: rgb(35 32 74 / .12); }
+  .rv-star.is-lit { fill: url(#rv-grad); animation: rv-pop .38s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes rv-pop { 0% { transform: scale(.5); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
+  .rv-q { width: 34px; height: 26px; fill: url(#rv-grad); transform: scale(0); }
+  .rv-card.is-front .rv-q { animation: rv-pop .45s cubic-bezier(.34,1.56,.64,1) .1s forwards; }
+  .rv-card[data-k="0"]:not(.is-front) .rv-q, .rv-card:not([data-k="0"]) .rv-q { transform: scale(1); }
+  .rv-quote { margin: 0; font-size: clamp(17px, 1.6vw, 20px); font-weight: 600; line-height: 1.5; letter-spacing: -.015em; text-wrap: pretty; }
+  .rv-quote.is-big { font-size: clamp(22px, 2.4vw, 30px); line-height: 1.25; letter-spacing: -.025em; }
+  .rv-person { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .rv-ava { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 50%; color: #fff; font-size: 15px; font-weight: 600; }
+  .rv-name { display: block; font-size: 15px; font-weight: 600; }
+  .rv-role { display: block; font-size: 13.5px; color: #6b6a78; }
+  .rv-foot { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 32px; font-size: 15px; color: rgb(236 226 240 / .75); }
+  .rv-dots { display: flex; gap: 6px; }
+  .rv-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / .25); transition: background-color .3s, width .3s; }
+  .rv-dots i.is-on { width: 22px; border-radius: 99px; background: linear-gradient(90deg, #1E97B7, #9C4C97); }
+  .rv-pause { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgb(255 255 255 / .1); color: #fff; cursor: pointer; }
+  .rv-pause:hover { background: rgb(255 255 255 / .18); }
+  .rv-pause:focus-visible { outline: 2px solid #6fc6dc; outline-offset: 2px; }
+  .rv-pause svg { width: 14px; height: 14px; fill: currentColor; }
+  .rv-sample { display: block; margin-top: 10px; text-align: center; font-size: 12.5px; color: rgb(236 226 240 / .5); }
+  @media (max-width: 639px) { .rv-card { padding: 26px 22px 22px; border-radius: 20px; gap: 16px; } .rv-quote { font-size: 15.5px; } .gx-rev .rv-head { margin-bottom: 60px; } }
+  @media (prefers-reduced-motion: reduce) { .rv-card, .rv-card::after, .rv-card.is-out { transition: none !important; } .rv-star.is-lit, .rv-card.is-front .rv-q { animation: none; transform: none; } }
+
+  .rv-quote.is-big { font-weight: 700; }
+  .gx-rev .rv-head { margin-bottom: 110px; }
+</style>
+</head>
+<body>
+<section class="section gx-rev" aria-labelledby="rv-h" data-rv="1750">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="rv-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E97B7"/><stop offset=".55" stop-color="#444798"/><stop offset="1" stop-color="#9C4C97"/></linearGradient></defs></svg>
+  <div class="wrap">
+    <div class="rv-head"><h2 id="rv-h">What groomers say</h2></div>
+    <div class="rv-stack" aria-live="polite">
+          <figure class="rv-card"><div class="rv-mark" aria-hidden="true"><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg></div><blockquote class="rv-quote is-big">Our pet parents finally see the groom before we start.</blockquote><figcaption class="rv-person"><span class="rv-ava" style="background:#1E97B7" aria-hidden="true">AM</span><span><span class="rv-name">Alex Moreno</span><span class="rv-role">Salon owner</span></span></figcaption></figure>
+          <figure class="rv-card"><div class="rv-mark" aria-hidden="true"><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg></div><blockquote class="rv-quote is-big">Check-ins take half the time and nobody is surprised at pickup.</blockquote><figcaption class="rv-person"><span class="rv-ava" style="background:#158B51" aria-hidden="true">JK</span><span><span class="rv-name">Jordan Kim</span><span class="rv-role">Mobile groomer</span></span></figcaption></figure>
+          <figure class="rv-card"><div class="rv-mark" aria-hidden="true"><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg></div><blockquote class="rv-quote is-big">Repeat clients book the same style in a few taps.</blockquote><figcaption class="rv-person"><span class="rv-ava" style="background:#9C4C97" aria-hidden="true">SP</span><span><span class="rv-name">Sam Patel</span><span class="rv-role">Pet hotel manager</span></span></figcaption></figure>
+          <figure class="rv-card"><div class="rv-mark" aria-hidden="true"><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1.8l2.5 5.2 5.7.8-4.1 4 1 5.6L10 14.7l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg></div><blockquote class="rv-quote is-big">Our team stopped guessing what each customer wanted.</blockquote><figcaption class="rv-person"><span class="rv-ava" style="background:#444798" aria-hidden="true">RL</span><span><span class="rv-name">Riley Lopez</span><span class="rv-role">Grooming chain lead</span></span></figcaption></figure>
+    </div>
+    <div class="rv-foot"><span>4.9 average from 2,140 reviews</span><button class="rv-pause" type="button" aria-pressed="false" aria-label="Pause reviews"><svg viewBox="0 0 14 14"><path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/></svg></button></div>
+    <span class="rv-sample">Sample content: these reviews, names and the rating are placeholders, not real customers.</span>
+  </div>
+</section>
+<script>
+// reviews: the front card shows its mark (stars light one by one, or the quote mark pops), then swipes off to the
+// left; the stack steps forward and the old card fades in at the back. Pauses on hover, on focus, off screen, and
+// with its pause button; reduced motion shows one card at a time without the swipe.
+(() => {
+  document.querySelectorAll('[data-rv]').forEach(root => {
+    const stack = root.querySelector('.rv-stack');
+    const cards = [...stack.querySelectorAll('.rv-card')];
+    const dots = [...root.querySelectorAll('.rv-dots i')];
+    const btn = root.querySelector('.rv-pause');
+    const every = +root.dataset.rv || 1750;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const n = cards.length;
+    let order = cards.map((_, i) => i), timer = 0, paused = false, hovered = false, seen = false;
+    const fit = () => { cards.forEach(c => { c.style.minHeight = '0'; }); const h = Math.max(...cards.map(c => c.offsetHeight)); cards.forEach(c => { c.style.minHeight = ''; }); stack.style.setProperty('--rv-h', `${h}px`); };
+    const place = () => {
+      order.forEach((ci, k) => { const c = cards[ci]; c.style.setProperty('--k', k); c.dataset.k = k; c.setAttribute('aria-hidden', String(k !== 0)); c.classList.toggle('is-front', k === 0); });
+      dots.forEach((d, i) => d.classList.toggle('is-on', i === order[0]));
+      const front = cards[order[0]];
+      front.querySelectorAll('.rv-star').forEach((s, i) => { s.classList.remove('is-lit'); setTimeout(() => s.classList.add('is-lit'), 120 + i * 110); });
+    };
+    const next = () => {
+      const front = cards[order[0]];
+      if (still) { order.push(order.shift()); place(); return; }
+      front.classList.add('is-out');
+      setTimeout(() => {
+        order.push(order.shift());
+        front.classList.remove('is-out'); front.classList.add('is-back');
+        place();
+        requestAnimationFrame(() => requestAnimationFrame(() => front.classList.remove('is-back')));
+      }, 420);
+    };
+    const run = () => { clearInterval(timer); if (!paused && !hovered && seen) timer = setInterval(next, every); };
+    root.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { hovered = true; run(); } });
+    root.addEventListener('pointerleave', () => { hovered = false; run(); });
+    root.addEventListener('focusin', () => { hovered = true; run(); });
+    root.addEventListener('focusout', () => { hovered = false; run(); });
+    btn?.addEventListener('click', () => {
+      paused = !paused; btn.setAttribute('aria-pressed', String(paused));
+      btn.setAttribute('aria-label', paused ? 'Play reviews' : 'Pause reviews');
+      btn.innerHTML = paused ? '<svg viewBox="0 0 14 14"><path d="M3 1.5v11l9-5.5z"/></svg>' : '<svg viewBox="0 0 14 14"><path d="M3 1.5h3v11H3zM8 1.5h3v11H8z"/></svg>';
+      run();
+    });
+    new IntersectionObserver(es => es.forEach(e => { seen = e.isIntersecting; if (seen) place(); run(); }), { threshold: .4 }).observe(stack);
+    addEventListener('resize', fit); fit(); place();
+    if (document.fonts) document.fonts.ready.then(fit);
+  });
+})();
+
+</script>
+</body>
+</html>
